@@ -1,0 +1,26 @@
+/* CSS for Header */
+
+
+@media (min-width: 1280px) {
+  .header {
+  height:50px;
+}
+
+.header__navbar {
+
+}
+
+.header__navbar-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding-left:0
+
+}
+
+.header__navbar-item {
+  display: block;
+  margin: 10px 0 10px 0;
+}
+
+}
