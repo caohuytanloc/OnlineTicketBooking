@@ -12,7 +12,7 @@ public class Flight {
     private int availableSeats;
     private int totalSeats;
 
-    public Flight(String id, String airplaneName, String departureCity, String arrivalCity, Date departureTime, LocalDateTime arrivalTime, int availableSeats, int totalSeats) {
+    public Flight(String id, String airplaneName, String departureCity, String arrivalCity, Date departureTime, Date arrivalTime, int availableSeats, int totalSeats) {
         this.id = id;
         this.airplaneName = airplaneName;
         this.departureCity = departureCity;
