@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBConnect {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/AirTicketManagement";
-    private static final String USER = "Root";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/airticketmanagement";
+    private static final String USER = "root";
     private static final String PASSWORD = "07090710";
     private static DBConnect dbConnect;
     private static Connection connection;
