@@ -1,7 +1,9 @@
 body {
   font-family: "Segoe UI", sans-serif;
   width: 100%;
-  display: block;
+  margin:0;
+  padding: 0;
+  display: content-box;
 }
 
 h1,
@@ -9,8 +11,114 @@ h2,
 h3,
 h4,
 h5 {
-  font-size:16px;
+  font-size: 16px;
 }
-@media (min-width: 1280px) {
+
+.ticket__confirm {
+
+}
+
+.ticket__confirm--header {
+  padding: 10px 0;
+  height: 70px;
+  background: linear-gradient(
+    28.91deg,
+    #f9a51a 2.24%,
+    #fbb612 31.03%,
+    #fbf300 97.21%
+  );
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
   
+
+}
+
+.header__left {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.ticket__information--summary {
+  display: flex;
+  flex-direction: row;
+}
+
+.ticket__information--summary {
+  display: flex;
+  flex-direction: row;
+}
+.ticket__information--type {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.ticket__information--type::after {
+  content: "|";
+  margin-left: 10px;
+  margin-right: 10px;
+  font-weight: normal;
+}
+.ticket__information--numOfPassenger {
+}
+
+.ticket__information--location {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ticket__information--depart {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+}
+.icon--active {
+  color: green;
+}
+
+.fa-circle-dot  {
+  color: red
+}
+
+.arrive-city {
+  color: red;
+  font-weight: bold;
+}
+.depart-city {
+  color: red;
+  font-weight: bold;
+
+}
+.ticket__information--arrive {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header__right {
+  height: auto;
+
+  display: flex;
+  flex-direction: row;
+  
+}
+.header__right button{
+  cursor: pointer;
+  padding: 10px;
+  margin: 0px 5px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: white;
+
+}
+.header__right button :hover{
+  cursor: pointer;
+  padding: 10px;
+  margin: 0px 5px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: white;
+
 }

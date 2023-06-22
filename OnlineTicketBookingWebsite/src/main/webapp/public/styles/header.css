@@ -2,10 +2,10 @@
 header {
   background-color: #ca161c;
   display:block;
+  position: relative;
 
 }
 
-@media (min-width: 1280px) {
   
   .navbar__container {
     display: flex;
@@ -40,7 +40,8 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    text-transform: capitalize;
+    text-transform: uppercase;
+    font-weight: 500;
 
 
   }
@@ -69,4 +70,3 @@ header {
   /* START OF FOOTER SECTION */
 
   
-}
