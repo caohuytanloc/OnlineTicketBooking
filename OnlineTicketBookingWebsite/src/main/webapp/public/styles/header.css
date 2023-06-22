@@ -1,26 +1,72 @@
 /* CSS for Header */
+header {
+  background-color: #ca161c;
+  display:block;
 
+}
 
 @media (min-width: 1280px) {
-  .header {
-  height:50px;
-}
+  
+  .navbar__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+  }
 
-.header__navbar {
+  .navbar__logo {
+    display: flex;
+    
+  }
 
-}
+  .nav__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-bottom: 10px
+  }
 
-.header__navbar-list {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  padding-left:0
+  .nav__top a {
+    color: white;
+    padding: 0 5px;
+    font-size: 12px;
+    font-weight: 500;
+    
+  }
 
-}
+  .nav__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-transform: capitalize;
 
-.header__navbar-item {
-  display: block;
-  margin: 10px 0 10px 0;
-}
 
+  }
+
+  .nav__bottom--item  {
+    padding: 5px;
+    border-radius: 2px;
+    background-color: #ca161c;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size:13px
+  }
+
+  .nav__bottom--item:hover {
+    background-color: white;
+    color: #ca161c;
+    transition: all .35s;
+    
+
+
+  }
+
+ 
+
+  /* START OF FOOTER SECTION */
+
+  
 }
