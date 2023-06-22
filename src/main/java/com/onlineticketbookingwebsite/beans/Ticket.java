@@ -1,5 +1,6 @@
 package com.onlineticketbookingwebsite.beans;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Ticket {
@@ -9,10 +10,10 @@ public class Ticket {
     private String paymentId;
     private String seatType;
     private String ticketStatus;
-    private Date orderTime;
+    private LocalDateTime orderTime;
     private boolean isRoundTrip;
 
-    public Ticket(String id, String passengerId, String flightId, String paymentId, String seatType, String ticketStatus, Date orderTime, boolean isRoundTrip) {
+    public Ticket(String id, String passengerId, String flightId, String paymentId, String seatType, String ticketStatus, LocalDateTime orderTime, boolean isRoundTrip) {
         this.id = id;
         this.passengerId = passengerId;
         this.flightId = flightId;
@@ -47,7 +48,7 @@ public class Ticket {
         return ticketStatus;
     }
 
-    public Date getOrderTime() {
+    public LocalDateTime getOrderTime() {
         return orderTime;
     }
 

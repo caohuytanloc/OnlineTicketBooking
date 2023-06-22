@@ -1,17 +1,18 @@
 package com.onlineticketbookingwebsite.beans;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Payment {
     private String id;
     private String paymentMethod;
-    private Date paymentDate;
+    private LocalDateTime paymentDate;
     private String email;
     private String address;
     private Float total;
     private String status;
 
-    public Payment(String id, String paymentMethod, Date paymentDate, String email, String address, Float total, String status) {
+    public Payment(String id, String paymentMethod, LocalDateTime paymentDate, String email, String address, Float total, String status) {
         this.id = id;
         this.paymentMethod = paymentMethod;
         this.paymentDate = paymentDate;
@@ -29,7 +30,7 @@ public class Payment {
         return paymentMethod;
     }
 
-    public Date getPaymentDate() {
+    public LocalDateTime getPaymentDate() {
         return paymentDate;
     }
 

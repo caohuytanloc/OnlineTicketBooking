@@ -1,15 +1,16 @@
 package com.onlineticketbookingwebsite.beans;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Checkin {
     private String id;
     private String ticketId;
-    private Date checkinDate;
+    private LocalDateTime checkinDate;
     private String seatNumber;
     private String gateNumber;
 
-    public Checkin(String id, String ticketId, Date checkinDate, String seatNumber, String gateNumber) {
+    public Checkin(String id, String ticketId, LocalDateTime checkinDate, String seatNumber, String gateNumber) {
         this.id = id;
         this.ticketId = ticketId;
         this.checkinDate = checkinDate;
@@ -25,7 +26,7 @@ public class Checkin {
         return ticketId;
     }
 
-    public Date getCheckinDate() {
+    public LocalDateTime getCheckinDate() {
         return checkinDate;
     }
 

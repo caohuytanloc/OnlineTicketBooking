@@ -5,6 +5,7 @@ import com.onlineticketbookingwebsite.beans.Ticket;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 
 public class FlightDao {
     private static FlightDao instance;
@@ -34,13 +35,15 @@ public class FlightDao {
                     String airplaneName = resultSet.getString("airplane_name");
                     String departureCity = resultSet.getString("departure_city");
                     String arrivalCity = resultSet.getString("arrival_city");
+
                     Timestamp departureTimestamp = resultSet.getTimestamp("departure_time");
+                    LocalDateTime departureTime = departureTimestamp.toLocalDateTime();
+
                     Timestamp arrivalTimestamp = resultSet.getTimestamp("arrival_time");
+                    LocalDateTime arrivalTime = arrivalTimestamp.toLocalDateTime();
+
                     int availableSeats = resultSet.getInt("available_seats");
                     int totalSeats = resultSet.getInt("total_seats");
-
-                    Date departureTime = new Date(departureTimestamp.getTime());
-                    Date arrivalTime = new Date(arrivalTimestamp.getTime());
 
                     flight = new Flight(id, airplaneName, departureCity, arrivalCity, departureTime, arrivalTime, availableSeats, totalSeats);
                 }
@@ -50,6 +53,7 @@ public class FlightDao {
         }
         return flight;
     }
+
 
 
 }

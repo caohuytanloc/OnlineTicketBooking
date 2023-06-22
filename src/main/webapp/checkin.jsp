@@ -14,9 +14,9 @@
     </div>
 </div>
 <div class="backround">
-    <div class="procedure-section" style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; background-color: rgba(255, 255, 255, 0.5);">
-        <h3> Quý khách có thể làm thủ tục trực tuyến từ 24 đến 01 tiếng trước chuyến bay</h3>
-        <h3 style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; background-color: white;">Nhập mã vé</h3>
+    <div class="procedure-section" >
+        <h3 style=" font-weight: 300;"> Quý khách có thể làm thủ tục trực tuyến từ 24 đến 01 tiếng trước chuyến bay.</h3>
+        <h3 style="border: 1px solid #ccc;font-weight: 300; border-radius: 20px; padding: 10px; background-color: white;">Nhập mã vé</h3>
 
         <form action="checkInfor" method="post" onsubmit="return validateForm()">
             <!-- Các trường dữ liệu của form -->
@@ -56,17 +56,17 @@
                 var isValid = true;
 
                 if (ticketId === "") {
-                    ticketIdError.innerHTML = "Vui lòng nhập mã vé.";
+                    ticketIdError.innerHTML = "*Vui lòng nhập mã vé.";
                     isValid = false;
                 }
 
                 if (fullname === "") {
-                    fullnameError.innerHTML = "Vui lòng nhập họ và tên.";
+                    fullnameError.innerHTML = "*Vui lòng nhập họ và tên.";
                     isValid = false;
                 }
 
                 if (departureCity === "") {
-                    departureCityError.innerHTML = "Vui lòng nhập điểm khởi hành";
+                    departureCityError.innerHTML = "*Vui lòng nhập điểm khởi hành. ";
                     isValid = false;
                 }
 

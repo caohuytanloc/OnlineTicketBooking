@@ -50,7 +50,7 @@
 
 .backround {
     background-image: url(/images/cloud.jpg);
-    padding: 202px;
+    padding: 300px;
 }
 .MuiButton-root {
     color: #333333;
@@ -99,8 +99,14 @@
     -webkit-appearance: none;
     -webkit-tap-highlight-color: transparent;
 }
+.column {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+
 .procedure-section {
-    margin-top: -70px;
+    margin-top: -120px;
     background-size: cover;
     background-repeat: no-repeat;
     color: black;
@@ -108,6 +114,30 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 700px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Khoảng cách giữa hai nút */
+}
+
+.procedure-section2 {
+    display: flex;
+    flex-direction: row; /* Thêm thuộc tính flex-direction */
+    background-color: white;
+    font-family: Arial, sans-serif;
+    width: 700px;
+    height: 250px;
 }
 
 

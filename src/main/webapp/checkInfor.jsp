@@ -16,25 +16,47 @@
     </div>
 </div>
 <div class="backround">
-    <div class="procedure-section"
-         style="border: 1px solid #ccc; border-radius: 10px; padding: 20px; background-color: rgba(255, 255, 255, 0.5);">
-        <h1>Thông tin hành trình của quý khách</h1>
-        <h3 style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; background-color: white;">${flight.departureCity} đến ${flight.arrivalCity}</h3>
-        <h3 style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; background-color: white;">${flight.departureTime} đến ${flight.arrivalTime}</h3>
+    <div class="procedure-section">
+        <h3 style="font-family: Arial, sans-serif;">Chuyến đi của hành khách ${fullname}</h3>
+        <div class="procedure-section2">
+        <div class="column">
+            <h3 style=" font-weight: 300;">${formattedDepartureTime}</h3>
+            <br>
+            <h1 style=" font-weight: bold;">${flight.departureCity}</h1>
+            <h2 style=" font-weight: 300;">${hour}:${minute}</h2>
+        </div>
+        <div class="column">
+            <br>
+            <br>
+            <br>
+            <h3 style=" font-weight: 300;">${hourArr-hour} giờ ${minuteArr-minute} phút</h3>
+            <h3>&#9992;</h3>
+            <h3 style=" font-weight: 300;">${flight.airplaneName}</h3>
+        </div>
+        <div class="column">
+            <br>
+            <br>
+            <br>
+            <h1>${flight.arrivalCity}</h1>
+            <h2 style="font-family: Arial, sans-serif; font-weight: 300;">${hourArr}:${minuteArr}</h2>
+        </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="goBack()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span></button>
+        <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="navigateToTicketPage()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Chọn chỗ</span></button>
 
     </div>
-
+</div>
 </div>
 
-
+<script>
+    function goBack() {
+        window.history.back();
+    }
+    function navigateToTicketPage() {
+        window.location.href = "seating.jsp";
+    }
+</script>
 </body>
-
-
-<%--<p>Mã vé: ${ticket.id}</p>--%>
-<%--<p>Mã hành khách: ${ticket.passengerId}</p>--%>
-<%--<p>Mã chuyến bay: ${ticket.flightId}</p>--%>
-<%--<p>Hạng ghế: ${ticket.seatType}</p>--%>
-<%--<p>Trạng thái: ${ticket.ticketStatus}</p>--%>
-<%--<p>Ngày đặt: ${ticket.orderTime}</p>--%>
-<%--<p>Khứ hồi: ${ticket.roundTrip}</p>--%>
 </html>

@@ -4,6 +4,7 @@ import com.onlineticketbookingwebsite.beans.Ticket;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,10 @@ public class TicketDao {
                 String paymentId = resultSet.getString("payment_id");
                 String seatType = resultSet.getString("seat_type");
                 String ticketStatus = resultSet.getString("ticket_status");
-                Date orderTime = resultSet.getDate("order_time");
+
+                Timestamp orderTimestamp = resultSet.getTimestamp("order_time");
+                LocalDateTime orderTime = orderTimestamp.toLocalDateTime();
+
                 boolean isRoundTrip = resultSet.getBoolean("isRound_trip");
 
                 // Tạo đối tượng Ticket từ kết quả của truy vấn
@@ -58,6 +62,7 @@ public class TicketDao {
         }
         return ticket;
     }
+
 
 }
 
