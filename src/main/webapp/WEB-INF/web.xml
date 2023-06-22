@@ -4,12 +4,12 @@
          version="5.0">
 
     <servlet>
-        <servlet-name>SelectSeatServlet</servlet-name>
-        <servlet-class>com.onlineticketbookingwebsite.controller.SelectSeatServlet</servlet-class>
+        <servlet-name>CheckInforServlet</servlet-name>
+        <servlet-class>com.onlineticketbookingwebsite.controller.CheckInforServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>SelectSeatServlet</servlet-name>
-        <url-pattern>/selectSeat</url-pattern>
+        <servlet-name>CheckInforServlet</servlet-name>
+        <url-pattern>/checkInfor</url-pattern>
     </servlet-mapping>
 </web-app>

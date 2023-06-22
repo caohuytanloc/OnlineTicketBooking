@@ -19,20 +19,28 @@ public class TicketDao {
         return instance;
     }
 
-    public Ticket getTicketByPaymentId(String paymentId) {
+    public Ticket getTicketByTicketIdFullnameDeparture(String ticketId, String fullname, String departureCity) {
         Ticket ticket = null;
         try {
             // Chuẩn bị câu truy vấn SQL
-            String query = "SELECT * FROM tickets WHERE payment_id = ?";
+            String query = "SELECT t.*, p.id AS passenger_id, f.id AS flight_id " +
+                    "FROM tickets t " +
+                    "INNER JOIN passengers p ON t.passenger_id = p.id " +
+                    "INNER JOIN flights f ON t.flight_id = f.id " +
+                    "WHERE t.id = ? AND p.full_name = ? AND f.departure_city = ?";
+
             PreparedStatement ps = DBConnect.getInstance().get(query);
-            ps.setString(1, paymentId);
+            ps.setString(1, ticketId);
+            ps.setString(2, fullname);
+            ps.setString(3, departureCity);
 
             // Thực hiện truy vấn và lấy kết quả
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
-                String id = resultSet.getString("id");
+                String id = resultSet.getString("t.id");
                 String passengerId = resultSet.getString("passenger_id");
                 String flightId = resultSet.getString("flight_id");
+                String paymentId = resultSet.getString("payment_id");
                 String seatType = resultSet.getString("seat_type");
                 String ticketStatus = resultSet.getString("ticket_status");
                 Date orderTime = resultSet.getDate("order_time");
@@ -50,51 +58,6 @@ public class TicketDao {
         }
         return ticket;
     }
-    public List<Ticket> getAllTickets() {
-        List<Ticket> tickets = new ArrayList<>();
 
-        try {
-            // Prepare SQL query
-            String query = "SELECT * FROM tickets;";
-            PreparedStatement ps = DBConnect.getInstance().get(query);
-
-            // Execute query and retrieve results
-            ResultSet resultSet = ps.executeQuery();
-
-            // Process each row in the result set
-            while (resultSet.next()) {
-                String id = resultSet.getString("id");
-                String passengerId = resultSet.getString("passenger_id");
-                String flightId = resultSet.getString("flight_id");
-                String paymentId = resultSet.getString("payment_id");
-                String seatType = resultSet.getString("seat_type");
-                String ticketStatus = resultSet.getString("ticket_status");
-                Date orderTime = resultSet.getDate("order_time");
-                boolean isRoundTrip = resultSet.getBoolean("isRound_trip");
-
-                // Create Ticket object from the query result
-                Ticket ticket = new Ticket(id, passengerId, flightId, paymentId, seatType, ticketStatus, orderTime, isRoundTrip);
-
-                // Add the ticket to the list
-                tickets.add(ticket);
-            }
-
-            // Close resources
-            resultSet.close();
-            ps.close();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return tickets;
-    }
-
-//    public List<Ticket> getAllTickets() {
-//        List<Ticket> tickets = new ArrayList<>();
-//        Ticket ticket1 = new Ticket("1", "2", "3", "4", "5", "6", new Date(6), true);
-//        tickets.add(ticket1);
-//        Ticket ticket2 = new Ticket("1", "2", "3", "4", "5", "6", new Date(6), true);
-//        tickets.add(ticket2);
-//        return tickets;
-//    }
 }
 

@@ -19,11 +19,7 @@ public class TicketService {
         return instance;
     }
 
-    public Ticket getTicketByPaymentId(String paymentId) {
-        return TicketDao.getInstance().getTicketByPaymentId(paymentId);
-    }
-
-    public List<Ticket> getAllTickets() {
-        return TicketDao.getInstance().getAllTickets();
+    public static Ticket getTicketByTicketIdFullnameDeparture(String ticketId, String fullname, String departureCity) {
+        return TicketDao.getInstance().getTicketByTicketIdFullnameDeparture(ticketId,fullname,departureCity);
     }
 }
