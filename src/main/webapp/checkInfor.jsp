@@ -5,16 +5,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Check-infor</title>
+    <title>Kiểm tra thông tin</title>
     <link rel="stylesheet" type="text/css" href="css/checkin.css">
 </head>
 <body>
-<div class="jss57">
-    <div>
-        <h1 class="jss60 jss69 MuiTypography-h4 MuiTypography-colorTextPrimary" customcolor="white">KIỂM TRA THÔNG
-            TIN</h1>
-    </div>
-</div>
+<jsp:include page="header.jsp"/>
 <div class="backround">
     <div class="procedure-section">
         <h3 style="font-family: Arial, sans-serif;">Chuyến đi của hành khách ${fullname}</h3>
@@ -22,7 +17,7 @@
         <div class="column">
             <h3 style=" font-weight: 300;">${formattedDepartureTime}</h3>
             <br>
-            <h1 style=" font-weight: bold;">${flight.departureCity}</h1>
+            <h1 style="font-weight: bold;"><span class="fa-solid fa-xs fa-circle-dot"></span> ${flight.departureCity}</h1>
             <h2 style=" font-weight: 300;">${hour}:${minute}</h2>
         </div>
         <div class="column">
@@ -37,14 +32,14 @@
             <br>
             <br>
             <br>
-            <h1>${flight.arrivalCity}</h1>
+            <h1><span class="fa-solid fa-xs fa-location-dot icon--active"></span> ${flight.arrivalCity}</h1>
             <h2 style="font-family: Arial, sans-serif; font-weight: 300;">${hourArr}:${minuteArr}</h2>
         </div>
         </div>
     </div>
     <div class="button-container">
         <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="goBack()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span></button>
-        <form id="seatingForm" action="seating.jsp" method="post">
+        <form id="seatingForm" action="/seating" method="post">
             <input type="hidden" name="arrivalCity" value="${flight.arrivalCity}" />
             <input type="hidden" name="airplaneName" value="${flight.airplaneName}" />
             <input type="hidden" name="departureCity" value="${flight.departureCity}" />

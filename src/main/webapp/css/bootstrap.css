@@ -130,7 +130,6 @@ samp {
     font-size: 1em;
 }
 
-button,
 input,
 optgroup,
 select,
@@ -140,33 +139,14 @@ textarea {
     color: inherit;
 }
 
-button {
-    overflow: visible;
-}
 
-button,
-select {
-    text-transform: none;
-}
 
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-    -webkit-appearance: button;
-    cursor: pointer;
-}
 
-button[disabled],
-html input[disabled] {
-    cursor: default;
-}
 
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-    padding: 0;
-    border: 0;
-}
+
+
+
+
 
 input {
     line-height: normal;
@@ -342,7 +322,6 @@ body {
 }
 
 input,
-button,
 select,
 textarea {
     font-family: inherit;
@@ -6208,14 +6187,6 @@ a.list-group-item-danger.active:focus {
     cursor: pointer;
     filter: alpha(opacity=50);
     opacity: .5;
-}
-
-button.close {
-    -webkit-appearance: none;
-    padding: 0;
-    cursor: pointer;
-    background: transparent;
-    border: 0;
 }
 
 .modal-open {
