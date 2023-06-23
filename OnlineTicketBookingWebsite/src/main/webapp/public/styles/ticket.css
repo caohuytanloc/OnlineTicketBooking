@@ -6,10 +6,16 @@ body {
   margin: 0;
   background-image: url(../background-body.png);
   background-repeat: no-repeat;
+  background-size: cover;
 }
 a {
   text-decoration: none;
 }
+
+button {
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3,
@@ -28,6 +34,9 @@ h5 {
     #fbb612 31.03%,
     #fbf300 97.21%
   );
+}
+.app {
+  margin-bottom: 80px;
 }
 
 .header__inner {
@@ -154,7 +163,6 @@ h5 {
   flex-direction: row;
   justify-content: space-around;
   color: rgb(108, 159, 30);
-
 }
 
 .ticket__title {
@@ -162,7 +170,7 @@ h5 {
   width: 50%;
   display: flex;
   align-items: center;
-  margin:0;
+  margin: 0;
   font-weight: bold;
   font-size: 14px;
   color: rgb(108, 159, 30);
@@ -193,11 +201,11 @@ h5 {
 }
 
 .ticket--return {
-  margin-top:20px;
+  margin-top: 20px;
 }
 
 .date {
-  font-size:12px;
+  font-size: 12px;
   font-weight: 500;
 }
 
@@ -209,8 +217,6 @@ h5 {
   max-height: 100px;
 }
 
-
-
 .city {
   font-size: 25px;
   font-weight: 700;
@@ -218,7 +224,7 @@ h5 {
 }
 
 .time {
-  margin:0;
+  margin: 0;
   font-size: 12px;
 }
 
@@ -226,9 +232,9 @@ h5 {
   color: orange;
 }
 
-.total__price {
+.price {
   text-align: right;
-  color:red;
+  color: red;
   font-size: 20px;
   font-weight: bold;
   text-decoration: solid;
@@ -237,5 +243,112 @@ h5 {
 .airplane--info {
   font-size: 12px;
   margin: 0;
-  color:#929292;
+  color: #929292;
+}
+
+.container__right {
+  margin-top: 53px;
+  display: flex;
+  width: 30%;
+  margin-left: 20px;
+}
+
+.reservation__information--header {
+  display: flex;
+  flex-direction: row;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 10px;
+  background: linear-gradient(359.2deg, #d91a21 53.08%, #6f0000 206.46%);
+}
+.reservation__information--header h3 {
+  color: white;
+}
+.reservation__information--header button {
+  width: auto;
+  height: 30px;
+  padding: 0 20px;
+  font-weight: 600;
+  background: linear-gradient(
+    26.73deg,
+    #f9a51a 13.7%,
+    #fbb612 29.8%,
+    #ffdd00 66.81%
+  );
+  border: none;
+  border-radius: 10px;
+}
+
+.reservation__information--detail {
+  padding: 10px;
+  background-color: white;;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.detail .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.detail .container .price {
+  font-size: 14px;
+}
+
+.departure--price-info .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin:0;
+}
+
+
+.departure--price-info .container h5 {
+  font-size: 10px;
+  font-weight: lighter;
+  margin: 0 0 10px 0;
+}
+
+.container--info {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  padding: 15px 15px;
+  background-color: #f1f1f1;
+  justify-content: space-between;
+  border-radius: 3px;
+  margin-bottom: 10px
+}
+.container--info button {
+  border: none;
+
+}
+
+
+.return--price .container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin:0;
+
+}
+
+.return--price .container h5 {
+  font-size: 10px;
+  font-weight: lighter;
+  margin: 0 0 10px 0;
+}
+
+.total__price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }

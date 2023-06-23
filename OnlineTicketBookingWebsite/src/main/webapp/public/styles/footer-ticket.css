@@ -1,10 +1,9 @@
 .footer {
   filter: drop-shadow(0px 10px 10px black);
-    background-color: white;
+  background-color: white;
   width: 100%;
   position: fixed;
   bottom: 0;
-  
 }
 
 .footer__container {
@@ -15,34 +14,42 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  
 }
 
-.footer__price__total{
+.footer__price__total {
   display: flex;
   flex-direction: column;
   margin: 0;
 }
 
-.footer__price__total p{
-  margin:0;
+.footer__price__total p {
+  margin: 0;
 }
 
 .footer__price {
   margin: 0;
-  margin-top:5px;
+  margin-top: 5px;
 }
 
 .footer button {
   border: none;
-  height: 39px;
-    padding: 0px 15px;
-    min-width: 127px;
-    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
-    border-radius: 10px;
-    text-transform: inherit;
+  height: 40px;
+  padding: 0px 15px;
+  min-width: 127px;
+  background: linear-gradient(
+    26.73deg,
+    #f9a51a 13.7%,
+    #fbb612 29.8%,
+    #ffdd00 66.81%
+  );
+  border-radius: 10px;
+  text-transform: inherit;
 }
 
 .footer__btn--return {
   background: white;
+}
+
+.footer__price__total{
+  font-size: 12px;
 }
