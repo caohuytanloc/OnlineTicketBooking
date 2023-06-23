@@ -31,13 +31,14 @@
                 <div id="departureCityError" class="error-message"></div>
             </div>
             <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="submit"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">LÀM THỦ TỤC</span></button>
+            <c:if test="${not empty error}">
+                <div class="error-message">
+                    <h3>*${error}</h3>
+                </div>
+            </c:if>
         </form>
         <%-- Kiểm tra sự tồn tại của thông báo lỗi --%>
-        <c:if test="${not empty error}">
-            <div class="error-message">
-                 <h2>${error}</h2>
-            </div>
-        </c:if>
+
         <script>
             function validateForm() {
                 var ticketId = document.getElementById("ticketId").value;
