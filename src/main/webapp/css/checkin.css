@@ -1,0 +1,331 @@
+.jss60 {
+    flex: 1;
+    text-align: center;
+    font-family: JambonoMedium;
+    text-transform: uppercase;
+}
+.jss179 {
+    width: 100%;
+    margin: 0 auto;
+}
+.jss180 {
+    padding: 18px;
+}
+.jss274 {
+    bottom: 0;
+    height: 62px;
+    z-index: 1299;
+    position: sticky;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 4.03%, rgba(0, 0, 0, 0.152) 216.13%);
+    border-radius: 15px 15px 0px 0px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.jss11 {
+    max-width: 1200px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.jss9 {
+    width: 100%;
+    margin: 0 auto;
+}
+.MuiTypography-root {
+    margin: 0;
+}
+
+.jss69 {
+    color: #ffffff;
+}
+
+.MuiTypography-h4 {
+    font-size: 16px;
+    font-family: KoHo, sans-serif;
+    line-height: 1.17;
+}
+
+.MuiTypography-colorTextPrimary {
+    color: #ffffff;
+}
+
+.backround {
+    background-image: url(/images/cloud.jpg);
+    padding: 300px;
+}
+.MuiButton-root {
+    color: #333333;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: KoHo, sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+.MuiButton-label {
+    width: 100%;
+    display: inherit;
+    align-items: inherit;
+    justify-content: inherit;
+}
+.jss267 {
+    height: 39px;
+    padding: 0px 15px;
+    min-width: 127px;
+    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
+    border-radius: 10px;
+    text-transform: inherit;
+}
+.MuiButtonBase-root {
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.column {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+}
+.column2 {
+    flex: 1;
+    padding: 0px;
+    text-align: center;
+}
+
+.procedure-section {
+    margin-top: -120px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 700px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+}
+.procedure-section3 {
+    margin-top: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+    width: 350px;
+    height: 250px;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Khoảng cách giữa hai nút */
+    font-family: Arial, sans-serif;
+}
+
+.procedure-section2 {
+    display: flex;
+    flex-direction: row; /* Thêm thuộc tính flex-direction */
+    background-color: white;
+    font-family: Arial, sans-serif;
+    width: 700px;
+    height: 250px;
+}
+.procedure-section4 {
+    display: flex;
+    flex-direction: row; /* Thêm thuộc tính flex-direction */
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+.flight-info {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    display: flex;
+}
+.info-group p {
+    margin: 5px 0;
+}
+.procedure-section .code-input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+}
+.procedure-section3 .code-input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+}
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-row input {
+    margin-right: 10px;
+}
+.procedure-section h1 {
+    font-size: 24px;
+    margin: 0;
+}
+.procedure-section3 h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.procedure-section h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.procedure-section3 h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.procedure-section form {
+    margin-top: 20px;
+}
+.procedure-section3 form {
+    margin-top: 20px;
+}
+
+.procedure-section input[type="text"] {
+    padding: 10px;
+    width: 200px;
+}
+
+.procedure-section3 input[type="text"] {
+    padding: 10px;
+    width: 200px;
+}
+.procedure-section input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #D91A21;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.procedure-section3 input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #D91A21;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.procedure-section input[type="submit"]:hover {
+    background-color: #AB0303;
+}
+.procedure-section3 input[type="submit"]:hover {
+    background-color: #AB0303;
+}
+.jss57 {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    padding: 0px 17px;
+    z-index: 1300;
+    position: fixed;
+    background: linear-gradient(180deg, #D91A21 34.8%, #AB0303 182.34%);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.21);
+    align-items: center;
+    justify-content: center;
+}
+
+.jss28 {
+    display: flex;
+    align-items: center;
+}
+
+.MuiButtonBase-root {
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.MuiButtonBase-root::-moz-focus-inner {
+    border-style: none;
+}
+
+.MuiButtonBase-root.Mui-disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+.MuiButton-root {
+    color: #333333;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: KoHo, sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.MuiButton-text {
+    padding: 6px 8px;
+}
