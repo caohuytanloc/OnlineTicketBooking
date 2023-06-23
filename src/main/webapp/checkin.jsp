@@ -6,13 +6,10 @@
 <head>
     <title>Làm Thủ Tục</title>
     <link rel="stylesheet" type="text/css" href="css/checkin.css">
+    <link rel="stylesheet" type="text/css" href="css/header.css">
 </head>
 <body>
-<div class="jss57">
-    <div>
-        <h1 class="jss60 jss69 MuiTypography-h4 MuiTypography-colorTextPrimary" customcolor="white">LÀM THỦ TỤC TRỰC TUYẾN</h1>
-    </div>
-</div>
+<jsp:include page="header.jsp"/>
 <div class="backround">
     <div class="procedure-section" >
         <h3 style=" font-weight: 300;"> Quý khách có thể làm thủ tục trực tuyến từ 24 đến 01 tiếng trước chuyến bay.</h3>
