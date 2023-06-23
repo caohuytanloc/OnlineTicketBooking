@@ -1,16 +1,16 @@
 /* CSS for Header */
-header {
+header {padding-top: 10px;
   background-color: #ca161c;
   display:block;
-  position: relative;
-
 }
 
-  
+
   .navbar__container {
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     color: white;
     font-weight: bold;
