@@ -44,7 +44,14 @@
     </div>
     <div class="button-container">
         <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="goBack()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span></button>
-        <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="navigateToTicketPage()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Chọn chỗ</span></button>
+        <form id="seatingForm" action="seating.jsp" method="post">
+            <input type="hidden" name="arrivalCity" value="${flight.arrivalCity}" />
+            <input type="hidden" name="airplaneName" value="${flight.airplaneName}" />
+            <input type="hidden" name="departureCity" value="${flight.departureCity}" />
+            <input type="hidden" name="fullname" value="${fullname}" />
+            <input type="hidden" name="formattedDepartureTime" value="${formattedDepartureTime}" />
+            <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="submit"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Chọn chỗ</span></button>
+        </form>
 
     </div>
 </div>
@@ -54,9 +61,10 @@
     function goBack() {
         window.history.back();
     }
-    function navigateToTicketPage() {
-        window.location.href = "seating.jsp";
-    }
+    document.getElementById('seatingForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của biểu mẫu
+        this.submit(); // Gửi biểu mẫu
+    });
 </script>
 </body>
 </html>

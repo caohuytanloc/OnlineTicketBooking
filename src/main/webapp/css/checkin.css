@@ -104,6 +104,11 @@
     padding: 10px;
     text-align: center;
 }
+.column2 {
+    flex: 1;
+    padding: 0px;
+    text-align: center;
+}
 
 .procedure-section {
     margin-top: -120px;
@@ -124,11 +129,31 @@
     margin-right: auto;
     font-family: Arial, sans-serif;
 }
+.procedure-section3 {
+    margin-top: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, sans-serif;
+    width: 350px;
+    height: 250px;
+}
 .button-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px; /* Khoảng cách giữa hai nút */
+    font-family: Arial, sans-serif;
 }
 
 .procedure-section2 {
@@ -139,7 +164,12 @@
     width: 700px;
     height: 250px;
 }
-
+.procedure-section4 {
+    display: flex;
+    flex-direction: row; /* Thêm thuộc tính flex-direction */
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
 
 .flight-info {
     border: 1px solid #ccc;
@@ -153,6 +183,12 @@
     margin: 5px 0;
 }
 .procedure-section .code-input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: fit-content;
+}
+.procedure-section3 .code-input {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
@@ -175,13 +211,24 @@
     font-size: 24px;
     margin: 0;
 }
+.procedure-section3 h1 {
+    font-size: 24px;
+    margin: 0;
+}
 
 .procedure-section h3 {
     font-size: 18px;
     margin: 10px 0;
 }
+.procedure-section3 h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
 
 .procedure-section form {
+    margin-top: 20px;
+}
+.procedure-section3 form {
     margin-top: 20px;
 }
 
@@ -190,7 +237,18 @@
     width: 200px;
 }
 
+.procedure-section3 input[type="text"] {
+    padding: 10px;
+    width: 200px;
+}
 .procedure-section input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #D91A21;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.procedure-section3 input[type="submit"] {
     padding: 10px 20px;
     background-color: #D91A21;
     color: white;
@@ -201,7 +259,9 @@
 .procedure-section input[type="submit"]:hover {
     background-color: #AB0303;
 }
-
+.procedure-section3 input[type="submit"]:hover {
+    background-color: #AB0303;
+}
 .jss57 {
     top: 0;
     left: 0;

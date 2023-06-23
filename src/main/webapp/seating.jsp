@@ -4,16 +4,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
-    <!-- for-mobile-apps -->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-    <!-- //for-mobile-apps -->
-    <link href='//fonts.googleapis.com/css?family=Kotta+One' rel='stylesheet' type='text/css'/>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-          rel='stylesheet' type='text/css'/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="../css/ticket.css"
           th:href="@{css/ticket.css}" rel="stylesheet" type="text/css" media="all"/>
@@ -27,183 +17,197 @@
             th:src="@{js/jquery.min.js}"></script>
     <script src="../js/jquery.seat-charts.js"
             th:src="@{js/jquery.seat-charts.js}"></script>
+    <style>
+        .main-ticket {
+            margin-top: 28px;
+            background-image: url(/images/cloud.jpg);
+            padding: 300px;
+            margin-top: -250px;
+            font-family: Arial, sans-serif;
+        }
+
+        #seat-map {
+            /*background-image: url(/images/flight.png); !* Đường dẫn đến hình ảnh máy bay *!*/
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 10px;
+            height: 400px; /* Chiều cao tùy ý */
+            justify-content: center;
+            align-items: center;
+        }
+
+        #seat-map h3 {
+            background-color: rgba(255, 255, 255, 0.8); /* Màu nền với độ trong suốt */
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
+<%
+    String arrivalCity = request.getParameter("arrivalCity");
+
+    String airplaneName = request.getParameter("airplaneName");
+    String departureCity = request.getParameter("departureCity");
+    String fullname = request.getParameter("fullname");
+    String formattedDepartureTime = request.getParameter("formattedDepartureTime");
+%>
 <div class="jss57">
     <div>
         <h1 class="jss60 jss69 MuiTypography-h4 MuiTypography-colorTextPrimary" customcolor="white">CHỌN CHỖ NGỒI</h1>
     </div>
 </div>
-        <div class="error-content">
-            <div class="top-header span_top">
+
+<div class="top-header span_top">
+</div>
+<div class="main-ticket">
+    <div class="front" style="font-size: 20px;"><%= departureCity %> &#9658; <%= arrivalCity %>
+        &#124; <%= formattedDepartureTime%> &#124; 1 Hành khách
+    </div>
+    <h3 style="margin-left: 4em;">Sơ đồ chỗ ngồi</h3>
+    <div id="seat-map" class="scrollbar scrollbar1" style="border: 1px solid #000; padding: 10px; background-color: #fff;">
+    </div>
+
+
+    <div class="procedure-section3">
+        <h3> Chỗ ngồi đang chọn cho:</h3>
+        <div class="procedure-section4">
+            <div class="column2">
+                <h3 style=" font-weight: 300;">Hành Khách:</h3>
+                <h3 style=" font-weight: 300;">Chuyến bay:</h3>
+                <h3 style=" font-weight: 300;">Chỗ ngồi:</h3>
             </div>
-            <div class="main-ticket">
-                <div class="demo">
-                    <div id="seat-map">
-                        <div class="front">SCREEN</div>
-                    </div>
-                    <div class="booking-details">
-                        <ul class="book-left">
-                            <li>Movie:</li>
-                            <li>StartDate:</li>
-                            <li>StartTime:</li>
-                            <li>Branch:</li>
-                            <li>Room:</li>
-                            <li>Tickets:</li>
-                            <li>Total:</li>
-                            <li>Seats:</li>
-                        </ul>
-                        <ul class="book-right">
-                            <li th:text="${movie}">${movie}</li>
-                            <li th:text="${startDate}">${startdate}</li>
-                            <li th:text="${startTime}">${starttime}</li>
-                            <li th:text="${branch}">${branch}</li>
-                            <li th:text="${room}">${room}</li>
-                            <li><span id="counter">0</span></li>
-                            <li><b><i>$</i><span id="total">0</span></b></li>
-                        </ul>
+            <div class="column2">
+                <h3 style=" font-weight: bold;"><%= fullname%></h3>
+                <h3 style=" font-weight: bold;"><%= airplaneName%></h3>
+                <h2 id="selected-seats" class="scrollbar scrollbar1"></h2>
+            </div>
+    </div>
+    </div>
+            <div class="button-container">
+                <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="goBack()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span></button>
+                <form id="seatingForm" action="seating.jsp" method="post">
+                    <input type="hidden" name="arrivalCity" value="${flight.arrivalCity}" />
+                    <input type="hidden" name="airplaneName" value="${flight.airplaneName}" />
+                    <input type="hidden" name="departureCity" value="${flight.departureCity}" />
+                    <input type="hidden" name="fullname" value="${fullname}" />
+                    <input type="hidden" name="formattedDepartureTime" value="${formattedDepartureTime}" />
+                    <button class="MuiButtonBase-root MuiButton-root jss267" style="font-family: Arial, sans-serif;font-weight: bold;" tabindex="0" type="submit">Tiếp tục</button>
+                </form>
+            </div>
+        <div id="legend"></div>
+</div>
 
-                        <div class="clear"></div>
-                        <ul id="selected-seats" class="scrollbar scrollbar1"></ul>
-                        <form id="order-form" action="/payment" method="POST">
-                            <fieldset>
-                                <div class="form-group input-group">
-                                    <input name="id" type="text" value="${id}" style="display: none">
-                                    <input name="movie" type="text" value="${movie}" style="display: none">
-                                    <input id="count" name="count" type="text" value="*{count}" style="display: none"/>
-                                    <input name="price" type="text" value="${price}" style="display: none">
-                                    <input id="seating" name="seating" type="text" value="${seating}"
-                                           style="display: none">
+<script type="text/javascript">
+    var seating = [];
+    var price = parseFloat('${price}');
+    $(document).ready(function () {
+        var $cart = $('#selected-seats'), //Sitting Area
+            $counter = $('#counter'), //Votes
+            $total = $('#total'), //Total money
+            $count = $('#count'),
+            $seating = $('#seating');
 
-                                    <input name="startdate" type="text" value="${startdate}" style="display: none">
-                                    <input name="starttime" type="text" value="${starttime}" style="display: none">
-                                    <input name="branch" type="text" value="${branch}" style="display: none">
-                                    <input name="room" type="text" value="${room}" style="display: none">
-                                    <input name="username" type="text" value="${sessionScope.loggedInUser.username}"
-                                           style="display: none">
-                                    <span class="input-group-btn">
-                    <button class="btn btn-warning" id="book-now-btn" type="submit">Book Now!</button>
-                </span>
-                                </div>
-                            </fieldset>
-                        </form>
-                        <div id="legend"></div>
-                    </div>
-                    <div style="clear:both"></div>
-                </div>
+        var sc = $('#seat-map').seatCharts({
+            map: ['aaaaaa','aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa'],
+            naming: {
+                top: false,
+                getLabel: function (character, row, column) {
+                    // Chuyển đổi số cột thành chữ cái
+                    var label = String.fromCharCode(64 + column);
+                    return label;
+                }
+            },
+            legend: { //Definition legend
+                node: $('#legend'),
+                items: [
+                    ['a', 'available', 'Chỗ còn trống'],
+                    ['a', 'unavailable', 'Chỗ không còn trống'],
+                    ['a', 'selected', 'Chỗ đã chọn']
+                ]
+            },
+            click: function () { //Click event
+                if (this.status() == 'available') { //optional seat
+                    var seatInfo = (this.settings.row + 1) + '_' + this.settings.label; // Tạo chuỗi dạng "row_seat"
+                    $('<li>' + (this.settings.row + 1)  + this.settings.label + '</li>')
+                        .attr('id', 'cart-item-' + this.settings.id)
+                        .data('seatId', this.settings.id)
+                        .appendTo($cart);
 
-                <script type="text/javascript">
-                    var seating = [];
-                    var price = parseFloat('${price}');
-                    $(document).ready(function () {
-                        var $cart = $('#selected-seats'), //Sitting Area
-                            $counter = $('#counter'), //Votes
-                            $total = $('#total'), //Total money
-                            $count = $('#count'),
-                            $seating = $('#seating');
-
-                        var sc = $('#seat-map').seatCharts({
-                            map: [  //Seating chart
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa',
-                                'aaaaaaaaaaaaa'
-                            ],
-                            naming: {
-                                top: false,
-                                getLabel: function (character, row, column) {
-                                    return column;
-                                }
-                            },
-                            legend: { //Definition legend
-                                node: $('#legend'),
-                                items: [
-                                    ['a', 'available', 'Available'],
-                                    ['a', 'unavailable', 'Sold'],
-                                    ['a', 'selected', 'Selected']
-                                ]
-                            },
-                            click: function () { //Click event
-                                if (this.status() == 'available') { //optional seat
-                                    var seatInfo = (this.settings.row + 1) + '_' + this.settings.label; // Tạo chuỗi dạng "row_seat"
-                                    $('<li>[Row' + (this.settings.row + 1) + ' Seat' + this.settings.label + '] ' + '</li>')
-                                        .attr('id', 'cart-item-' + this.settings.id)
-                                        .data('seatId', this.settings.id)
-                                        .appendTo($cart);
-
-                                    $counter.text(sc.find('selected').length + 1);
-                                    $total.text(recalculateTotal(sc, price));
-                                    $count.val($counter.text());
-                                    seating.push(seatInfo); // Thêm thông tin ghế đã chọn vào mảng seating
-                                    $seating.val(seating.join(',')); // Cập nhật giá trị của input seating
+                    $counter.text(sc.find('selected').length + 1);
+                    $total.text(recalculateTotal(sc, price));
+                    $count.val($counter.text());
+                    seating.push(seatInfo); // Thêm thông tin ghế đã chọn vào mảng seating
+                    $seating.val(seating.join(',')); // Cập nhật giá trị của input seating
 
 
-                                    return 'selected';
-                                } else if (this.status() == 'selected') { //Checked
-                                    //Update Number
-                                    $counter.text(sc.find('selected').length - 1);
-                                    //update totalnum
-                                    $total.text($counter.text() * price);
-                                    $count.val($counter.text())
+                    return 'selected';
+                } else if (this.status() == 'selected') { //Checked
+                    //Update Number
+                    $counter.text(sc.find('selected').length - 1);
+                    //update totalnum
+                    $total.text($counter.text() * price);
+                    $count.val($counter.text())
 
-                                    var seatId = this.settings.id;
-                                    var seatInfo = (this.settings.row + 1) + '_' + this.settings.label; // Tạo chuỗi dạng "row_seat"
-                                    seating = seating.filter(function (seat) {
-                                        return seat !== seatInfo; // Xóa ghế đã bỏ chọn khỏi mảng seating
-                                    });
-
-
-                                    //Delete reservation
-                                    $('#cart-item-' + this.settings.id).remove();
-                                    $seating.val(seating.join(','));
-                                    //optional
-                                    return 'available';
-                                } else if (this.status() == 'unavailable') { //sold
-                                    return 'unavailable';
-                                } else {
-                                    return this.style();
-                                }
-                            }
-                        });
-                        //sold seat
-                        //sc.get(['1_2', '4_4', '4_5', '6_6', '6_7', '8_5', '8_6', '8_7', '8_8', '10_1', '10_2']).status('unavailable');
-                        var seatingList = [
-                            <c:forEach var="seating" items="${seatingList}">
-                            '${seating}',
-                            </c:forEach>
-                        ];
-
-                        // Đặt trạng thái 'unavailable' cho các seating trong danh sách
-                        sc.get(seatingList).status('unavailable');
-
+                    var seatId = this.settings.id;
+                    var seatInfo = (this.settings.row + 1) + '_' + this.settings.label; // Tạo chuỗi dạng "row_seat"
+                    seating = seating.filter(function (seat) {
+                        return seat !== seatInfo; // Xóa ghế đã bỏ chọn khỏi mảng seating
                     });
 
-                    //sum total money
-                    function recalculateTotal(sc, price) {
-                        var total = price || 0;
-                        sc.find('selected').each(function () {
-                            total += price || 0;
-                        });
 
-                        return total;
-                    }
-                </script>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-    </div>
+                    //Delete reservation
+                    $('#cart-item-' + this.settings.id).remove();
+                    $seating.val(seating.join(','));
+                    //optional
+                    return 'available';
+                } else if (this.status() == 'unavailable') { //sold
+                    return 'unavailable';
+                } else {
+                    return this.style();
+                }
+            }
+        });
+        //sold seat
+        //sc.get(['1_2', '4_4', '4_5', '6_6', '6_7', '8_5', '8_6', '8_7', '8_8', '10_1', '10_2']).status('unavailable');
+        var seatingList = [
+            <c:forEach var="seating" items="${seatingList}">
+            '${seating}',
+            </c:forEach>
+        ];
+
+        // Đặt trạng thái 'unavailable' cho các seating trong danh sách
+        sc.get(seatingList).status('unavailable');
+
+    });
+
+    //sum total money
+    function recalculateTotal(sc, price) {
+        var total = price || 0;
+        sc.find('selected').each(function () {
+            total += price || 0;
+        });
+
+        return total;
+    }
+</script>
+</div>
+</div>
+<div class="clearfix"></div>
+</div>
 </div>
 
 <script src="../js/jquery.nicescroll.js"
         th:src="@{js/jquery.nicescroll.js}"></script>
 <script src="../js/scripts.js"
         th:src="@{js/scripts.js}"></script>
-
+<script>
+    function goBack() {
+        window.history.back();
+    }
+    document.getElementById('seatingForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Ngăn chặn hành vi mặc định của biểu mẫu
+        this.submit(); // Gửi biểu mẫu
+    });
+</script>
 </body>
 </html>
