@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="./styles/ticket.css" />
     <link rel="stylesheet" href="./styles/header.css" />
     <link rel="stylesheet" href="./styles/all.css" />
-    <link rel="stylesheet" href="./styles/footer-ticket.css">
+    <link rel="stylesheet" href="./styles/footer-ticket.css" />
+    <link rel="stylesheet" href="./styles/userForm.css" />
+    
   </head>
 
   <body>
@@ -79,96 +81,65 @@
         <div class="container">
           <div class="container__inner">
             <div class="container__left">
-              <div class="container__left--card">
-                <div>
-                  <p class="container__text--right">
-                    Tính theo giờ địa phương tại sân bay
-                  </p>
+              <div class="form">
+                <div class="form-title">Thông tin khách hàng</div>
+              <div class="form__header__container">
+                <div class="form__container--user--type">
+                  <div class="fa-solid fa-user"></div>
+                  <div class="user--type">Người lớn</div>
                 </div>
-                <div class="ticket--depart ticket__bg">
-                  <div class="departure--container">
-                    <div class="container--header">
-                      <div class="departure--title ticket__title">Chuyến đi</div>
-                      <div class="ticket--edit">
-                        <p>Chọn chuyến khác</p>
-                        <a
-                          href=""
-                          class="fa-solid fa-arrow-rotate-left"
-                        ></a>
-                      </div>
-                      <div class="borderBottom"></div>
-                    </div>
-                    <div class="departure__ticket">
-                      <div class="departure__ticket date">
-                        <p>Thứ Năm, 06/07/2023</p>
-                      </div>
-                      <div class="departure__ticket information">
-                        <div class="departure--information ">
-                          <p class="departure--city city">SGN</p>
-                          <p class="departure--time time">05:25</p>
-                        </div>
-                        <div class="departure__information--">
-                          <p class="departure--airplane-code">
-                            VJ198 <span><i class="fa-solid fa-plane"></i></span>
-                          </p>
-                        </div>
-                        <div class="departure__information--">
-                          <p class="arrive--city city">HAN</p>
-                          <p class="arrrive--time time">07:35</p>
-                        </div>
-                        <div class="airplane--info">
-                          <p class="airplane-type">Airbus: A320</p>
-                          <p>Operated by: Vietjet</p>
-                        </div>
-                      </div>
-                      <div class="departure__ticket price">
-                        <p>4.642.000 VND</p>
-                      </div>
-                    </div>
-                    <div></div>
-                  </div>
+                <div class="form__container--view-more">
+                  <button
+                    id="btn__view-more"
+                    type="button"
+                    class="fa-solid fa-caret-down "
+                    onclick="viewMore()"
+                  ></button>
                 </div>
-                <div class="ticket--return ticket__bg">
-                  <div class="return--container">
-                    <div class="container--header">
-                      <p class="return--title ticket__title">Chuyến về</p>
-                      <div class="ticket--edit">
-                        <p>Chọn chuyến khác</p>
-                        <a
-                          href=""
-                          class="fa-solid fa-arrow-rotate-left"
-                        ></a>
-                      </div>
+              </div>
+              <div id="form__container">
+                <form action="sendUserInfor()" method="post">
+                  <div class="gender__container">
+                    <div class="form--gender">
+                      <input
+                        type="radio"
+                        id="male"
+                        name="gender"
+                        value="male"
+                      />
+                        <label for="male">Nam</label><br />
+                       
                     </div>
-                    <div class="return__ticket date">
-                      <div class="return__ticket">
-                        <p>Thứ Năm, 06/07/2023</p>
-                      </div>
+                    <div class="form--gender">
+                      <input
+                        type="radio"
+                        id="female"
+                        name="gender"
+                        value="female"
+                      />
+                       <label for="css">Nữ</label><br />
                     </div>
-                    <div class="return__ticket information">
-                      <div class="departure__information">
-                        <p class="departure--city city">SGN</p>
-                        <p class="departure--time time">05:25</p>
-                      </div>
-                      <div class="departure__information airplane-type">
-                        <p class="departure--airplane-code">
-                          VJ198 <span><i class="fa-solid fa-plane"></i></span>
-                        </p>
-                      </div>
-                      <div class="arrive__information">
-                        <p class="arrive--city city">HAN</p>
-                        <p class="arrrive--time time">07:35</p>
-                      </div>
-                      <div class="airplane--info">
-                        <p class="airplane-type">Airbus: A320</p>
-                        <p>Operated by: Vietjet</p>
-                      </div>
-                    </div>
-                    <div class="return__ticket price">
-                      <p>4.642.000 VND</p>
+                    <div class="form--gender">
+                      <input
+                        type="radio"
+                        id="none"
+                        name="gender"
+                        value="none"
+                      />
+                        <label for="javascript">Khác</label>
                     </div>
                   </div>
-                </div>
+                  <div class="user__information__container">
+                    <input class="user__information__container--input" type="text" name="user-lastname" id="user-lastname" placeholder="Họ">
+                    <input class="user__information__container--input" type="text" name="user-firstname" id="user-firstname" placeholder="Tên đệm & tên">
+                    <input class="user__information__container--input" type="" name="user-birthday" id="user-birthday" onfocus="(this.type='date')" placeholder="Ngày sinh DD/MM/YYYY">
+                    <input class="user__information__container--input" type="" name="user-country" id="user-country"  placeholder="Quốc tịch">
+                    <input class="user__information__container--input" type="number" name="user-phonenumber" id="user-phonenumber" placeholder="Số điện thoại">
+                    <input class="user__information__container--input" type="email" name="user-email" id="user-email" placeholder="Email">
+                    <input class="user__information__container--input full-width" type="text" name="user-address" id="user-address" placeholder="Địa chỉ">
+                  </div>
+                </form>
+              </div>
               </div>
             </div>
             <div class="container__right">
@@ -197,7 +168,7 @@
                           <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
                         </div>
                         <div class="departure__ticket container--info">
-                          <div class="departure__ticket--price">Giá vé</div>
+                          <div class="departure__ticket price">Giá vé</div>
                           <div class="">
                             1,850,300 VND
                             <span
@@ -208,7 +179,9 @@
                             ></span>
                           </div>
                         </div>
-                        <div class="departure__ticket__container--fee container--info">
+                        <div
+                          class="departure__ticket__container--fee container--info"
+                        >
                           <div class="">Phí - Thuế</div>
                           <div class="">
                             1,850,300 VND
@@ -220,7 +193,9 @@
                             ></span>
                           </div>
                         </div>
-                        <div class="departure__ticket__container--service container--info">
+                        <div
+                          class="departure__ticket__container--service container--info"
+                        >
                           <div class="">Dịch vụ</div>
                           <div class="">
                             1,850,300 VND
@@ -253,7 +228,9 @@
                           <p class="return arrive-city">Hà Nội (HAN)</p>
                           <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
                         </div>
-                        <div class="return__ticket__container--price container--info">
+                        <div
+                          class="return__ticket__container--price container--info"
+                        >
                           <div class="">Giá vé</div>
                           <div class="">
                             1,850,300 VND
@@ -265,7 +242,9 @@
                             ></span>
                           </div>
                         </div>
-                        <div class="return__ticket__container--fee container--info">
+                        <div
+                          class="return__ticket__container--fee container--info"
+                        >
                           <div class="">Phí - Thuế</div>
                           <div class="">
                             1,850,300 VND
@@ -277,7 +256,9 @@
                             ></span>
                           </div>
                         </div>
-                        <div class="return__ticket__container--service container--info">
+                        <div
+                          class="return__ticket__container--service container--info"
+                        >
                           <div class="">Dịch vụ</div>
                           <div class="">
                             1,850,300 VND
@@ -319,3 +300,4 @@
     </div>
   </body>
 </html>
+<script src="./js/userForm.js"></script>
