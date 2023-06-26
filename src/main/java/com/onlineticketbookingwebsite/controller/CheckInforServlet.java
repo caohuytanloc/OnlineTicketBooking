@@ -2,6 +2,7 @@ package com.onlineticketbookingwebsite.controller;
 
 import com.onlineticketbookingwebsite.beans.Flight;
 import com.onlineticketbookingwebsite.beans.Ticket;
+import com.onlineticketbookingwebsite.service.CheckinService;
 import com.onlineticketbookingwebsite.service.FlightService;
 import com.onlineticketbookingwebsite.service.TicketService;
 
@@ -16,10 +17,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 @WebServlet("/checkInfor")
 public class CheckInforServlet extends HttpServlet {
     private TicketService ticketService;
-    private FlightService  flightService;
+    private FlightService flightService;
+
+    private CheckinService checkinService;
 
     @Override
     public void init() throws ServletException {
@@ -38,7 +42,7 @@ public class CheckInforServlet extends HttpServlet {
         Ticket ticket = TicketService.getTicketByTicketIdFullnameDeparture(ticketId, fullname, departureCity);
 
 
-        if (ticket != null) {
+        if (ticket != null && !CheckinService.isCheckin(ticketId)) {
             // Nếu tìm thấy vé, chuyển hướng sang trang checkInfor.jsp
             Flight flight = flightService.getFlightByTicketId(ticketId);
 
@@ -55,6 +59,7 @@ public class CheckInforServlet extends HttpServlet {
             int minuteArr = arrivalTime.getMinute();
 
             request.setAttribute("ticket", ticket);
+            request.setAttribute("ticketId", ticketId);
             request.setAttribute("fullname", fullname);
             request.setAttribute("flight", flight);
             request.setAttribute("hour", hour);
@@ -64,9 +69,14 @@ public class CheckInforServlet extends HttpServlet {
             request.setAttribute("formattedDepartureTime", formattedDepartureTime);
             request.getRequestDispatcher("checkInfor.jsp").forward(request, response);
         } else {
-            // Nếu không tìm thấy vé, gửi thông báo lỗi về trang checkin.jsp
-            request.setAttribute("error", "Không tìm thấy vé");
-            request.getRequestDispatcher("checkin.jsp").forward(request, response);
+            if (CheckinService.isCheckin(ticketId)) {
+                // Nếu không tìm thấy vé, gửi thông báo lỗi về trang checkin.jsp
+                request.setAttribute("error", "Vé đã checkin.");
+                request.getRequestDispatcher("checkin.jsp").forward(request, response);
+            } else {
+                request.setAttribute("error", "Không tìm thấy vé.");
+                request.getRequestDispatcher("checkin.jsp").forward(request, response);
+            }
         }
     }
 

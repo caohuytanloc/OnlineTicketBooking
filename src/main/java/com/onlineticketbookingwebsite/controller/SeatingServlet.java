@@ -11,6 +11,11 @@ import java.io.IOException;
 public class SeatingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String ticketId = request.getParameter("ticketId");
+        String fullname = request.getParameter("fullname");
+
+        request.setAttribute("ticketId", ticketId);
+        request.setAttribute("fullname", fullname);
         request.getRequestDispatcher("/seating.jsp").forward(request, response);
     }
 }
