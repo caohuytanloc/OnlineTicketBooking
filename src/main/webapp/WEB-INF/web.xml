@@ -3,34 +3,4 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
 
-    <servlet>
-        <servlet-name>CheckInforServlet</servlet-name>
-        <servlet-class>com.onlineticketbookingwebsite.controller.CheckInforServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>CheckInforServlet</servlet-name>
-        <url-pattern>/checkInfor</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>CheckinServlet</servlet-name>
-        <jsp-file>/checkin.jsp</jsp-file>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>CheckinServlet</servlet-name>
-        <url-pattern>/checkin</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>SeatingServlet</servlet-name>
-        <jsp-file>/seating.jsp</jsp-file>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>SeatingServlet</servlet-name>
-        <url-pattern>/seating</url-pattern>
-    </servlet-mapping>
-
 </web-app>

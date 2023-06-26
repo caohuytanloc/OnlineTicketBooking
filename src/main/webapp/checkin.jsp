@@ -15,7 +15,7 @@
         <h3 style=" font-weight: 300;"> Quý khách có thể làm thủ tục trực tuyến từ 24 đến 01 tiếng trước chuyến bay.</h3>
         <h3 style="border: 1px solid #ccc;font-weight: 300; border-radius: 20px; padding: 10px; background-color: white;">Nhập mã vé</h3>
 
-        <form action="checkInfor" method="post" onsubmit="return validateForm()">
+        <form action="/checkInfor" method="post" onsubmit="return validateForm()">
             <!-- Các trường dữ liệu của form -->
             <div class="form-row">
                 <input type="text" name="ticketId" id="ticketId" placeholder="Mã vé" />

@@ -7,6 +7,7 @@ import com.onlineticketbookingwebsite.service.TicketService;
 
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +16,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
+@WebServlet("/checkInfor")
 public class CheckInforServlet extends HttpServlet {
     private TicketService ticketService;
     private FlightService  flightService;
