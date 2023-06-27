@@ -1,5 +1,3 @@
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -44,13 +42,7 @@
     </style>
 </head>
 <body>
-<%
-    String arrivalCity = request.getParameter("arrivalCity");
-    String airplaneName = request.getParameter("airplaneName");
-    String departureCity = request.getParameter("departureCity");
-    String fullname = request.getParameter("fullname");
-    String formattedDepartureTime = request.getParameter("formattedDepartureTime");
-%>
+
 <jsp:include page="header.jsp"/>
 <div class="background">
     <div id="legend" style=" border: 1px solid #000; border-radius: 10px;width: 15%;height: 140px;"></div>
@@ -71,10 +63,10 @@
                 <h3 style=" font-weight: 300;">Chỗ ngồi:</h3>
             </div>
             <div class="column2">
-                <h3 style="font-weight: bold;"><%= fullname %></h3>
-                <h3 style="font-weight: bold;"><%= airplaneName %></h3>
-                <h3 style="font-weight: bold;"><%= departureCity %> &#9658; <%= arrivalCity %></h3>
-                <h3 style="font-weight: bold;"><%= formattedDepartureTime %></h3>
+                <h3 style="font-weight: bold;">${fullname}</h3>
+                <h3 style="font-weight: bold;">${airplaneName}</h3>
+                <h3 style="font-weight: bold;">${departureCity} &#9658; ${arrivalCity}</h3>
+                <h3 style="font-weight: bold;">${formattedDepartureTime}</h3>
             <div id="selected-seats" style="color: #ca161c;"></div>
         </div>
         </div>

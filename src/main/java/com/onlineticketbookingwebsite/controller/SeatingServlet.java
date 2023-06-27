@@ -1,5 +1,6 @@
 package com.onlineticketbookingwebsite.controller;
 
+import com.onlineticketbookingwebsite.beans.Flight;
 import com.onlineticketbookingwebsite.service.CheckinService;
 import com.onlineticketbookingwebsite.service.FlightService;
 
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +20,22 @@ public class SeatingServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String ticketId = request.getParameter("ticketId");
         String fullname = request.getParameter("fullname");
 
-        List<String> listSeating = CheckinService.getSeatSelected(FlightService.getFlightByTicketId(ticketId).getId());
+        Flight flight = FlightService.getFlightByTicketId(ticketId);
+
+        List<String> listSeating = CheckinService.getSeatSelected(flight.getId());
+
+        String arrivalCity = flight.getArrivalCity();
+        String airplaneName = flight.getAirplaneName();
+        String departureCity = flight.getDepartureCity();
+        LocalDateTime departureTime = flight.getDepartureTime();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EE, dd/MM/yyyy");
+
+        String formattedDepartureTime = departureTime.format(formatter);
+
         List<String> newSeatingList = new ArrayList<>();
 
         for (String seatNumber : listSeating) {
@@ -39,7 +54,12 @@ public class SeatingServlet extends HttpServlet {
             newSeatingList.add(newSeatNumber);
             System.out.println(newSeatNumber);
         }
+
+        request.setAttribute("airplaneName", airplaneName);
+        request.setAttribute("departureCity", departureCity);
+        request.setAttribute("formattedDepartureTime", formattedDepartureTime);
         request.setAttribute("ticketId", ticketId);
+        request.setAttribute("arrivalCity", arrivalCity);
         request.setAttribute("fullname", fullname);
         request.setAttribute("newSeatingList", newSeatingList);
         request.getRequestDispatcher("/seating.jsp").forward(request, response);

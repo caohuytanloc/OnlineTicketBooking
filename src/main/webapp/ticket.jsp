@@ -115,7 +115,7 @@
                             onclick="goBack()">
                         <span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span>
                     </button>
-                    <form id="seatingForm" action="/saveCheckin" method="post">
+                    <form id="seatingForm" action="/SaveCheckin" method="post">
                         <input type="hidden" name="seatNumber" value="<%= seatNumber %>"/>
                         <input type="hidden" name="ticketId" value="${ticketId}" />
                         <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="submit" onclick="completeProcedure(event)">
@@ -130,6 +130,7 @@
             function goBack() {
                 window.history.back();
             }
+
             function completeProcedure(event) {
                 event.preventDefault();
 
@@ -152,10 +153,25 @@
                     };
                     xhr.send(formData);
 
+                    // Gọi SendMailServlet với seatNumber và ticketId
+                    var xhrMail = new XMLHttpRequest();
+                    var seatNumber = form.querySelector('input[name="seatNumber"]').value;
+                    var ticketId = form.querySelector('input[name="ticketId"]').value;
+                    var url = "/sendMail?seatNumber=" + encodeURIComponent(seatNumber) + "&ticketId=" + encodeURIComponent(ticketId);
+                    xhrMail.open("GET", url, true);
+                    xhrMail.onreadystatechange = function() {
+                        if (xhrMail.readyState === 4 && xhrMail.status === 200) {
+                            // Xử lý phản hồi từ SendMailServlet (nếu có)
+                        }
+                    };
+                    xhrMail.send();
+
                     // Gửi biểu mẫu đi thực sự
                     form.submit();
                 });
             }
         </script>
+
+
 </body>
 </html>
