@@ -2,6 +2,8 @@ package com.onlineticketbookingwebsite.service;
 
 import com.onlineticketbookingwebsite.dao.CheckinDao;
 
+import java.util.List;
+
 public class CheckinService {
     private static CheckinService instance;
 
@@ -22,5 +24,9 @@ public class CheckinService {
 
     public static boolean isCheckin(String ticketId) {
        return CheckinDao.getInstance().isCheckin(ticketId);
+    }
+
+    public static List<String> getSeatSelected(String flightId) {
+        return CheckinDao.getInstance().getSeatSelected(flightId);
     }
 }

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Làm Thủ Tục</title>
     <link rel="stylesheet" type="text/css" href="css/checkin.css">
     <link rel="stylesheet" type="text/css" href="css/header.css">

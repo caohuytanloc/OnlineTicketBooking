@@ -1,9 +1,13 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8">
     <title>Chọn chỗ ngồi</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/checkin.css">
@@ -149,12 +153,14 @@
                 }
             }
         });
+
         var seatingList = [
-            <c:forEach var="seating" items="${seatingList}">
-            '${seating}',
+            <c:forEach var="seating" items="${newSeatingList}" varStatus="status">
+            '${seating}'${!status.last ? ',' : ''}
             </c:forEach>
         ];
         sc.get(seatingList).status('unavailable');
+        // sc.get(['7_1', '5_1']).status('unavailable');
     });
 </script>
 

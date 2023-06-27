@@ -19,6 +19,7 @@ public class FlightDao {
         return instance;
     }
 
+
     public Flight getFlightByTicketId(String ticketId) {
         Flight flight = null;
         String query = "SELECT f.* " +

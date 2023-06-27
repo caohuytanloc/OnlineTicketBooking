@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class CheckinDao {
@@ -22,6 +24,37 @@ public class CheckinDao {
         }
         return instance;
     }
+
+
+    public List<String> getSeatSelected(String flightId) {
+        List<String> seatList = new ArrayList<>();
+
+        try {
+            // Chuẩn bị câu truy vấn SQL
+            String query = "SELECT seat_number FROM checkin " +
+                    "WHERE ticket_id IN (SELECT id FROM tickets WHERE flight_id = ?)";
+
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, flightId);
+
+            // Thực hiện truy vấn và lấy kết quả
+            ResultSet resultSet = ps.executeQuery();
+            while (resultSet.next()) {
+                String seatNumber = resultSet.getString("seat_number");
+                seatList.add(seatNumber);
+            }
+            // Đóng tài nguyên
+            resultSet.close();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return seatList;
+    }
+
 
     public boolean isCheckin(String ticketId) {
         boolean exists = false;
