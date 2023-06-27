@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,9 +35,11 @@ public class CheckInforServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String ticketId = request.getParameter("ticketId");
         String fullname = request.getParameter("fullname");
         String departureCity = request.getParameter("departure_city");
+
 
         // Gọi phương thức để kiểm tra và lấy vé dựa trên ticketId, fullname và departureCity
         Ticket ticket = TicketService.getTicketByTicketIdFullnameDeparture(ticketId, fullname, departureCity);
@@ -79,6 +82,4 @@ public class CheckInforServlet extends HttpServlet {
             }
         }
     }
-
-
 }
