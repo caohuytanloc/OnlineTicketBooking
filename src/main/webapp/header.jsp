@@ -14,7 +14,7 @@
   <div class="navbar__container">
     <div class="navbar__inner">
       <div class="navbar__logo">
-        <img src="images/logo-white.svg" alt="logo" srcset="" />
+        <img src="logo-white.svg" alt="logo" srcset="" />
       </div>
     </div>
     <div class="navbar__nav">
@@ -30,8 +30,7 @@
       <div class="nav__bottom">
         <nav class="nav__bottom--item">Skyjoy</nav>
         <nav class="nav__bottom--item">Chuyến bay của tôi</nav>
-
-        <nav class="nav__bottom--item"><a href="checkin.jsp" style="text-decoration:none; color:white;">Online Check-in</a></nav>
+        <nav class="nav__bottom--item">Online Check-in</nav>
         <nav class="nav__bottom--item tab">Dịch vụ chuyến bay</nav>
         <nav class="nav__bottom--item tab">Dịch vụ khác</nav>
       </div>

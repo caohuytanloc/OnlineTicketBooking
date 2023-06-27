@@ -7,6 +7,14 @@
         <servlet-name>CheckInforServlet</servlet-name>
         <servlet-class>com.onlineticketbookingwebsite.controller.CheckInforServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderServlet</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>OrderServlet</servlet-name>
+        <jsp-file>/order.jsp</jsp-file>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>CheckInforServlet</servlet-name>
