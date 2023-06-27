@@ -63,6 +63,41 @@ public class TicketDao {
         return ticket;
     }
 
+    public Ticket getTicketByTicketId(String ticketId) {
+        Ticket ticket = null;
+        try {
+            // Chuẩn bị câu truy vấn SQL
+            String query = "SELECT * FROM tickets WHERE id = ?";
 
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, ticketId);
+
+            // Thực hiện truy vấn và lấy kết quả
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String passengerId = resultSet.getString("passenger_id");
+                String flightId = resultSet.getString("flight_id");
+                String paymentId = resultSet.getString("payment_id");
+                String seatType = resultSet.getString("seat_type");
+                String ticketStatus = resultSet.getString("ticket_status");
+
+                Timestamp orderTimestamp = resultSet.getTimestamp("order_time");
+                LocalDateTime orderTime = orderTimestamp.toLocalDateTime();
+
+                boolean isRoundTrip = resultSet.getBoolean("isRound_trip");
+
+                // Tạo đối tượng Ticket từ kết quả của truy vấn
+                ticket = new Ticket(id, passengerId, flightId, paymentId, seatType, ticketStatus, orderTime, isRoundTrip);
+            }
+
+            // Đóng tài nguyên
+            resultSet.close();
+            ps.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return ticket;
+    }
 }
 
