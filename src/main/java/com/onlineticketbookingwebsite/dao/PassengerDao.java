@@ -56,7 +56,5 @@ public class PassengerDao {
         }
         return passenger;
     }
-
-
 }
 
