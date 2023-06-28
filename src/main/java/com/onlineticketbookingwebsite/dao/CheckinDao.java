@@ -26,7 +26,7 @@ public class CheckinDao {
     }
 
 
-    public List<String> getSeatSelected(String flightId) {
+    public List<String> getSelectedSeatsList(String flightId) {
         List<String> seatList = new ArrayList<>();
 
         try {
@@ -56,7 +56,7 @@ public class CheckinDao {
     }
 
 
-    public boolean isCheckin(String ticketId) {
+    public boolean countTicketByTicketId(String ticketId) {
         boolean exists = false;
         String query = "SELECT COUNT(*) AS count FROM checkin WHERE ticket_id = ?";
 

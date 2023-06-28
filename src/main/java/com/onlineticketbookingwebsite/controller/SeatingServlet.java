@@ -26,7 +26,7 @@ public class SeatingServlet extends HttpServlet {
 
         Flight flight = FlightService.getFlightByTicketId(ticketId);
 
-        List<String> listSeating = CheckinService.getSeatSelected(flight.getId());
+        List<String> listSeating = CheckinService.getSelectedSeatsList(flight.getId());
 
         String arrivalCity = flight.getArrivalCity();
         String airplaneName = flight.getAirplaneName();

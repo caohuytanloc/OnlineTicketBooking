@@ -23,10 +23,10 @@ public class CheckinService {
     }
 
     public static boolean isCheckin(String ticketId) {
-       return CheckinDao.getInstance().isCheckin(ticketId);
+       return CheckinDao.getInstance().countTicketByTicketId(ticketId);
     }
 
-    public static List<String> getSeatSelected(String flightId) {
-        return CheckinDao.getInstance().getSeatSelected(flightId);
+    public static List<String> getSelectedSeatsList(String flightId) {
+        return CheckinDao.getInstance().getSelectedSeatsList(flightId);
     }
 }

@@ -54,8 +54,5 @@ public class FlightDao {
         }
         return flight;
     }
-
-
-
 }
 
