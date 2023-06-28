@@ -6,15 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="css/header.css">
-  <link rel="stylesheet" type="text/css" href="css/all.css">
+  <link rel="stylesheet" type="text/css" href="/css/header.css">
+  <link rel="stylesheet" type="text/css" href="/css/all.css">
 </head>
 <body>
 <header class="header">
   <div class="navbar__container">
     <div class="navbar__inner">
       <div class="navbar__logo">
-        <img src="images/logo-white.svg" alt="logo" srcset="" />
+        <img src="/images/logo-white.svg" alt="logo" srcset="" />
       </div>
     </div>
     <div class="navbar__nav">
