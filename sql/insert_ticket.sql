@@ -73,9 +73,9 @@ VALUES ('PAY002', 'Thẻ tín dụng', '2023-06-21 13:00:00', 'john@example.com'
 INSERT INTO tickets (id, passenger_id, flight_id, payment_id, seat_type, ticket_status, order_time, isRound_trip)
 VALUES ('T001', 'P001', 'F001', 'PAY001', 'Economy', 'Confirmed', '2023-06-21 10:00:00', 1);
 
-INSERT INTO tickets (id, passenger_id, flight_id, payment_id, seat_type, ticket_status, order_time, isRound_trip)
-VALUES ('T002', 'P002', 'F002', 'PAY002', 'Phổ thông', 'Xác nhận', '2023-06-21 10:00:00', 1);
+
 INSERT INTO tickets (id, passenger_id, flight_id, payment_id, seat_type, ticket_status, order_time, isRound_trip)
 VALUES ('T003', 'P003', 'F002', 'PAY002', 'Phổ thông', 'Xác nhận', '2023-06-21 10:00:00', 0);
+
 INSERT INTO tickets (id, passenger_id, flight_id, payment_id, seat_type, ticket_status, order_time, isRound_trip)
 VALUES ('T004', 'P004', 'F002', 'PAY002', 'Phổ thông', 'Xác nhận', '2023-06-21 10:00:00', 0);
