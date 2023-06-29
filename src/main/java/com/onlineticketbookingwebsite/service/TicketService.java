@@ -22,4 +22,8 @@ public class TicketService {
     public static Ticket getTicketByTicketIdFullnameDeparture(String ticketId, String fullname, String departureCity) {
         return TicketDao.getInstance().getTicketByTicketIdFullnameDeparture(ticketId,fullname,departureCity);
     }
+
+    public static Ticket getTicketByTicketId(String ticketId) {
+        return TicketDao.getInstance().getTicketByTicketId(ticketId);
+    }
 }

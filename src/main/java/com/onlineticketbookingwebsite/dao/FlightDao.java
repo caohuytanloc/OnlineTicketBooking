@@ -1,7 +1,7 @@
 package com.onlineticketbookingwebsite.dao;
 
 import com.onlineticketbookingwebsite.beans.Flight;
-import com.onlineticketbookingwebsite.beans.SeatType;
+import com.onlineticketbookingwebsite.beans.Ticket;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
 import java.sql.*;
@@ -21,6 +21,7 @@ public class FlightDao {
         }
         return instance;
     }
+
 
     public Flight getFlightByTicketId(String ticketId) {
         Flight flight = null;

@@ -40,14 +40,11 @@
     <div class="button-container">
         <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="goBack()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span></button>
         <form id="seatingForm" action="/seating" method="post">
-            <input type="hidden" name="arrivalCity" value="${flight.arrivalCity}" />
-            <input type="hidden" name="airplaneName" value="${flight.airplaneName}" />
-            <input type="hidden" name="departureCity" value="${flight.departureCity}" />
             <input type="hidden" name="fullname" value="${fullname}" />
+            <input type="hidden" name="ticketId" value="${ticketId}" />
             <input type="hidden" name="formattedDepartureTime" value="${formattedDepartureTime}" />
             <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="submit"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Chọn chỗ</span></button>
         </form>
-
     </div>
 </div>
 </div>
