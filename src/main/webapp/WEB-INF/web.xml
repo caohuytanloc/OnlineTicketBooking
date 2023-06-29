@@ -8,19 +8,26 @@
         <servlet-class>com.onlineticketbookingwebsite.controller.CheckInforServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>OrderServlet</servlet-name>
-        <url-pattern>/order</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>OrderServlet</servlet-name>
-        <jsp-file>/order.jsp</jsp-file>
-    </servlet>
-
-    <servlet-mapping>
         <servlet-name>CheckInforServlet</servlet-name>
         <url-pattern>/checkInfor</url-pattern>
     </servlet-mapping>
+<!--    <servlet>-->
+<!--        <servlet-name>OrderServlet</servlet-name>-->
+<!--        <jsp-file>/order.jsp</jsp-file>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>OrderServlet</servlet-name>-->
+<!--        <url-pattern>/order</url-pattern>-->
+<!--    </servlet-mapping>-->
 
+<!--    <servlet>-->
+<!--        <servlet-name>UserInformationFormServlet</servlet-name>-->
+<!--        <jsp-file>/userInformationForm.jsp</jsp-file>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>UserInformationFormServlet</servlet-name>-->
+<!--        <url-pattern>/userInformationForm</url-pattern>-->
+<!--    </servlet-mapping>-->
     <servlet>
         <servlet-name>CheckinServlet</servlet-name>
         <jsp-file>/checkin.jsp</jsp-file>
@@ -30,7 +37,7 @@
         <servlet-name>CheckinServlet</servlet-name>
         <url-pattern>/checkin</url-pattern>
     </servlet-mapping>
-
+s
     <servlet>
         <servlet-name>SeatingServlet</servlet-name>
         <jsp-file>/seating.jsp</jsp-file>

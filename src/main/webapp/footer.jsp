@@ -7,11 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<html>
-<head>
-  <link rel="stylesheet" href="./styles/footer-ticket.css">
-</head>
-<body>
+
+
 <footer class="footer">
   <div class="footer__container">
     <div class="footer__back">
@@ -27,5 +24,4 @@
   </div>
 </footer>
 
-</body>
-</html>
+
