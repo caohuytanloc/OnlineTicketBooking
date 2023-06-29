@@ -48,7 +48,7 @@ public class FlightDao {
                     int availableSeats = resultSet.getInt("available_seats");
                     int totalSeats = resultSet.getInt("total_seats");
 
-                    flight = new Flight(id, airplaneName, departureCity, arrivalCity, departureTime, arrivalTime, availableSeats, totalSeats, null);
+                    flight = new Flight(id, airplaneName, departureCity, arrivalCity, departureTime, arrivalTime, availableSeats, totalSeats);
                 }
             }
         } catch (SQLException | ClassNotFoundException e) {

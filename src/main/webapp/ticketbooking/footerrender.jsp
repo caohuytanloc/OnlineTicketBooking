@@ -60,7 +60,7 @@
 </head>
 
 <body>
-<c:url var="ChoseTicketRound" value="/ChoseTicketRound"></c:url>
+<c:url var="ChoseTicketGo" value="/ChoseTicketGo"></c:url>
 <footer >
     <div class="container">
         <div class="row">
@@ -71,10 +71,20 @@
 
 
             </div>
-            <div class="col-sm-1">
-                <a href="${ChoseTicketRound}?action=view"><button class="footer-button" >Tiếp theo</button></a>
+            <c:if test="${sessionScope.isRoundTrip == true}">
+
+<div class="col-sm-1">
+                <a href="${ChoseTicketGo}?action=view"><button class="footer-button" >Tiếp theo</button></a>
 
             </div>
+            </c:if>
+            <c:if test="${sessionScope.isRoundTrip == false}">
+
+                <div class="col-sm-1">
+                    <a href="${""}?action=view"><button class="footer-button" >Tiếp theo</button></a>
+
+                </div>
+            </c:if>
 
         </div>
     </div>

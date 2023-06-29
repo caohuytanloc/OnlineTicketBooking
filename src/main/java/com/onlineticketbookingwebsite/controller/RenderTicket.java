@@ -28,6 +28,7 @@ public class RenderTicket extends HttpServlet {
 //        response.setCharacterEncoding("UTF-8");
         String trip = request.getParameter("gender");
         if (trip.equalsIgnoreCase("one-way")) {
+
             String departure = request.getParameter("departure");
             String departureTime = request.getParameter("datepickerinput");
             String destination = request.getParameter("destination");
@@ -42,9 +43,8 @@ public class RenderTicket extends HttpServlet {
             List<Flight> flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
             )), destination, departure);
 
-
-            session.setAttribute("trip", trip);
-
+            session.setAttribute("isRoundTrip", false);
+            System.out.println(session.getAttribute("isRoundTrip"));
 
             session.setAttribute("departure", departure);
             session.setAttribute("departureTime", departureTime);
@@ -54,11 +54,11 @@ public class RenderTicket extends HttpServlet {
         } else if (trip.equalsIgnoreCase("round-trip")) {
 
             String departure = request.getParameter("departure");
-            String departureTime = request.getParameter("datepickerinput1");
+            String departureTime = request.getParameter("datepickerinput");
             String destination = request.getParameter("destination");
 
 
-            String destinationTime = request.getParameter("datepickerinput");
+            String destinationTime = request.getParameter("datepickerinput1");
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
             LocalDate date = LocalDate.parse(departureTime, formatter);
@@ -68,17 +68,12 @@ public class RenderTicket extends HttpServlet {
             int year = date.getYear();
 
 
-            LocalDate date1 = LocalDate.parse(destinationTime, formatter);
-
-            int day1 = date.getDayOfMonth();
-            int month1 = date.getMonthValue();
-            int year1 = date.getYear();
 
 
             List<Flight> flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
             )), destination, departure);
 
-            session.setAttribute("trip", trip);
+            session.setAttribute("isRoundTrip", true);
             session.setAttribute("departure", departure);
             session.setAttribute("departureTime", departureTime);
             session.setAttribute("destination", destination);

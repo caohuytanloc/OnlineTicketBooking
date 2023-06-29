@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-@WebServlet("/ChoseTicketRound")
+@WebServlet("/ChoseTicketGo")
 
 public class ChoseTicketRound extends HttpServlet {
     @Override
@@ -24,8 +24,9 @@ public class ChoseTicketRound extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (action.equalsIgnoreCase("view")) {
-            String trip = (String) session.getAttribute("trip");
-            if (trip.trim().equalsIgnoreCase("round-trip")) {
+            boolean trip = (Boolean) session.getAttribute("isRoundTrip");
+            System.out.println(session.getAttribute("isRoundTrip"));
+            if (trip==true) {
                 String destination = (String) session.getAttribute("destination");
                 String departure = (String) session.getAttribute("departure");
                 String destinationTime= (String) session.getAttribute("destinationTime");
@@ -43,8 +44,6 @@ public class ChoseTicketRound extends HttpServlet {
 
 
             request.getRequestDispatcher("/ticketbooking/choseticketround.jsp").forward(request, response);
-        } else {
-
         }
     }
 
@@ -54,10 +53,13 @@ public class ChoseTicketRound extends HttpServlet {
         String price = request.getParameter("price");
         String total = request.getParameter("total");
         String priceticket = request.getParameter("priceticket");
+        String id = request.getParameter("id");
+        session.setAttribute("id", id);
+        System.out.println("id"+id );
+
         session.setAttribute("priceticket", priceticket);
         session.setAttribute("total", total);
         session.setAttribute("price", price);
-        System.out.println(price + ":" + priceticket + ":" + total);
         System.out.println(session.getAttribute("total"));
     }
 }

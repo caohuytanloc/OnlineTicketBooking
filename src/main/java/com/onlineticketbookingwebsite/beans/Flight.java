@@ -14,7 +14,7 @@ public class Flight {
     private int availableSeats;
     private int totalSeats;
    List<SeatType>list;
-    public Flight(String id, String airplaneName, String departureTime, String arrivalCity, String departureCity, String arrivalTime, int availableSeats, int totalSeats){}
+    public Flight(String id, String airplaneName, String departureCity, String arrivalCity, LocalDateTime departureTime,LocalDateTime arrivalTime, int availableSeats, int totalSeats) {}
     public Flight(String id, String airplaneName, String departureCity, String arrivalCity, LocalDateTime departureTime,LocalDateTime arrivalTime, int availableSeats, int totalSeats,List list) {
         this.id = id;
         this.airplaneName = airplaneName;
