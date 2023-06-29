@@ -1,6 +1,7 @@
 package com.onlineticketbookingwebsite.dao;
 
 import com.onlineticketbookingwebsite.beans.Flight;
+import com.onlineticketbookingwebsite.beans.SeatType;
 import com.onlineticketbookingwebsite.beans.Ticket;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
@@ -59,7 +60,7 @@ public class FlightDao {
     }
 
     public List<Flight> findFlights(Date departureTime, String arrivalCity, String departureCity) {
-        List<Flight> result = new ArrayList<>();
+        List<Flight> result = new ArrayList<Flight>();
 
         String query = "SELECT id, airplane_name, departure_city,arrival_city, departure_time, arrival_time, available_seats, total_seats " +
                 "FROM flights " +
@@ -73,15 +74,22 @@ public class FlightDao {
             while (rs.next()) {
                 String id = rs.getString("id");
                 List<SeatType> seatTypes = getlistSeat(id);
-                Flight flight = new Flight(id, rs.getString("airplane_name"), rs.getString("departure_city"), rs.getString("arrival_city"), rs.getTimestamp("departure_time").toLocalDateTime(), rs.getTimestamp("arrival_time").toLocalDateTime(), rs.getInt("available_seats"), rs.getInt("total_seats"), seatTypes);
+
+                Flight flight =null;
+                flight= new Flight(id, rs.getString("airplane_name"), rs.getString("departure_city"), rs.getString("arrival_city"), rs.getTimestamp("departure_time").toLocalDateTime(), rs.getTimestamp("arrival_time").toLocalDateTime(), rs.getInt("available_seats"), rs.getInt("total_seats"), seatTypes);
                 flight.setList(seatTypes);
+                System.out.println(flight.toString());
                 result.add(flight);
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        return result;
+        if (result.size()>0) {
+            return result;
+        }  else{
+            return null;
+        }
     }
 
     public List<SeatType> getlistSeat(String id_flight) {

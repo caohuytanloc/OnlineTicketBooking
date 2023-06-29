@@ -40,11 +40,15 @@ public class RenderTicket extends HttpServlet {
             int year = date.getYear();            // Lấy năm
 
 
-            List<Flight> flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
+            List<Flight> flightList = null;
+            flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
             )), destination, departure);
 
+            if (flightList == null) {
+                session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
+
+            }
             session.setAttribute("isRoundTrip", false);
-            System.out.println(session.getAttribute("isRoundTrip"));
 
             session.setAttribute("departure", departure);
             session.setAttribute("departureTime", departureTime);
@@ -68,10 +72,13 @@ public class RenderTicket extends HttpServlet {
             int year = date.getYear();
 
 
-
-
-            List<Flight> flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
+            List<Flight> flightList = null;
+            flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
             )), destination, departure);
+            if (flightList == null) {
+                session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
+
+            }
 
             session.setAttribute("isRoundTrip", true);
             session.setAttribute("departure", departure);

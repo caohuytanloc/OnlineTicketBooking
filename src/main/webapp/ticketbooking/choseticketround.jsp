@@ -398,17 +398,17 @@
 
                             </div>
 
-                            <div class="col" id="type1" onclick="change(this,'${flight.id}')">
+                            <div class="col" id="type1" onclick="change(this,'${flight.id}','First')">
                                 <p>${flight.getPriceSeatFirst()}</p>
                             </div>
 
-                            <div class="col" id="type2" onclick="change(this,'${flight.id}')">
+                            <div class="col" id="type2" onclick="change(this,'${flight.id}','Business')">
                                 <p>${flight.getPriceSeatBusiness()}</p>
                             </div>
-                            <div class="col" id="type3" onclick="change(this,'${flight.id}')">
+                            <div class="col" id="type3" onclick="change(this,'${flight.id}','Premium')">
                                 <p>${flight.getPriceSeatPremium()}</p>
                             </div>
-                            <div class="col" id="type4" onclick="change(this,'${flight.id}')">
+                            <div class="col" id="type4" onclick="change(this,'${flight.id}','Eco')">
                                 <p>${flight.getPriceSeatEco()}</p>
 
                             </div>
@@ -608,7 +608,7 @@
 <script>
 
 
-    function change(clicked,id) {
+    function change(clicked,id,typeReturn) {
         var priceticketElement = document.getElementById("priceticketreturn");
         var taxElement = document.getElementById("taxreturn");
         var servicesElement = document.getElementById("servicereturn");
@@ -643,7 +643,7 @@
         $.ajax({
             url: "/order",
             type: "POST",
-            data: { idReturn:id},
+            data: { idReturn:id,typeReturn:typeReturn},
             success: function(response) {
                 console.log('Các giá trị đã được lưu vào session'+response);
             },

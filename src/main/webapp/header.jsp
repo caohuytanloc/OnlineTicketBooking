@@ -20,11 +20,11 @@
     <div class="navbar__nav">
       <div class="nav__top">
         <div class="user__signin">
-          <a href="">Đăng ký</a>
+          <a href="/SignUp">Đăng ký</a>
         </div>
         <div>|</div>
         <div class="user__signup">
-          <a href="">Đăng nhập</a>
+          <a href="/Login">Đăng nhập </a>
         </div>
       </div>
       <div class="nav__bottom">
