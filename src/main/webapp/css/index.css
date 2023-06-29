@@ -1,0 +1,308 @@
+html {}
+
+.container-left {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+}
+
+.container-right {
+    width: 380px !important;
+    position: relative;
+    z-index: 1;
+    float: right;
+    margin-top: 10%;
+    margin-left: 60%;
+}
+
+.search-form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* background: linear-gradient(180deg, rgba(249, 3, 3, 0.5) 0%, rgba(227, 41, 41, 0.5) 47.92%, rgba(219, 14, 14, 0.5) 100%); */
+    background: linear-gradient(30.3deg, #c7565a 33.94%, #cb2424 80%)
+}
+
+.search-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.search-form label {
+    margin-bottom: 5px;
+}
+
+.search-form input[type="radio"],
+.search-form input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.search-form .form-group {
+    margin-bottom: 20px;
+}
+
+.search-form .form-group.return-date input:disabled {
+    opacity: 0.5;
+}
+
+.search-form button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0077c2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-form button {
+    color: #000000;
+    width: 100%;
+    height: 39px;
+    font-size: 16px;
+    max-width: 200px;
+    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
+    font-family: JambonoMedium;
+    border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+    .search-form {
+        padding: 40px;
+    }
+}
+
+@media (min-width: 992px) {
+    .search-form {
+        max-width: 500px;
+    }
+}
+
+.radio-group {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+}
+
+.radio-group input[type="radio"] {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.depart-go {
+    /* display: block; */
+    margin-bottom: 10px;
+
+    border-radius: 5px;
+    background: white;
+    height: 55px;
+    display: flex;
+    /* Đặt phần tử cha là flexbox container */
+    justify-content: space-between;
+    /* Các phần tử con sẽ được căn giữa với khoảng cách giữa chúng */
+
+}
+
+.depart-go .form-group {
+    display: inline-block;
+    vertical-align: top;
+    /*margin-right: 10px;*/
+}
+
+/* .depart-go .form-group:last-child {
+margin-right: 0;
+} */
+
+.find-ticket {
+    display: flex;
+    align-items: center;
+}
+
+.find-ticket label {
+    order: 2;
+}
+
+input[type="checkbox"] {
+    order: 1;
+}
+
+input[type="text"] {
+    border: none;
+}
+
+.type-passenger {
+    background: white;
+    border-radius: 5px;
+    height: 60px;
+}
+
+.type-passenger label {
+    display: inline-block;
+    text-align: left;
+}
+
+.type-passenger select {
+    display: inline-block;
+}
+
+.label-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.label-container label {
+    background: linear-gradient(30.3deg, #D91A21 33.94%, #6F0000 163.23%);
+    border: 0.5px solid rgb(62, 59, 59);
+    border-radius: 7% 7% 0 0;
+    color: white;
+    height: 50px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group input:active,
+.form-group input:focus-visible {
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+select {
+    border: none;
+    outline: none;
+    float: right;
+}
+
+.inputgo,
+.inputreturn {
+    border-right: 1px solid rgb(172, 167, 167);
+
+}
+
+.hidden {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+#passenger-list {
+    position: relative;
+    /* Đặt phần tử là relative để có thể sử dụng z-index */
+    text-align: left;
+    z-index: 999;
+}
+
+input[type=number] {
+    border: none;
+}
+
+#select-container,
+#select-container1 {
+    flex-direction: column;
+    width: 276px;
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+}
+
+select {
+    border: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.label-container .lableskypoint {
+    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
+    color: #000000;
+}
+
+.location-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.namecity {
+    color: #333;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.code {
+    margin-left: auto;
+    margin-right: 5px;
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.location-select {
+    font-weight: bold !important;
+}
+
+#passenger_select {
+    flex-direction: column;
+    width: 276px;
+    position: absolute;
+    /* z-index: 1; */
+    background-color: white;
+    margin-top: 55%;
+}
+
+.type-passenger {
+    display: flex;
+    align-items: center;
+}
+
+
+.type-passenger label {
+    margin-right: 2%;
+    margin-left: 2%;
+
+}
+
+#icon_passenger {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgb(214, 207, 207);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#passenger_select #number i {
+    border: 1px solid rgb(69, 68, 68);
+    width: 20px;
+    height: 20px;
+    border-radius: 60%;
+    align-items: center;
+    display: flex;
+    padding: 7%;
+}
+
+#passenger_select #number label {
+    color: red;
+}
+input#datepickerinput, input#datepickerinput1 {
+    width: 100%;
+}
