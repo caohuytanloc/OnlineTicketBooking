@@ -97,7 +97,7 @@ ul li{
 .title{
     border-radius: 10px;
     color: #000 !important;
-    background-color: #DC143C;
+    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
     align-content: center;
     height: 10vh;
     line-height: 10vh;
@@ -108,7 +108,7 @@ ul li{
 }
 
 .collapsible {
-    background-color: #DC143C;
+    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
     color: #000 !important;
     cursor: pointer;
     width: 100%;
@@ -150,7 +150,7 @@ ul li{
 }
 
 .collapsible1 {
-    background-color: #e60000;
+    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
     color: #000 !important;
     cursor: pointer;
     width: 100%;
@@ -192,7 +192,7 @@ ul li{
 }
 
 .collapsible2 {
-    background-color: #e60000;
+    background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
     color: #000 !important;
     cursor: pointer;
     width: 100%;

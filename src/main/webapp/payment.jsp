@@ -1,15 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jefft
-  Date: 27/06/2023
-  Time: 12:11 SA
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="css/header.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +18,7 @@
 </head>
 
 <body>
+<jsp:include page="header.jsp"/>
 <div class="container-fluid">
     <article>
         <div class="head">
@@ -36,7 +31,7 @@
                     <div class="container">
                         <button type="button" class="collapsible">
                             <img src="images/airplane-icon.png" class="icon-hehe" alt="">
-                            <h2  style="float: left;">Chuyến bay</hh2>
+                            <h2 style="float: left;">Chuyến bay</hh2>
                         </button>
                     </div>
                 </div>
@@ -108,7 +103,7 @@
                 <div class="title">
                     <div class="container">
                         <button type="button" class="collapsible2">
-                            <h2 for=""  style="float: left;">Dịch Vụ Bổ Sung</h2>
+                            <h2 for="" style="float: left;">Dịch Vụ Bổ Sung</h2>
                         </button>
                     </div>
                 </div>
@@ -155,15 +150,8 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-
-
-
         </div>
-
         <!-- Frame 2 -->
         <div class="title">
             <div class="container">
@@ -172,21 +160,25 @@
         </div>
         <div class="payments-content">
             <div class="container">
-                <p for="">Trong trường hợp thanh toán với thẻ tín dụng được phát hành ngoài lãnh thổ Việt Nam, giao dịch có
-                    thể phát sinh phí được thu bởi ngân hàng/đơn vị phát hành thẻ. Về mức phí, Quý khách vui lòng liên hệ
+                <p for="">Trong trường hợp thanh toán với thẻ tín dụng được phát hành ngoài lãnh thổ Việt Nam, giao dịch
+                    có
+                    thể phát sinh phí được thu bởi ngân hàng/đơn vị phát hành thẻ. Về mức phí, Quý khách vui lòng liên
+                    hệ
                     ngân hàng/đơn vị phát hành thẻ để biết thông tin chi tiết.</p>
                 <table class="col-full text-center" style="padding: 40px 10px;">
                     <tr style="margin-bottom: 20px;">
-                        <th >Thanh toán ngay</th>
+                        <th>Thanh toán ngay</th>
                         <th>Thanh toán sau</th>
                     </tr>
                     <tr>
                         <td><a href="" class="box"><img src="images/paynow.jpg" width="20%" alt=""
-                                                        style="padding: 20px;border:1px solid #ccc;border-radius: 8px;"><input type="radio"
-                                                                                                                               class="rdoIn"></a></td>
+                                                        style="padding: 20px;border:1px solid #ccc;border-radius: 8px;"><input
+                                type="radio"
+                                class="rdoIn"></a></td>
                         <td><a href="" class="box"><img src="images/paylater.jpg" width="20%" alt=""
-                                                        style="padding: 20px;border:1px solid #ccc;border-radius: 8px;"><input type="radio"
-                                                                                                                               class="rdoIn"></a></td>
+                                                        style="padding: 20px;border:1px solid #ccc;border-radius: 8px;"><input
+                                type="radio"
+                                class="rdoIn"></a></td>
                     </tr>
                 </table>
             </div>
@@ -235,7 +227,8 @@
                                 </div>
                                 <div class="col col-third">
                                     <div class="text-center"
-                                         style="background-color: #dbdbdb;border-radius: 45%;line-height: 5vh;">01h30m</div>
+                                         style="background-color: #dbdbdb;border-radius: 45%;line-height: 5vh;">01h30m
+                                    </div>
                                 </div>
                                 <div class="col col-third">
                                     <h3>05:35</h3>
@@ -294,10 +287,13 @@
                     </li>
                 </ul>
                 <br>
-
-                <a href="/payment" style="padding: 20px 150px;background-color:#13a040;font-size: 1.5rem;margin-top: 50px;"> <input type="button" value="Chấp nhận và thanh toán ngay"></a>
+                <button id="paymentButton"
+                        style="padding: 20px 150px; background-color: #13a040; font-size: 1.5rem; margin-top: 50px;">
+                    Chấp nhận và thanh toán ngay
+                </button>
             </div>
-        </div></article>
+        </div>
+    </article>
 
     <aside>
         <div class="introduce container">
@@ -313,7 +309,7 @@
             </div>
 
             <div class="row total" style="background-color: #d9d9d9;border-radius: 10px;">
-                <table class="col col-full" >
+                <table class="col col-full">
                     <tr>
                         <td><h3>Tổng tiền</h3></td>
                         <td><h3>1,908,000 VNĐ</h3></td>
@@ -334,10 +330,11 @@
                     </table>
                 </button>
                 <div class="aside-drop">
-                    <div class="drop1" >
+                    <div class="drop1">
                         <b>SG tới Đà Nẵng</b>
                         <p>Th 2, 20 thg 3 2023 | 12:35 - 13:25</p>
-                        <p style="padding: 5px;background: #679f56;color: white;border-radius: 50px;width: fit-content;">Economy Smart</p>
+                        <p style="padding: 5px;background: #679f56;color: white;border-radius: 50px;width: fit-content;">
+                            Economy Smart</p>
                         <p>Người lớn 1 x 750,000 = <b>750,000 VND</b></p>
                     </div>
                 </div>
@@ -352,35 +349,29 @@
                     </table>
                 </button>
                 <div class="aside-drop1">
-
                 </div>
             </div>
             <div class="row total" style="background-color: #d9d9d9;border-radius: 10px;">
                 <button type="button" class="collapsible-aside2">
-                    <table class="col col-full"  style="background-color: #d9d9d9;">
+                    <table class="col col-full" style="background-color: #d9d9d9;">
                         <tr>
                             <td><b>Phí dịch vụ</b></td>
-                            <td><b>86,000 VNĐ</b> </td>
+                            <td><b>86,000 VNĐ</b></td>
                         </tr>
                     </table>
                 </button>
                 <div class="aside-drop2">
-
                 </div>
             </div>
         </div>
-
-
-
     </aside>
-
 </div>
+<script>
+    document.getElementById("paymentButton").addEventListener("click", function() {
+        window.location.href = "/payment";
+    });
+</script>
 <!-- Frame 5 -->
-
-
-
 <script src="/js/payment.js"></script>
-
 </body>
-
 </html>
