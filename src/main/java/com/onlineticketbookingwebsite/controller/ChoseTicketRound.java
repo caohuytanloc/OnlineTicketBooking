@@ -30,6 +30,8 @@ public class ChoseTicketRound extends HttpServlet {
                 String destination = (String) session.getAttribute("destination");
                 String departure = (String) session.getAttribute("departure");
                 String destinationTime= (String) session.getAttribute("destinationTime");
+                System.out.println(session.getAttribute(destinationTime));
+
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
                 LocalDate date = LocalDate.parse(destinationTime, formatter);
 
@@ -39,11 +41,11 @@ public class ChoseTicketRound extends HttpServlet {
                 List<Flight> flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
                 )), destination, departure);
                 session.setAttribute("listfightreturn", flightList);
+                request.getRequestDispatcher("/ticketbooking/choseticketround.jsp").forward(request, response);
 
             }
 
 
-            request.getRequestDispatcher("/ticketbooking/choseticketround.jsp").forward(request, response);
         }
     }
 
@@ -55,11 +57,13 @@ public class ChoseTicketRound extends HttpServlet {
         String priceticket = request.getParameter("priceticket");
         String id = request.getParameter("id");
         session.setAttribute("id", id);
-        System.out.println("id"+id );
+        String typego = request.getParameter("typego");
+        session.setAttribute("typego", typego);
+
 
         session.setAttribute("priceticket", priceticket);
         session.setAttribute("total", total);
         session.setAttribute("price", price);
-        System.out.println(session.getAttribute("total"));
+//        System.out.println(session.getAttribute("total"));
     }
 }

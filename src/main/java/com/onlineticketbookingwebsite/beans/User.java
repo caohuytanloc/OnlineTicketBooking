@@ -9,18 +9,20 @@ public class User {
     private Date birthday;
     private String phoneNumber;
     private String email;
+    private boolean status;
 
     // Constructors
     public User() {
     }
 
-    public User(String id, String username, String password, Date birthday, String phoneNumber, String email) {
+    public User(String id, String username, String password, Date birthday, String phoneNumber, String email,boolean status) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.birthday = birthday;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.status=status;
     }
 
     // Getters and Setters

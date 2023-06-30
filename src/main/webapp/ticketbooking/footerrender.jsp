@@ -16,10 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css">
 
     <style>
-        body{
+        body {
             margin: 0;
             padding: 0;
         }
+
         /* CSS cho footer */
         footer {
             filter: drop-shadow(0px 10px 10px black);
@@ -61,32 +62,50 @@
 
 <body>
 <c:url var="ChoseTicketGo" value="/ChoseTicketGo"></c:url>
-<footer >
+<footer>
     <div class="container">
         <div class="row">
-            <div class="col-sm-7"></div>
+            <c:if test="${sessionScope.listfight==null}">
+                <div class="col-sm-1">
+                    <a href="/Index">
+                        <button class="footer-button">Quay về</button>
+                    </a>
+
+                </div>
+            </c:if>
+            <div class="col-sm-6"></div>
             <div class="col-sm-2">
                 <div class="footer-label">Tổng tiền:</div>
                 <div class="footer-value">0 VND</div>
 
 
             </div>
-            <c:if test="${sessionScope.isRoundTrip == true}">
+            <c:if test="${sessionScope.listfight!=null}">
 
-<div class="col-sm-1">
-                <a href="${ChoseTicketGo}?action=view"><button class="footer-button" >Tiếp theo</button></a>
+                <c:if test="${sessionScope.isRoundTrip == true}">
 
-            </div>
+                    <div class="col-sm-1">
+                        <a href="${ChoseTicketGo}?action=view">
+                            <button class="footer-button">Tiếp theo</button>
+                        </a>
+
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.isRoundTrip == false}">
+                    <c:url var="order" value="/order"></c:url>
+
+                    <div class="col-sm-1">
+                        <a href="${order}?action=view">
+                            <button class="footer-button">Tiếp theo</button>
+                        </a>
+
+                    </div>
+                </c:if>
             </c:if>
-            <c:if test="${sessionScope.isRoundTrip == false}">
 
-                <div class="col-sm-1">
-                    <a href="${""}?action=view"><button class="footer-button" >Tiếp theo</button></a>
 
-                </div>
-            </c:if>
 
-        </div>
+</div>
     </div>
 </footer>
 </body>
