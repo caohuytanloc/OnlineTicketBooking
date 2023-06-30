@@ -97,7 +97,7 @@ ul li{
 .title{
     border-radius: 10px;
     color: #000 !important;
-    background-color: #d9d9d9;
+    background-color: #DC143C;
     align-content: center;
     height: 10vh;
     line-height: 10vh;
@@ -150,7 +150,7 @@ ul li{
 }
 
 .collapsible1 {
-    background-color: #d9d9d9;
+    background-color: #DC143C;
     color: #000 !important;
     cursor: pointer;
     width: 100%;
@@ -165,7 +165,7 @@ ul li{
 
 .main-content .active,
 .collapsible1:hover {
-    background-color: #d9d9d9;
+    background-color: #DC143C;
 }
 
 .collapsible1:after {
