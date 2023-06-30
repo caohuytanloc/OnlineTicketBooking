@@ -87,7 +87,7 @@
                             <td>10:05</td>
                         </tr>
                     </table>
-                    <img src="../img/bamboo-logo.webp" alt="" width="20%" style="align-items: center;">
+                    <img src="images/bamboo-logo.webp" alt="" width="20%" style="align-items: center;">
                 </div>
             </div>
             <!-- Frame 9 -->
@@ -107,9 +107,9 @@
                     </ul>
                 </nav>
                 <div class="row" style="padding: 30px;">
-                    <a href=""><img style="padding: 10px;border: 1px solid #ccc;border-radius: 8px;height: 10vh !important" src="../img/JCB_logo.svg.webp" alt="" width="10%"></a>
-                    <a href=""><img style="padding: 10px;border: 1px solid #ccc;border-radius: 8px;height: 10vh !important" src="../img/MasterCard_Logo.svg.png" alt="" width="10%"></a>
-                    <a href=""><img style="padding: 10px;border: 1px solid #ccc;border-radius: 8px;height: 10vh !important" src="../img/Visa_Inc._logo.svg.webp" alt="" width="10%"></a>
+                    <a href=""><img style="padding: 10px;border: 1px solid #ccc;border-radius: 8px;height: 10vh !important" src="images/JCB_logo.svg.webp" alt="" width="10%"></a>
+                    <a href=""><img style="padding: 10px;border: 1px solid #ccc;border-radius: 8px;height: 10vh !important" src="images/MasterCard_Logo.svg.png" alt="" width="10%"></a>
+                    <a href=""><img style="padding: 10px;border: 1px solid #ccc;border-radius: 8px;height: 10vh !important" src="images/Visa_Inc._logo.svg.webp" alt="" width="10%"></a>
                 </div>
                 <form action="">
                     <input type="text" placeholder="Nhập số thẻ" required="required" style="background-color: #d9d9d9;color: #5e5e5e; padding: 20px; width: 100%;margin-bottom: 20px;border: 0;">
