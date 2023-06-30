@@ -52,7 +52,9 @@
             <div class="header__inner">
                 <div class="header__left">
                     <div class="ticket__information--summary">
-                        <p class="ticket__information--type">Chuyến bay khứ hồi</p>
+                        <p class="ticket__information--type">
+                            <c:if test="${sessionScope.isRoundTrip == true}">Chuyến bay khứ hồi</c:if>
+                            <c:if test="${sessionScope.isRoundTrip == false}">Chuyến bay đến</c:if></p>
                         <p class="ticket__information--numOfPassenger">1 Người lớn</p>
                     </div>
                     <div class="ticket__information--location">
@@ -60,14 +62,14 @@
                             <p>
                                 <span class="fa-solid fa-circle-dot"></span>
                                 <span>Điểm khởi hành </span
-                                ><span class="arrive-city">Tp. HCM ( SGN )</span>
+                                ><span class="arrive-city"><%= session.getAttribute("departure")%></span>
                             </p>
                         </div>
                         <div class="ticket__information--arrive">
                             <p>
                                 <span class="fa-solid fa-location-dot icon--active"></span>
                                 <span>Điểm đến </span
-                                ><span class="depart-city">Hà Nội ( HAN )</span>
+                                ><span class="depart-city"><%= session.getAttribute("destination")%></span>
                             </p>
                         </div>
                     </div>
@@ -107,21 +109,21 @@
                                 </div>
                                 <div class="departure__ticket">
                                     <div class="departure__ticket date">
-                                        <p>Thứ Năm, 06/07/2023</p>
+                                        <p><%= session.getAttribute("departureTime") %></p>
                                     </div>
                                     <div class="departure__ticket information">
                                         <div class="departure--information ">
-                                            <p class="departure--city city">SGN</p>
-                                            <p class="departure--time time">05:25</p>
+                                            <p class="departure--city city"><%= session.getAttribute("departure")%></p>
+                                            <p class="departure--time time"><%= session.getAttribute("departureTime")%></p>
                                         </div>
                                         <div class="departure__information--">
                                             <p class="departure--airplane-code">
-                                                VJ198 <span><i class="fa-solid fa-plane"></i></span>
+                                                <%= session.getAttribute("airplaneName") %> <span><i class="fa-solid fa-plane"></i></span>
                                             </p>
                                         </div>
                                         <div class="departure__information--">
-                                            <p class="arrive--city city">HAN</p>
-                                            <p class="arrrive--time time">07:35</p>
+                                            <p class="arrive--city city"><%= session.getAttribute("destination")%></p>
+                                            <p class="arrrive--time time"><%= session.getAttribute("destinationTime")%></p>
                                         </div>
                                         <div class="airplane--info">
                                             <p class="airplane-type">Airbus: A320</p>
@@ -129,7 +131,7 @@
                                         </div>
                                     </div>
                                     <div class="departure__ticket price">
-                                        <p>4.642.000 VND</p>
+                                        <p></p>
                                     </div>
                                 </div>
                                 <div></div>
