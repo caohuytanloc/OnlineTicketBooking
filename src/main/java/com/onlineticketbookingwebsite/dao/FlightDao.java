@@ -1,6 +1,7 @@
 package com.onlineticketbookingwebsite.dao;
 
 import com.onlineticketbookingwebsite.beans.Flight;
+import com.onlineticketbookingwebsite.beans.SeatType;
 import com.onlineticketbookingwebsite.beans.Ticket;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
