@@ -2,7 +2,6 @@
   <configuration default="false" name="Tomcat 8.5.79" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" editBeforeRun="true" APPLICATION_SERVER_NAME="Tomcat 8.5.79" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
     <option name="OPEN_IN_BROWSER" value="false" />
     <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
-    <option name="START_JAVASCRIPT_DEBUGGER" value="true" />
     <option name="UPDATING_POLICY" value="redeploy-artifacts" />
     <deployment>
       <artifact name="OnlineTicketBookingWebsite:war">
@@ -13,6 +12,8 @@
     </deployment>
     <server-settings>
       <option name="BASE_DIRECTORY_NAME" value="368c736d-87a9-453e-8e91-096c9b916b35" />
+      <option name="DEPLOY_TOMCAT_APPS" value="true" />
+      <option name="PRESERVE_SESSIONS" value="true" />
     </server-settings>
     <predefined_log_file enabled="true" id="Tomcat" />
     <predefined_log_file enabled="true" id="Tomcat Catalina" />

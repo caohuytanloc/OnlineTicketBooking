@@ -322,13 +322,19 @@
             </div>
             <div class="footer__price__total">
                 <p>Tổng tiền</p>
-                <p class="footer__price price">3.625.800 VND</p>
+                <p class="footer__price price"><%= session.getAttribute("price") %></p>
             </div>
             <div class="footer__next">
-                <button class="footer__btn--next" type="button">Đi tiếp</button>
+                <button id="btn-next__Form" class="footer__btn--next" type="button">Đi tiếp</button>
             </div>
         </div>
     </footer>
 </div>
 </body>
+<script>
+    var nextButton = document.getElementById("btn-next__Form");
+    nextButton.onclick = function () {
+
+    }
+</script>
 </html>

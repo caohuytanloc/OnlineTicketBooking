@@ -26,9 +26,9 @@ $("#btn-user-information-form-next").click(function () {
             email: $('input[name="user-email"]').val(),
             address: $('input[name="user-address"]').val()
         },
-        // success: function(response) {
-        //     alert("Success")
-        // }
+        success: function(response) {
+            alert("Thông tin đã được ghi nhận trên hệ thống")
+        }
         })
 
 });
