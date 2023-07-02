@@ -6,12 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Làm Thủ Tục</title>
-    <link rel="stylesheet" type="text/css" href="css/checkin.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/checkin.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="../header.jsp"/>
 <div class="backround">
+    <% session.invalidate();  %>
     <div class="procedure-section" >
         <h3 style=" font-weight: 300;"> Quý khách có thể làm thủ tục trực tuyến từ 24 đến 01 tiếng trước chuyến bay.</h3>
         <h3 style="border: 1px solid #ccc;font-weight: 300; border-radius: 20px; padding: 10px; background-color: white;">Nhập mã vé</h3>

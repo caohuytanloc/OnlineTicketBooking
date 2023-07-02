@@ -30,10 +30,6 @@ public class TicketServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String ticketId = request.getParameter("ticketId");
-        String fullname = request.getParameter("fullname");
-
-        // Gọi phương thức để kiểm tra và lấy vé dựa trên ticketId, fullname và departureCity
-        Ticket ticket = TicketService.getTicketByTicketId(ticketId);
 
         // Nếu tìm thấy vé, chuyển hướng sang trang checkInfor.jsp
         Flight flight = flightService.getFlightByTicketId(ticketId);
@@ -46,22 +42,8 @@ public class TicketServlet extends HttpServlet {
 
         String formattedArrivalTime  = arrivalTime.format(formatter);
 
-        int hour = departureTime.getHour();
-        int minute = departureTime.getMinute();
-
-        int hourArr = arrivalTime.getHour();
-        int minuteArr = arrivalTime.getMinute();
-
         request.setAttribute("formattedArrivalTime", formattedArrivalTime);
-        request.setAttribute("ticketId", ticketId);
-        request.setAttribute("ticket", ticket);
-        request.setAttribute("fullname", fullname);
-        request.setAttribute("flight", flight);
-        request.setAttribute("hour", hour);
-        request.setAttribute("minute", String.format("%02d", minute));
-        request.setAttribute("hourArr", hourArr);
-        request.setAttribute("minuteArr", String.format("%02d", minuteArr));
         request.setAttribute("formattedDepartureTime", formattedDepartureTime);
-        request.getRequestDispatcher("/ticket.jsp").forward(request, response);
+        request.getRequestDispatcher("/ticketbooking/ticket.jsp").forward(request, response);
     }
 }

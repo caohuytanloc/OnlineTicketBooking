@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,20 +23,9 @@ public class SeatingServlet extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String ticketId = request.getParameter("ticketId");
-        String fullname = request.getParameter("fullname");
 
         Flight flight = FlightService.getFlightByTicketId(ticketId);
-
         List<String> listSeating = CheckinService.getSelectedSeatsList(flight.getId());
-
-        String arrivalCity = flight.getArrivalCity();
-        String airplaneName = flight.getAirplaneName();
-        String departureCity = flight.getDepartureCity();
-        LocalDateTime departureTime = flight.getDepartureTime();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EE, dd/MM/yyyy");
-
-        String formattedDepartureTime = departureTime.format(formatter);
-
         List<String> newSeatingList = new ArrayList<>();
 
         for (String seatNumber : listSeating) {
@@ -55,13 +45,7 @@ public class SeatingServlet extends HttpServlet {
             System.out.println(newSeatNumber);
         }
 
-        request.setAttribute("airplaneName", airplaneName);
-        request.setAttribute("departureCity", departureCity);
-        request.setAttribute("formattedDepartureTime", formattedDepartureTime);
-        request.setAttribute("ticketId", ticketId);
-        request.setAttribute("arrivalCity", arrivalCity);
-        request.setAttribute("fullname", fullname);
         request.setAttribute("newSeatingList", newSeatingList);
-        request.getRequestDispatcher("/seating.jsp").forward(request, response);
+        request.getRequestDispatcher("/ticketbooking/seating.jsp").forward(request, response);
     }
 }

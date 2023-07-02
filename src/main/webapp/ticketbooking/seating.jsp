@@ -1,3 +1,4 @@
+<%@ page import="com.onlineticketbookingwebsite.beans.Flight" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -8,9 +9,9 @@
     <meta charset="UTF-8">
     <title>Chọn chỗ ngồi</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/checkin.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/ticket.css">
+    <link rel="stylesheet" type="text/css" href="../css/checkin.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/ticket.css">
     <script src="../js/jquery.min.js"
             th:src="@{js/jquery.min.js}"></script>
     <script src="../js/jquery.seat-charts.js"
@@ -42,8 +43,13 @@
     </style>
 </head>
 <body>
-
-<jsp:include page="header.jsp"/>
+<%
+    String ticketId = (String) session.getAttribute("ticketId");
+    String fullname = (String) session.getAttribute("fullname");
+    Flight flight = (Flight) session.getAttribute("flight");
+    String formattedDepartureTime = (String) session.getAttribute("formattedDepartureTime");
+%>
+<jsp:include page="../header.jsp"/>
 <div class="background">
     <div id="legend" style=" border: 1px solid #000; border-radius: 10px;width: 15%;height: 140px;"></div>
     <br>
@@ -63,10 +69,10 @@
                 <h3 style=" font-weight: 300;">Chỗ ngồi:</h3>
             </div>
             <div class="column2">
-                <h3 style="font-weight: bold;">${fullname}</h3>
-                <h3 style="font-weight: bold;">${airplaneName}</h3>
-                <h3 style="font-weight: bold;">${departureCity} &#9658; ${arrivalCity}</h3>
-                <h3 style="font-weight: bold;">${formattedDepartureTime}</h3>
+                <h3 style="font-weight: bold;"><%= fullname%></h3>
+                <h3 style="font-weight: bold;"><%=flight.getAirplaneName()%></h3>
+                <h3 style="font-weight: bold;"><%=flight.getDepartureCity()%> &#9658; <%=flight.getArrivalCity()%></h3>
+                <h3 style="font-weight: bold;"><%=formattedDepartureTime%></h3>
             <div id="selected-seats" style="color: #ca161c;"></div>
         </div>
         </div>
@@ -76,9 +82,8 @@
             <span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span>
         </button>
         <form id="seatingForm" action="/ticket" method="post">
+            <input type="hidden" name="ticketId" value="<%= ticketId %>"/>
             <input id="seating" name="seating" type="text" value="${seating}" style="display: none;" />
-            <input type="hidden" name="fullname" value="${fullname}" />
-            <input type="hidden" name="ticketId" value="${ticketId}" />
             <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="submit">
                 <span customcolor="black" style="font-weight: bold;">Tiếp tục</span>
             </button>

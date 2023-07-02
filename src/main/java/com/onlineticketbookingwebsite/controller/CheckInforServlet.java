@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -35,11 +36,11 @@ public class CheckInforServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
         String ticketId = request.getParameter("ticketId");
         String fullname = request.getParameter("fullname");
         String departureCity = request.getParameter("departure_city");
-
 
         // Gọi phương thức để kiểm tra và lấy vé dựa trên ticketId, fullname và departureCity
         Ticket ticket = TicketService.getTicketByTicketIdFullnameDeparture(ticketId, fullname, departureCity);
@@ -61,24 +62,28 @@ public class CheckInforServlet extends HttpServlet {
             int hourArr = arrivalTime.getHour();
             int minuteArr = arrivalTime.getMinute();
 
-            request.setAttribute("ticket", ticket);
-            request.setAttribute("ticketId", ticketId);
-            request.setAttribute("fullname", fullname);
-            request.setAttribute("flight", flight);
-            request.setAttribute("hour", hour);
-            request.setAttribute("minute", String.format("%02d", minute));
-            request.setAttribute("hourArr", hourArr);
-            request.setAttribute("minuteArr", String.format("%02d", minuteArr));
-            request.setAttribute("formattedDepartureTime", formattedDepartureTime);
-            request.getRequestDispatcher("checkInfor.jsp").forward(request, response);
+            int hourTotal = hourArr-hour;
+            int minuteTotal = minuteArr-minute;
+
+            session.setAttribute("hourTotal", hourTotal);
+            session.setAttribute("minuteTotal", minuteTotal);
+            session.setAttribute("ticketId", ticketId);
+            session.setAttribute("fullname", fullname);
+            session.setAttribute("flight", flight);
+            session.setAttribute("hour", hour);
+            session.setAttribute("minute", String.format("%02d", minute));
+            session.setAttribute("hourArr", hourArr);
+            session.setAttribute("minuteArr", String.format("%02d", minuteArr));
+            session.setAttribute("formattedDepartureTime", formattedDepartureTime);
+            request.getRequestDispatcher("/ticketbooking/checkInfor.jsp").forward(request, response);
         } else {
             if (CheckinService.isCheckin(ticketId)) {
                 // Nếu không tìm thấy vé, gửi thông báo lỗi về trang checkin.jsp
                 request.setAttribute("error", "Vé đã checkin.");
-                request.getRequestDispatcher("checkin.jsp").forward(request, response);
+                request.getRequestDispatcher("/ticketbooking/checkin.jsp").forward(request, response);
             } else {
                 request.setAttribute("error", "Không tìm thấy vé.");
-                request.getRequestDispatcher("checkin.jsp").forward(request, response);
+                request.getRequestDispatcher("/ticketbooking/checkin.jsp").forward(request, response);
             }
         }
     }

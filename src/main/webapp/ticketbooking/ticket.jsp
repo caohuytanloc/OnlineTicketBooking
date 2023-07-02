@@ -1,3 +1,4 @@
+<%@ page import="com.onlineticketbookingwebsite.beans.Flight" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
@@ -8,9 +9,9 @@
     <meta charset="UTF-8">
     <title>Chọn chỗ ngồi</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/ticket_style.scss">
-    <link rel="stylesheet" type="text/css" href="css/checkin.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/ticket_style.scss">
+    <link rel="stylesheet" type="text/css" href="../css/checkin.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.5/dist/sweetalert2.min.css">
 
@@ -37,11 +38,17 @@
     String[] parts = seating.split("_"); // Tách chuỗi thành một mảng các phần tử dựa trên ký tự "_"
     String seatNumber = parts[0] + parts[1]; // Kết hợp phần tử số và chữ cái đầu tiên
 %>
+<%
+    String ticketId = (String) session.getAttribute("ticketId");
+    String fullname = (String) session.getAttribute("fullname");
+    Flight flight = (Flight) session.getAttribute("flight");
+    String formattedDepartureTime = (String) session.getAttribute("formattedDepartureTime");
+%>
 <div>
-    <jsp:include page="header.jsp"/>
+    <jsp:include page="../header.jsp"/>
     <div class="split-container">
         <div class="large-part" style="background-color: rgba(255, 255, 255, 0.8); width: 900px; height: 600px;position: absolute;left: 40px;top:90px;padding: 20px">
-            <h3>Số hiệu chuyến bay: <span style="color: red;">${flight.airplaneName}</span></h3>
+            <h3>Số hiệu chuyến bay: <span style="color: red;"><%=flight.getAirplaneName()%></span></h3>
             <h3><span class="fa-solid fa-xs fa-circle-dot"></span> Khởi hành:<span style="color: red;"> ${hour}:${minute}, ${formattedDepartureTime} </span>(Giờ địa phương) </h3>
             <h3 style="margin-left: 114px;">${flight.departureCity}</h3>
             <h3><span class="fa-solid fa-xs fa-location-dot icon--active"></span> Đến: <span style="padding-left: 52px;color: red;">${hourArr}:${minuteArr}, ${formattedArrivalTime} </span>(Giờ địa phương) </h3>
