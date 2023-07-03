@@ -1,14 +1,11 @@
 package com.onlineticketbookingwebsite.db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBConnect {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/airticketmanagement";
+    private static final String DB_URL = "jdbc:mysql://localhost:3307/AirTicketManagement?";
     private static final String USER = "root";
-    private static final String PASSWORD = "07090710";
+    private static final String PASSWORD = "123456";
     private static DBConnect dbConnect;
     private static Connection connection;
 
@@ -27,7 +24,15 @@ public class DBConnect {
             Class.forName("com.mysql.cj.jdbc.Driver");
          connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
     }
-
+    public Statement connectStament() throws SQLException, ClassNotFoundException {
+        if (connection==null||connection.isClosed()) {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/AirTicketManagement?useUnicode=true&characterEncoding=utf-8", "root", "123456");
+            return connection.createStatement();
+        } else {
+            return connection.createStatement();
+        }
+    }
     private boolean isConnect() throws SQLException {
         return connection != null && !connection.isClosed();
     }

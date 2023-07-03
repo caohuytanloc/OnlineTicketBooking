@@ -1,6 +1,5 @@
 package com.onlineticketbookingwebsite.controller;
 
-import com.mysql.cj.Session;
 import com.onlineticketbookingwebsite.beans.Flight;
 import com.onlineticketbookingwebsite.dao.FlightDao;
 
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;

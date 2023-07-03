@@ -23,7 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Properties;
 
-@WebServlet("/sendMail")
+@WebServlet("/sendMails")
 public class SendMailServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
