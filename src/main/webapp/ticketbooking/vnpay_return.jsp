@@ -11,6 +11,10 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@ page import="com.onlineticketbookingwebsite.controller.Config" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.time.LocalDateTime" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.text.DecimalFormatSymbols" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +83,19 @@
             String signValue = Config.hashAllFields(fields);
 
         %>
+    <%
+        String vnpPayDate = request.getParameter("vnp_PayDate");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
+        LocalDateTime payDateTime = LocalDateTime.parse(vnpPayDate, formatter);
+        DateTimeFormatter displayFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String formattedPayDateTime = payDateTime.format(displayFormatter);
+
+        int amount = Integer.parseInt(request.getParameter("vnp_Amount"));
+        double amountInVND = amount / 100.0;
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        String formattedAmount = decimalFormat.format(amountInVND);
+    %>
         <!--Begin display -->
         <div class="container">
             <div class="header clearfix">
@@ -86,35 +103,35 @@
             </div>
             <div class="table-responsive">
                 <div class="form-group">
-                    <label >Merchant Transaction Code:</label>
+                    <label >Mã Giao dịch:</label>
+                    <label><%=request.getParameter("vnp_TransactionNo")%></label>
+                </div>
+                <div class="form-group">
+                    <label >Số Hóa Đơn: </label>
                     <label><%=request.getParameter("vnp_TxnRef")%></label>
-                </div>    
+                </div>
                 <div class="form-group">
-                    <label >Amount:</label>
-                    <label><%=request.getParameter("vnp_Amount")%> VND</label>
-                </div>  
-                <div class="form-group">
-                    <label >Order info:</label>
+                    <label >Thông tin thanh toán:</label>
                     <label><%=request.getParameter("vnp_OrderInfo")%></label>
-                </div> 
+                </div>
+                <div class="form-group">
+                    <label >Ngân Hàng:</label>
+                    <label><%=request.getParameter("vnp_BankCode")%></label>
+                </div>
+                <div class="form-group">
+                    <label >Tổng Cộng:</label>
+                    <label><%= formattedAmount %> VND</label>
+                </div>
+                <div class="form-group">
+                    <label >Ngày Thanh Toán:</label>
+                    <label><%= formattedPayDateTime %></label>
+                </div>
                 <div class="form-group">
                     <label >VNPAY Response Code:</label>
                     <label><%=request.getParameter("vnp_ResponseCode")%></label>
-                </div> 
+                </div>
                 <div class="form-group">
-                    <label >VNPAY Transaction Code:</label>
-                    <label><%=request.getParameter("vnp_TransactionNo")%></label>
-                </div> 
-                <div class="form-group">
-                    <label >Bank Code:</label>
-                    <label><%=request.getParameter("vnp_BankCode")%></label>
-                </div> 
-                <div class="form-group">
-                    <label >Pay Date:</label>
-                    <label><%=request.getParameter("vnp_PayDate")%></label>
-                </div> 
-                <div class="form-group">
-                    <label >Payment Status:</label>
+                    <label >Trạng thái thanh toán:</label>
                     <label>
                         <%
                             if (signValue.equals(vnp_SecureHash)) {
@@ -136,7 +153,6 @@
 
 
             <footer  class="text-center">
-                <label style="font-style: italic;">Hệ thống sẽ tự động chuyển về trang mua hàng sau 12 giây. Cảm ơn Quý khách đã sử dụng dịch vụ của Payoo</label>
                 <p>&copy; VNPAY 2023</p>
             </footer>
         </div>  
