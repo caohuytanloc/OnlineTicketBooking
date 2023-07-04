@@ -10,6 +10,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/stylepayment.css">
+<%--    <link href="/css/bootstrap.min.css" rel="stylesheet"/>--%>
+    <!-- Custom styles for this template -->
+<%--    <link href="/css/jumbotron-narrow.css" rel="stylesheet">--%>
+    <script src="/js/jquery-1.11.3.min.js"></script>
     <style>
         .row {
             margin: 20px 0;
@@ -179,12 +183,12 @@
             </div>
         </div>
 
-        <!-- Frame 3 -->
-        <div class="title">
-            <div class="container">
-                <h2 for="">Hóa đơn(Tùy chọn)</h2>
-            </div>
-        </div>
+<%--        <!-- Frame 3 -->--%>
+<%--        <div class="title">--%>
+<%--            <div class="container">--%>
+<%--                <h2 for="">Hóa đơn(Tùy chọn)</h2>--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
     <%--        <div class="bill-content">--%>
     <%--            <div class="container">--%>
@@ -282,10 +286,9 @@
                     </li>
                 </ul>
                 <br>
-                <button id="paymentButton"
-                        style="padding: 20px 150px; background-color: #13a040; font-size: 1.5rem; margin-top: 50px;">
-                    Chấp nhận và thanh toán ngay
-                </button>
+                <form action="/vnpay" id="frmCreateOrder" method="post">
+                    <button style="padding: 20px 150px; background-color: #13a040; font-size: 1.5rem; margin-top: 50px;" type="submit" class="btn btn-default" href>Chấp nhận và thanh toán ngay</button>
+                </form>
             </div>
         </div>
     </article>
@@ -361,12 +364,34 @@
         </div>
     </aside>
 </div>
-<script>
-    document.getElementById("paymentButton").addEventListener("click", function() {
-        window.location.href = "/payment";
-    });
-</script>
 <!-- Frame 5 -->
 <script src="/js/payment.js"></script>
+<link href="https://pay.vnpay.vn/lib/vnpay/vnpay.css" rel="stylesheet" />
+<script src="https://pay.vnpay.vn/lib/vnpay/vnpay.min.js"></script>
+<script type="text/javascript">
+    $("#frmCreateOrder").submit(function () {
+        var postData = $("#frmCreateOrder").serialize();
+        var submitUrl = $("#frmCreateOrder").attr("action");
+        $.ajax({
+            type: "POST",
+            url: submitUrl,
+            data: postData,
+            dataType: 'JSON',
+            success: function (x) {
+                if (x.code === '00') {
+                    if (window.vnpay) {
+                        vnpay.open({width: 768, height: 600, url: x.data});
+                    } else {
+                        location.href = x.data;
+                    }
+                    return false;
+                } else {
+                    alert(x.Message);
+                }
+            }
+        });
+        return false;
+    });
+</script>
 </body>
 </html>

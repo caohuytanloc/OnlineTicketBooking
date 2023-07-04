@@ -11,7 +11,7 @@ import java.io.IOException;
 public class CheckPaymentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/payment.jsp").forward(request, response);
+        request.getRequestDispatcher("/ticketbooking/payment.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
