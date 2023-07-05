@@ -58,8 +58,8 @@ public class ChoseTicketRound extends HttpServlet {
         String id = request.getParameter("id");
         session.setAttribute("id", id);
         String typego = request.getParameter("typego");
-        session.setAttribute("typego", typego);
-
+//        session.setAttribute("typego", typego);
+        session.setAttribute("returnSeatType", typego);
 
         session.setAttribute("priceticket", priceticket);
         session.setAttribute("total", total);
