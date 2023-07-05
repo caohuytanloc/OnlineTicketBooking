@@ -6,7 +6,7 @@ public class SeatType {
     public double price;
     public int amount;
 
-public  SeatType(){}
+    public  SeatType(){}
     public SeatType(String seattype, double price, int amount) {
         this.seattype = seattype;
         this.price = price;

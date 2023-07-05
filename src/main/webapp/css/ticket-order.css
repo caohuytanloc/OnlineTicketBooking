@@ -140,6 +140,9 @@ h5 {
 .container__left {
   width: 70%;
 }
+.container__right  {
+  width: 30%;
+}
 
 .ticket__confirm .container .container__left .container__left--card {
   display: flex;

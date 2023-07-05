@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,6 @@
       <div class="nav__bottom">
         <nav class="nav__bottom--item">Skyjoy</nav>
         <nav class="nav__bottom--item">Chuyến bay của tôi</nav>
-
         <nav class="nav__bottom--item"><a href="/checkin" style="text-decoration:none; color:white;">Online Check-in</a></nav>
         <nav class="nav__bottom--item tab">Dịch vụ chuyến bay</nav>
         <nav class="nav__bottom--item tab">Dịch vụ khác</nav>
@@ -38,5 +38,3 @@
     </div>
   </div>
 </header>
-</body>
-</html>

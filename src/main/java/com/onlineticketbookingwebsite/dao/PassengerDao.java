@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.sql.Date;
+import java.util.Random;
 
 public class PassengerDao {
     private static PassengerDao instance;
@@ -55,6 +57,36 @@ public class PassengerDao {
             e.printStackTrace();
         }
         return passenger;
+    }
+
+    public boolean createPassenger(String id, String firstName, String lastName,
+                                   Date birthday, String identification, String phoneNumber,
+                                   String email, String address, String gender) {
+        boolean result = false;
+
+        try {
+            String query = "INSERT INTO PASSENGERS VALUE (?, ? ,? ,? ,? ,? ,? ,?)";
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, id);
+            ps.setString(2, lastName + "" + firstName);
+            ps.setString(3, phoneNumber);
+            ps.setDate(4, birthday);
+            ps.setString(5, gender);
+            ps.setString(6,  address);
+            ps.setString(7, identification);
+            ps.setString(8, email);
+
+            int test = ps.executeUpdate();
+            if (test == 1)
+                result = true;
+            else result = false;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 }
 
