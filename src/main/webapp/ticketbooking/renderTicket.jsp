@@ -179,9 +179,7 @@
             background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
             margin-top: 5px;
             width: 27% !important;
-            /* display: flex;
-  justify-content: center;
-  align-items: center; */
+
 
         }
 
@@ -285,6 +283,44 @@
 
 <body>
 <jsp:include page="/header.jsp"/>
+<div class="ticket__confirm--header">
+    <div class="header__inner">
+        <div class="header__left">
+            <div class="ticket__information--summary">
+                <p class="ticket__information--type">
+                    <c:if test="${sessionScope.isRoundTrip == true}">Chuyến bay khứ hồi</c:if>
+                    <c:if test="${sessionScope.isRoundTrip == false}">Chuyến bay đến</c:if></p>
+                <p class="ticket__information--numOfPassenger">1 Người lớn</p>
+                <%--                            <c:if test="${sessionScope.}"--%>
+            </div>
+            <div class="ticket__information--location">
+                <div class="ticket__information--depart">
+                    <p>
+                        <span class="fa-solid fa-circle-dot"></span>
+                        <span>Điểm khởi hành </span
+                        ><span class="arrive-city"><%= session.getAttribute("departureCity")%></span>
+                    </p>
+                </div>
+                <div class="ticket__information--arrive">
+                    <p>
+                        <span class="fa-solid fa-location-dot icon--active"></span>
+                        <span>Điểm đến </span
+                        ><span class="depart-city"><%= session.getAttribute("destinationCity")%></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="header__right">
+            <button
+                    type="button"
+                    class="fa-solid fa-plane icon--active"
+            ></button>
+            <button type="button" class="fa-solid fa-user"></button>
+            <button type="button" class="fa-solid fa-cart-shopping"></button>
+            <button type="button" class="fa-solid fa-dollar-sign"></button>
+        </div>
+    </div>
+</div>
 
 <main>
     <div class="container">
@@ -331,7 +367,7 @@
 
                 <div class="date-flight">
                     <div>
-                        <i class="fa-solid fa-caret-up fa-rotate-270" id="toggle-button"></i>
+                        <a onclick="updateDay()"><i class="fa-solid fa-caret-up fa-rotate-270" id="toggle-button"></i></a>
                     </div>
                     <div class="cloud" id="date-cloud-1">
                         <div>
@@ -351,7 +387,7 @@
                          style="background-image: url(/images/cloud.png); background-size: 100%;">
                         <div>
                             <label class="clound-lable1">Chủ nhật</label>
-                            <label class="clound-lable2">14 tháng 5</label>
+                            <label class="clound-lable2">${sessionScope.departureTime}</label>
                             <label class="clound-lable">Từ 199.000 VND</label>
                         </div>
                     </div>
@@ -370,7 +406,7 @@
                         </div>
                     </div>
                     <div>
-                        <i class="fa-solid fa-caret-up fa-rotate-90" id="toggle-button"></i>
+                        <a  onclick="updateDate()"><i class="fa-solid fa-caret-up fa-rotate-90" id="toggle-button"></i></a>
                     </div>
                 </div>
 
@@ -696,7 +732,6 @@
                                                         <%--                                                      </div>--%>
                                                         <%--                </div>--%>
                                                 </div>
-                                                <input type="button" value="">
                                             </div>
                                             <div class="departure__ticket__container--service container--info">
                                                 <div class="">Dịch vụ</div>
@@ -789,7 +824,163 @@
 
 
 </script>
+<script src="/webjars/moment/2.29.1/moment.js"></script>
 
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Cấu hình Moment.js Locales cho vùng miền mong muốn
+        moment.locale('vi', {
+            weekdays: [
+                'Chủ nhật',
+                'Thứ hai',
+                'Thứ ba',
+                'Thứ tư',
+                'Thứ năm',
+                'Thứ sáu',
+                'Thứ bảy'
+            ],
+            months: [
+                'Tháng 1',
+                'Tháng 2',
+                'Tháng 3',
+                'Tháng 4',
+                'Tháng 5',
+                'Tháng 6',
+                'Tháng 7',
+                'Tháng 8',
+                'Tháng 9',
+                'Tháng 10',
+                'Tháng 11',
+                'Tháng 12'
+            ]
+        });
+
+        // Lặp qua từng thẻ div và tính toán ngày cho các thẻ trước và sau "date-cloud-3"
+        const dateCloud3 = document.getElementById('date-cloud-3');
+        const label1 = dateCloud3.querySelector('#date-cloud-3 .clound-lable1');
+        const label2 = dateCloud3.querySelector('#date-cloud-3 .clound-lable2');
+
+
+// Lấy ngày tháng năm từ label2 của clound-date-3
+        const dateText = label2.textContent;
+        // console.log(dateText);
+
+        const [dayOfMonth, month, year] = dateText.split('/');
+        const paddedDayOfMonth = dayOfMonth.padStart(2, '0');
+        const paddedMonth = month.padStart(2, '0');
+// Tạo đối tượng Moment từ ngày tháng năm của clound-date-3
+        const date = paddedDayOfMonth+'/'+paddedMonth+'/'+year;
+
+        const currentDate = moment(date, 'DD/MM/YYYY');
+        label2.textContent = 'Ngày '+paddedDayOfMonth+' Tháng '+paddedMonth;
+        const dayof = currentDate.format('dddd');
+
+        label1.textContent = dayof;
+
+// Tìm giá trị của clound-date-2 (ngày trước clound-date-3)
+        const prevDate = currentDate.clone().subtract(1, 'days');
+        const prevDayOfWeek = prevDate.format('dddd');
+        const prevDayOfMonth = prevDate.format('D');
+        const prevMonth = prevDate.format('MMMM');
+
+        const prevDateCloud = document.getElementById('date-cloud-2');
+        const prevLabel1 = prevDateCloud.querySelector('.clound-lable1');
+        const prevLabel2 = prevDateCloud.querySelector('.clound-lable2');
+        prevLabel1.textContent = prevDayOfWeek;
+        prevLabel2.textContent = 'Ngày '+prevDayOfMonth+' '+prevMonth;
+
+// Tìm giá trị của clound-date-4 (ngày sau clound-date-3)
+        const nextDate = currentDate.clone().add(1, 'days');
+        const nextDayOfWeek = nextDate.format('dddd');
+        const nextDayOfMonth = nextDate.format('D');
+        const nextMonth = nextDate.format('MMMM');
+        const nextDateCloud = document.getElementById('date-cloud-4');
+        const nextLabel1 = nextDateCloud.querySelector('.clound-lable1');
+        const nextLabel2 = nextDateCloud.querySelector('.clound-lable2');
+        nextLabel1.textContent = nextDayOfWeek;
+        nextLabel2.textContent = 'Ngày '+nextDayOfMonth+' '+nextMonth;
+
+// Tìm giá trị của clound-date-1 (ngày trước clound-date-3)
+        const prevPrevDate = currentDate.clone().subtract(2, 'days');
+        const prevPrevDayOfWeek = prevPrevDate.format('dddd');
+        const prevPrevDayOfMonth = prevPrevDate.format('D');
+        const prevPrevMonth = prevPrevDate.format('MMMM');
+
+        const prevPrevDateCloud = document.getElementById('date-cloud-1');
+        const prevPrevLabel1 = prevPrevDateCloud.querySelector('.clound-lable1');
+        const prevPrevLabel2 = prevPrevDateCloud.querySelector('.clound-lable2');
+        prevPrevLabel1.textContent = prevPrevDayOfWeek;
+        prevPrevLabel2.textContent ='Ngày '+prevPrevDayOfMonth+' '+prevPrevMonth;
+// Tìm giá trị của clound-date-5 (ngày sau clound-date-3)
+        const nextNextDate = currentDate.clone().add(2, 'days');
+        const nextNextDayOfWeek = nextNextDate.format('dddd');
+        const nextNextDayOfMonth = nextNextDate.format('D');
+        const nextNextMonth = nextNextDate.format('MMMM');
+
+        const nextNextDateCloud = document.getElementById('date-cloud-5');
+        const nextNextLabel1 = nextNextDateCloud.querySelector('.clound-lable1');
+        const nextNextLabel2 = nextNextDateCloud.querySelector('.clound-lable2');
+        nextNextLabel1.textContent = nextNextDayOfWeek;
+        nextNextLabel2.textContent = 'Ngày '+nextNextDayOfMonth+' '+nextNextMonth;
+
+
+    });
+</script>
+<%--<script>--%>
+<%--    // Lấy các phần tử cần thiết--%>
+<%--    const toggleButtonUp = document.getElementById('toggle-button-up');--%>
+<%--    const toggleButtonDown = document.getElementById('toggle-button-down');--%>
+<%--    const dateClouds = document.querySelectorAll('.cloud');--%>
+
+<%--    // Lấy các ngày hiện tại--%>
+<%--    const dates = Array.from(dateClouds).map((cloud) => {--%>
+<%--        const dateText = cloud.querySelector('.clound-lable2').textContent;--%>
+<%--        return moment(dateText, 'Ngày D Tháng M');--%>
+<%--    });--%>
+
+<%--    // Xử lý sự kiện khi nhấn mũi tên lên--%>
+<%--    function updateDate(){--%>
+<%--        // Tìm ngày lớn nhất--%>
+<%--        const maxDate = moment.max(dates);--%>
+
+<%--        // Lặp qua các ngày và xử lý--%>
+<%--        dates.forEach((date, index) => {--%>
+<%--            // Nếu ngày là ngày lớn nhất, ẩn đi và xóa background image--%>
+<%--            if (date.isSame(maxDate)) {--%>
+<%--                dateClouds[index].style.display = 'none';--%>
+<%--                dateClouds[index].style.backgroundImage = 'none';--%>
+<%--            }--%>
+<%--            // Ngược lại, tăng ngày lên 1 và cập nhật các thông tin--%>
+<%--            else {--%>
+<%--                date.add(1, 'day');--%>
+<%--                dateClouds[index].querySelector('.clound-lable2').textContent = date.format('Ngày D Tháng M');--%>
+<%--                dateClouds[index].style.backgroundImage = 'url(/images/cloud.png)';--%>
+<%--            }--%>
+<%--        });--%>
+<%--    }--%>
+
+<%--    // Xử lý sự kiện khi nhấn mũi tên xuống--%>
+<%--   function  updatedate(){--%>
+<%--        // Tìm ngày nhỏ nhất--%>
+<%--        const minDate = moment.min(dates);--%>
+
+<%--        // Lặp qua các ngày và xử lý--%>
+<%--        dates.forEach((date, index) => {--%>
+<%--            // Nếu ngày là ngày nhỏ nhất, hiển thị và set background image mới--%>
+<%--            if (date.isSame(minDate)) {--%>
+<%--                dateClouds[index].style.display = 'block';--%>
+<%--                dateClouds[index].style.backgroundImage = 'url(/images/new-cloud.png)';--%>
+<%--            }--%>
+<%--            // Ngược lại, giảm ngày xuống 1 và cập nhật các thông tin--%>
+<%--            else {--%>
+<%--                date.subtract(1, 'day');--%>
+<%--                dateClouds[index].querySelector('.clound-lable2').textContent = date.format('Ngày D Tháng M');--%>
+<%--            }--%>
+<%--        });--%>
+<%--    }--%>
+
+<%--</script>--%>
 </body>
 
 </html>

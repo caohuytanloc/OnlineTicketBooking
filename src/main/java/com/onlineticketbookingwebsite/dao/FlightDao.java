@@ -167,8 +167,7 @@ public class FlightDao {
         }
         return result;
     }
-//    public static void main(String[] args) {
-//        System.out.print(FlightDao.getInstance().getFlightByFlighttId("F001"));
-//    }
+    public static void main(String[] args) {
+    }
 }
 

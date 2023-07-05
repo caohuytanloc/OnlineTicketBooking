@@ -1,10 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: howl
-  Date: 6/27/2023
-  Time: 12:08 PM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -18,7 +12,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footer-ticket.css">
 </head>
 <body>
+
 <div class="app">
+
     <header class="header">
         <div class="navbar__container">
             <div class="navbar__inner">
@@ -29,11 +25,11 @@
             <div class="navbar__nav">
                 <div class="nav__top">
                     <div class="user__signin">
-                        <a href="">Đăng ký</a>
+                        <a href="/SignUp">Đăng ký</a>
                     </div>
                     <div>|</div>
                     <div class="user__signup">
-                        <a href="">Đăng nhập</a>
+                        <a href="/Login">Đăng nhập </a>
                     </div>
                 </div>
                 <div class="nav__bottom">

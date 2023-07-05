@@ -285,6 +285,44 @@
 
 <body>
 <jsp:include page="/header.jsp"/>
+<div class="ticket__confirm--header">
+    <div class="header__inner">
+        <div class="header__left">
+            <div class="ticket__information--summary">
+                <p class="ticket__information--type">
+                    <c:if test="${sessionScope.isRoundTrip == true}">Chuyến bay khứ hồi</c:if>
+                    <c:if test="${sessionScope.isRoundTrip == false}">Chuyến bay đến</c:if></p>
+                <p class="ticket__information--numOfPassenger">1 Người lớn</p>
+                <%--                            <c:if test="${sessionScope.}"--%>
+            </div>
+            <div class="ticket__information--location">
+                <div class="ticket__information--depart">
+                    <p>
+                        <span class="fa-solid fa-circle-dot"></span>
+                        <span>Điểm khởi hành </span
+                        ><span class="arrive-city"><%= session.getAttribute("departureCity")%></span>
+                    </p>
+                </div>
+                <div class="ticket__information--arrive">
+                    <p>
+                        <span class="fa-solid fa-location-dot icon--active"></span>
+                        <span>Điểm đến </span
+                        ><span class="depart-city"><%= session.getAttribute("destinationCity")%></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="header__right">
+            <button
+                    type="button"
+                    class="fa-solid fa-plane icon--active"
+            ></button>
+            <button type="button" class="fa-solid fa-user"></button>
+            <button type="button" class="fa-solid fa-cart-shopping"></button>
+            <button type="button" class="fa-solid fa-dollar-sign"></button>
+        </div>
+    </div>
+</div>
 
 <main>
     <div class="container">
@@ -384,6 +422,11 @@
                         <img class="col hinh4" src="/images/hinh4.svg">
 
                     </div>
+                    <c:if test="${listfight==null}">
+                        <label style=" margin-top: 5%;
+    padding-left: 50%;
+    color: red;">${sessionScope.eror}</label>
+                    </c:if>
                     <c:forEach var="flight" items="${sessionScope.listfightreturn}">
 
                         <div class="row">
@@ -603,12 +646,13 @@
 </main>
 <jsp:include page="/ticketbooking/footer.jsp"/>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.min.js"></script>
 <script>
 
 
-    function change(clicked,id,typeReturn) {
+    function change(clicked,id,returnSeatType) {
         var priceticketElement = document.getElementById("priceticketreturn");
         var taxElement = document.getElementById("taxreturn");
         var servicesElement = document.getElementById("servicereturn");
@@ -643,7 +687,7 @@
         $.ajax({
             url: "/order",
             type: "POST",
-            data: { idReturn:id,typeReturn:typeReturn},
+            data: { idReturn:id,returnSeatType:returnSeatType},
             success: function(response) {
                 console.log('Các giá trị đã được lưu vào session'+response);
             },
