@@ -42,4 +42,13 @@ public class DBConnect {
             return null;
         }
     }
+
+    public static void main(String[] args) throws SQLException {
+        DBConnect dbConnect = DBConnect.getInstance();
+        try {
+            dbConnect.connect();
+            System.out.println(dbConnect.isConnect());
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }    }
 }

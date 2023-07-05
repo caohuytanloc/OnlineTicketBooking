@@ -1,9 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <meta charset="UTF-8">
     <title>Chọn chỗ ngồi</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/checkin.css">
@@ -40,13 +42,7 @@
     </style>
 </head>
 <body>
-<%
-    String arrivalCity = request.getParameter("arrivalCity");
-    String airplaneName = request.getParameter("airplaneName");
-    String departureCity = request.getParameter("departureCity");
-    String fullname = request.getParameter("fullname");
-    String formattedDepartureTime = request.getParameter("formattedDepartureTime");
-%>
+
 <jsp:include page="header.jsp"/>
 <div class="background">
     <div id="legend" style=" border: 1px solid #000; border-radius: 10px;width: 15%;height: 140px;"></div>
@@ -67,26 +63,28 @@
                 <h3 style=" font-weight: 300;">Chỗ ngồi:</h3>
             </div>
             <div class="column2">
-                <h3 style="font-weight: bold;"><%= fullname %></h3>
-                <h3 style="font-weight: bold;"><%= airplaneName %></h3>
-                <h3 style="font-weight: bold;"><%= departureCity %> &#9658; <%= arrivalCity %></h3>
-                <h3 style="font-weight: bold;"><%= formattedDepartureTime %></h3>
+                <h3 style="font-weight: bold;">${fullname}</h3>
+                <h3 style="font-weight: bold;">${airplaneName}</h3>
+                <h3 style="font-weight: bold;">${departureCity} &#9658; ${arrivalCity}</h3>
+                <h3 style="font-weight: bold;">${formattedDepartureTime}</h3>
             <div id="selected-seats" style="color: #ca161c;"></div>
-
         </div>
         </div>
     </div>
     <div class="button-container" style="text-align: right;">
-        <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="goBack()"><span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span></button>
-        <form id="seatingForm" action="ticket.jsp" method="post">
-            <input type="hidden" name="arrivalCity" value="${flight.arrivalCity}" />
-            <input type="hidden" name="airplaneName" value="${flight.airplaneName}" />
-            <input type="hidden" name="departureCity" value="${flight.departureCity}" />
+        <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="button" onclick="goBack()">
+            <span customcolor="black" font="jambonoMedium" style="font-weight: bold;">Trở về</span>
+        </button>
+        <form id="seatingForm" action="/ticket" method="post">
+            <input id="seating" name="seating" type="text" value="${seating}" style="display: none;" />
             <input type="hidden" name="fullname" value="${fullname}" />
-            <input type="hidden" name="formattedDepartureTime" value="${formattedDepartureTime}" />
-            <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="submit"><span customcolor="black" style="font-weight: bold;">Tiếp tục</span></button>
+            <input type="hidden" name="ticketId" value="${ticketId}" />
+            <button class="MuiButtonBase-root MuiButton-root jss267" tabindex="0" type="submit">
+                <span customcolor="black" style="font-weight: bold;">Tiếp tục</span>
+            </button>
         </form>
     </div>
+
 </div>
 
 <script type="text/javascript">
@@ -95,6 +93,7 @@
     $(document).ready(function () {
         var $cart = $('#selected-seats'), //Sitting Area
             $seating = $('#seating');
+
 
         var sc = $('#seat-map').seatCharts({
             map: ['aaaaaa','aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa', 'aaaaaa'],
@@ -130,7 +129,6 @@
                     $seating.val(seating.join(',')); // Cập nhật giá trị của input seating
                     return 'selected';
                 } else if (this.status() == 'selected') { //Checked
-                    var seatId = this.settings.id;
                     var seatInfo = (this.settings.row + 1) + '_' + this.settings.label; // Tạo chuỗi dạng "row_seat"
                     seating = seating.filter(function (seat) {
                         return seat !== seatInfo; // Xóa ghế đã bỏ chọn khỏi mảng seating
@@ -147,12 +145,14 @@
                 }
             }
         });
+
         var seatingList = [
-            <c:forEach var="seating" items="${seatingList}">
-            '${seating}',
+            <c:forEach var="seating" items="${newSeatingList}" varStatus="status">
+            '${seating}'${!status.last ? ',' : ''}
             </c:forEach>
         ];
         sc.get(seatingList).status('unavailable');
+        // sc.get(['7_1', '5_1']).status('unavailable');
     });
 </script>
 
@@ -172,6 +172,10 @@
         event.preventDefault(); // Ngăn chặn hành vi mặc định của biểu mẫu
         this.submit(); // Gửi biểu mẫu
     });
+
+    var selectedSeats = $('#selected-seats').text();
+    $('#displayed-text').text(selectedSeats);
+
 </script>
 </body>
 </html>

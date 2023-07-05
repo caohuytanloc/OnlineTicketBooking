@@ -55,4 +55,18 @@ public class Ticket {
     public boolean isRoundTrip() {
         return isRoundTrip;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id='" + id + '\'' +
+                ", passengerId='" + passengerId + '\'' +
+                ", flightId='" + flightId + '\'' +
+                ", paymentId='" + paymentId + '\'' +
+                ", seatType='" + seatType + '\'' +
+                ", ticketStatus='" + ticketStatus + '\'' +
+                ", orderTime=" + orderTime +
+                ", isRoundTrip=" + isRoundTrip +
+                '}';
+    }
 }

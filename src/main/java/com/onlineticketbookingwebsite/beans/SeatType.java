@@ -1,6 +1,5 @@
 package com.onlineticketbookingwebsite.beans;
 
-import java.nio.charset.StandardCharsets;
 
 public class SeatType {
     public  String seattype;
@@ -14,9 +13,6 @@ public class SeatType {
         this.amount = amount;
     }
 
-    public double getPrice() {
-        return price;
-    }
 
     public String getSeattype() {
         return seattype;

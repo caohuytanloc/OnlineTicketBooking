@@ -14,7 +14,16 @@ public class Flight {
     private int availableSeats;
     private int totalSeats;
     List<SeatType>list;
-    public Flight(String id, String airplaneName, String departureCity, String arrivalCity, LocalDateTime departureTime,LocalDateTime arrivalTime, int availableSeats, int totalSeats) {}
+    public Flight(String id, String airplaneName, String departureCity, String arrivalCity, LocalDateTime departureTime,LocalDateTime arrivalTime, int availableSeats, int totalSeats) {
+        this.id = id;
+        this.airplaneName = airplaneName;
+        this.departureCity = departureCity;
+        this.arrivalCity = arrivalCity;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.availableSeats = availableSeats;
+        this.totalSeats = totalSeats;
+    }
     public Flight(String id, String airplaneName, String departureCity, String arrivalCity, LocalDateTime departureTime,LocalDateTime arrivalTime, int availableSeats, int totalSeats,List list) {
         this.id = id;
         this.airplaneName = airplaneName;
@@ -24,7 +33,7 @@ public class Flight {
         this.arrivalTime = arrivalTime;
         this.availableSeats = availableSeats;
         this.totalSeats = totalSeats;
-        list=new ArrayList<SeatType>();
+        list=new ArrayList<>();
     }
     public double getPriceSeatFirst(){
         double res=0;
@@ -118,9 +127,6 @@ public class Flight {
         return totalSeats;
     }
 
-    public List<SeatType> getSeatTypeList() {
-        return list;
-    }
     @Override
     public String toString() {
         return "Flight{" +

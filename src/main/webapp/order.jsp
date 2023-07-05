@@ -56,20 +56,21 @@
                             <c:if test="${sessionScope.isRoundTrip == true}">Chuyến bay khứ hồi</c:if>
                             <c:if test="${sessionScope.isRoundTrip == false}">Chuyến bay đến</c:if></p>
                         <p class="ticket__information--numOfPassenger">1 Người lớn</p>
+<%--                            <c:if test="${sessionScope.}"--%>
                     </div>
                     <div class="ticket__information--location">
                         <div class="ticket__information--depart">
                             <p>
                                 <span class="fa-solid fa-circle-dot"></span>
                                 <span>Điểm khởi hành </span
-                                ><span class="arrive-city"><%= session.getAttribute("departure")%></span>
+                                ><span class="arrive-city"><%= session.getAttribute("departureCity")%></span>
                             </p>
                         </div>
                         <div class="ticket__information--arrive">
                             <p>
                                 <span class="fa-solid fa-location-dot icon--active"></span>
                                 <span>Điểm đến </span
-                                ><span class="depart-city"><%= session.getAttribute("destination")%></span>
+                                ><span class="depart-city"><%= session.getAttribute("destinationCity")%></span>
                             </p>
                         </div>
                     </div>
@@ -113,16 +114,16 @@
                                     </div>
                                     <div class="departure__ticket information">
                                         <div class="departure--information ">
-                                            <p class="departure--city city"><%= session.getAttribute("departure")%></p>
+                                            <p class="departure--city city"><%= session.getAttribute("departureCity")%></p>
                                             <p class="departure--time time"><%= session.getAttribute("departureTime")%></p>
                                         </div>
                                         <div class="departure__information--">
                                             <p class="departure--airplane-code">
-                                                <%= session.getAttribute("airplaneName") %> <span><i class="fa-solid fa-plane"></i></span>
+                                                <%= session.getAttribute("departureAirplaneName") %> <span><i class="fa-solid fa-plane"></i></span>
                                             </p>
                                         </div>
                                         <div class="departure__information--">
-                                            <p class="arrive--city city"><%= session.getAttribute("destination")%></p>
+                                            <p class="arrive--city city"><%= session.getAttribute("destinationCity")%></p>
                                             <p class="arrrive--time time"><%= session.getAttribute("destinationTime")%></p>
                                         </div>
                                         <div class="airplane--info">
@@ -131,7 +132,7 @@
                                         </div>
                                     </div>
                                     <div class="departure__ticket price">
-                                        <p></p>
+                                        <p><%=session.getAttribute("departurePrice") %></p>
                                     </div>
                                 </div>
                                 <div></div>
@@ -152,22 +153,22 @@
                                     </div>
                                     <div class="return__ticket date">
                                         <div class="return__ticket">
-                                            <p>Thứ Năm, 06/07/2023</p>
+                                            <p><%= session.getAttribute("returnDepartureTime") %></p>
                                         </div>
                                     </div>
                                     <div class="return__ticket information">
                                         <div class="departure__information">
-                                            <p class="departure--city city">SGN</p>
-                                            <p class="departure--time time">05:25</p>
+                                            <p class="departure--city city"><%= session.getAttribute("returnDepartureCity")%></p>
+                                            <p class="departure--time time"><%= session.getAttribute("returnDepartureTime")%></p>
                                         </div>
                                         <div class="departure__information airplane-type">
                                             <p class="departure--airplane-code">
-                                                VJ198 <span><i class="fa-solid fa-plane"></i></span>
+                                                <%= session.getAttribute("returnAirplaneName") %> <span><i class="fa-solid fa-plane"></i></span>
                                             </p>
                                         </div>
                                         <div class="arrive__information">
-                                            <p class="arrive--city city">HAN</p>
-                                            <p class="arrrive--time time">07:35</p>
+                                            <p class="arrive--city city"><%= session.getAttribute("returnDestinationCity")%></p>
+                                            <p class="arrrive--time time"><%= session.getAttribute("returnDestinationTime")%></p>
                                         </div>
                                         <div class="airplane--info">
                                             <p class="airplane-type">Airbus: A320</p>
@@ -175,7 +176,7 @@
                                         </div>
                                     </div>
                                     <div class="return__ticket price">
-                                        <p>4.642.000 VND</p>
+                                        <p><%=session.getAttribute("returnPrice") %></p>
                                     </div>
                                 </div>
                             </div>
@@ -191,9 +192,9 @@
                         <div class="reservation__information--detail">
                             <div class="departure--detail detail">
                                 <div class="container">
-                                    <p>Chuyến đi</p>
+                                    <p>Chuyến về</p>
                                     <div class="price">
-                                        1,850,300 VND
+                                        <%=session.getAttribute("departurePrice") %>
                                         <span><a href="#" class="fa-solid fa-pen"></a></span>
                                     </div>
                                 </div>
@@ -201,44 +202,20 @@
                                     <div class="departure--price">
                                         <div class="container">
                                             <p class="departure depart-city">
-                                                Tp. Hồ Chí Minh (SGN)
+                                                <%= session.getAttribute("departureCity")%>
                                             </p>
                                             <i class="fa-solid fa-plane"></i>
-                                            <p class="departure arrive-city">Hà Nội (HAN)</p>
-                                            <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                            <p class="departure arrive-city"><%= session.getAttribute("destinationCity")%></p>
+                                            <h5>Tue, 04/07/2023 | <%= session.getAttribute("departureTime")%> - <%= session.getAttribute("destinationTime")%> | VJ198 </h5>
                                         </div>
                                         <div class="departure__ticket container--info">
                                             <div class="departure__ticket--price">Giá vé</div>
                                             <div class="">
-                                                1,850,300 VND
+                                                <%=session.getAttribute("departurePrice") %>
                                                 <span
                                                 ><button
                                                         type="button"
                                                         class="fa-solid fa-caret-down price--info"
-                                                ></button
-                                                ></span>
-                                            </div>
-                                        </div>
-                                        <div class="departure__ticket__container--fee container--info">
-                                            <div class="">Phí - Thuế</div>
-                                            <div class="">
-                                                1,850,300 VND
-                                                <span
-                                                ><button
-                                                        type="button"
-                                                        class="fa-solid fa-caret-down fee--info"
-                                                ></button
-                                                ></span>
-                                            </div>
-                                        </div>
-                                        <div class="departure__ticket__container--service container--info">
-                                            <div class="">Dịch vụ</div>
-                                            <div class="">
-                                                1,850,300 VND
-                                                <span
-                                                ><button
-                                                        type="button"
-                                                        class="fa-solid fa-caret-down service--info"
                                                 ></button
                                                 ></span>
                                             </div>
@@ -251,7 +228,7 @@
                                     <div class="container">
                                         <p>Chuyến về</p>
                                         <div class="price">
-                                            1,850,300 VND
+                                            <%=session.getAttribute("returnPrice") %>
                                             <span><a href="#" class="fa-solid fa-pen"></a></span>
                                         </div>
                                     </div>
@@ -259,44 +236,23 @@
                                         <div class="return--price">
                                             <div class="container">
                                                 <p class="return depart-city">
-                                                    Tp. Hồ Chí Minh (SGN)
+                                                    <%= session.getAttribute("returnDepartureCity")%>
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
-                                                <p class="return arrive-city">Hà Nội (HAN)</p>
-                                                <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                                <p class="return arrive-city">
+                                                    <%= session.getAttribute("returnDestinationCity")%>
+                                                </p>
+                                                <h5>Tue, 04/07/2023 | <%= session.getAttribute("returnDepartureTime")%> - <%= session.getAttribute("returnDestinationTime")%> | VJ198 | Eco</h5>
                                             </div>
                                             <div class="return__ticket__container--price container--info">
                                                 <div class="">Giá vé</div>
                                                 <div class="">
-                                                    1,850,300 VND
+                                                    <%=session.getAttribute("returnPrice") %>
+
                                                     <span
                                                     ><button
                                                             type="button"
                                                             class="fa-solid fa-caret-down price--info"
-                                                    ></button
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                            <div class="return__ticket__container--fee container--info">
-                                                <div class="">Phí - Thuế</div>
-                                                <div class="">
-                                                    1,850,300 VND
-                                                    <span
-                                                    ><button
-                                                            type="button"
-                                                            class="fa-solid fa-caret-down fee--info"
-                                                    ></button
-                                                    ></span>
-                                                </div>
-                                            </div>
-                                            <div class="return__ticket__container--service container--info">
-                                                <div class="">Dịch vụ</div>
-                                                <div class="">
-                                                    1,850,300 VND
-                                                    <span
-                                                    ><button
-                                                            type="button"
-                                                            class="fa-solid fa-caret-down service--info"
                                                     ></button
                                                     ></span>
                                                 </div>
@@ -307,7 +263,7 @@
                             </c:if>
                             <div class="total__price">
                                 <p>Tổng tiền</p>
-                                <h3 class="total__price price">3.625.800 VND</h3>
+                                <h3 class="total__price price"><%= session.getAttribute("")%></h3>
                             </div>
                         </div>
                     </div>
@@ -322,19 +278,19 @@
             </div>
             <div class="footer__price__total">
                 <p>Tổng tiền</p>
-                <p class="footer__price price"><%= session.getAttribute("price") %></p>
+                <p class="footer__price price"><%= (int) Integer.parseInt((String) session.getAttribute("departurePrice")) + (int) Integer.parseInt((String) session.getAttribute("returnPrice")) %></p>
             </div>
             <div class="footer__next">
-                <button id="btn-next__Form" class="footer__btn--next" type="button">Đi tiếp</button>
+<%--                <a href="/userInformationForm">--%>
+                    <button id="btn-next__Form" class="footer__btn--next" type="button">Đi tiếp</button>
+<%--                </a>--%>
             </div>
         </div>
     </footer>
 </div>
 </body>
-<script>
-    var nextButton = document.getElementById("btn-next__Form");
-    nextButton.onclick = function () {
 
-    }
+<script>
+
 </script>
 </html>

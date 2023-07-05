@@ -133,8 +133,8 @@
                 <div class="user__information__container">
                   <input class="user__information__container--input" type="text" name="user-lastname" id="user-lastname" placeholder="Họ">
                   <input class="user__information__container--input" type="text" name="user-firstname" id="user-firstname" placeholder="Tên đệm & tên">
-                  <input class="user__information__container--input" type="" name="user-birthday" id="user-birthday" onfocus="(this.type='date')" placeholder="Ngày sinh DD/MM/YYYY">
-                  <input class="user__information__container--input" type="" name="user-country" id="user-country"  placeholder="Quốc tịch">
+                  <input class="user__information__container--input" type="date" name="user-birthday" id="user-birthday" onfocus="(this.type='date')" placeholder="Ngày sinh DD/MM/YYYY">
+                  <input class="user__information__container--input" type="text" name="user-identification" id="user-identification"  placeholder="Căn cước / CMND">
                   <input class="user__information__container--input" type="number" name="user-phoneNumber" id="user-phonenumber" placeholder="Số điện thoại">
                   <input class="user__information__container--input" type="email" name="user-email" id="user-email" placeholder="Email">
                   <input class="user__information__container--input full-width" type="text" name="user-address" id="user-address" placeholder="Địa chỉ">

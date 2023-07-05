@@ -1,12 +1,14 @@
 package com.onlineticketbookingwebsite.dao;
 
+import com.onlineticketbookingwebsite.beans.Passenger;
 import com.onlineticketbookingwebsite.beans.Ticket;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
 import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class TicketDao {
     private static TicketDao instance;
@@ -63,8 +65,74 @@ public class TicketDao {
         return ticket;
     }
 
+    public Ticket getTicketByTicketId(String ticketId) {
+        Ticket ticket = null;
+        try {
+            // Chuẩn bị câu truy vấn SQL
+            String query = "SELECT * FROM tickets WHERE id = ?";
 
 
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, ticketId);
 
+            // Thực hiện truy vấn và lấy kết quả
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String passengerId = resultSet.getString("passenger_id");
+                String flightId = resultSet.getString("flight_id");
+                String paymentId = resultSet.getString("payment_id");
+                String seatType = resultSet.getString("seat_type");
+                String ticketStatus = resultSet.getString("ticket_status");
+
+                Timestamp orderTimestamp = resultSet.getTimestamp("order_time");
+                LocalDateTime orderTime = orderTimestamp.toLocalDateTime();
+
+                boolean isRoundTrip = resultSet.getBoolean("isRound_trip");
+
+                // Tạo đối tượng Ticket từ kết quả của truy vấn
+                ticket = new Ticket(id, passengerId, flightId, paymentId, seatType, ticketStatus, orderTime, isRoundTrip);
+            }
+
+            // Đóng tài nguyên
+            resultSet.close();
+            ps.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return ticket;
+    }
+
+    public boolean createTicket(String passengerID,
+                                String flightID,
+                                String seatType, String ticketStatus, int isRoundTrip) {
+        boolean result = false;
+        Random random = new Random();
+        String id = "T" + String.format("%04d", random.nextInt(10000));
+        //set current order time
+        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+        try {
+            String query = "INSERT INTO TICKET VALUE ?, ?, ?, ?, ?, ?, ?, ?";
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, id);
+            ps.setString(2, passengerID);
+            ps.setString(3, flightID);
+            ps.setString(4, null);
+            ps.setString(5, seatType);
+            ps.setString(6, ticketStatus);
+            ps.setDate(7, date);
+            ps.setInt(8, isRoundTrip);
+            int test = ps.executeUpdate();
+            if (test == 1)
+                result = true;
+            else result = false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
 }
 
