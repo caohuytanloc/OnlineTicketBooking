@@ -10,10 +10,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/stylepayment.css">
-<%--    <link href="/css/bootstrap.min.css" rel="stylesheet"/>--%>
-    <!-- Custom styles for this template -->
-<%--    <link href="/css/jumbotron-narrow.css" rel="stylesheet">--%>
-    <script src="/js/jquery-1.11.3.min.js"></script>
     <style>
         .row {
             margin: 20px 0;
