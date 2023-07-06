@@ -6,8 +6,8 @@
 // var phoneNumber = $('input[name="user-phoneNumber"]').val();
 // var email = $('input[name="user-email"]').val();
 // var address = $('input[name="user-address"]').val();
-// // var ticketID = session.getItem("ticket");
-
+// var ticketID = session.getItem("ticket");
+// console(gender,lastname,firstname,birthday,country,phoneNumber,email,address)
 var FormValidate = () => {
 
 }
@@ -27,7 +27,7 @@ $("#btn-user-information-form-next").click(function () {
             address: $('input[name="user-address"]').val()
         },
         success: function(response) {
-            alert("Thông tin đã được ghi nhận trên hệ thống")
+            // alert("Thông tin đã được ghi nhận trên hệ thống")
         }
         })
 

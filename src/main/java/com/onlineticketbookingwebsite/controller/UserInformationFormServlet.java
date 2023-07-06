@@ -7,12 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
 
-import com.onlineticketbookingwebsite.beans.Passenger;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+
 import com.onlineticketbookingwebsite.dao.PassengerDao;
 import com.onlineticketbookingwebsite.dao.TicketDao;
 
@@ -26,32 +25,72 @@ public class UserInformationFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         String gender = request.getParameter("gender");
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
         String birthday = request.getParameter("birthday");
-        String identification = request.getParameter("identification");
+        String identification = request.getParameter("identify");
         String phoneNumber = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
         String returnFlightID = (String) session.getAttribute("idReturn");
         String departureFlightID = (String) session.getAttribute("id");
-//      String returnSeatType = (String) session.getAttribute("")
+        String departureSeatType = (String) session.getAttribute("departureSeatType");
 
-        try {
-            Date birthdayDate = formatter.parse(birthday);
-            Random random = new Random();
-            String passenger_id = "P" + String.format("%04d", random.nextInt(10000));
-            PassengerDao.getInstance().createPassenger(passenger_id, firstname,lastname, (java.sql.Date) birthdayDate,identification, phoneNumber, email, address, gender);
+        System.out.println(departureFlightID + "birthday" + birthday);
 
-//            TicketDao.getInstance().createTicket(passenger_id, departureFlightID,)
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+
+        LocalDate date = LocalDate.parse(birthday);
+
+        LocalDateTime dateTime = date.atStartOfDay();
+
+        String id_passenger = "P00" + String.valueOf(((Integer.parseInt(new PassengerDao().getId().substring(3)) + 1)));
+        System.out.println(id_passenger);
+
+
+        Boolean isRoundTrip = (Boolean) session.getAttribute("isRoundTrip");
+        System.out.println(isRoundTrip);
+
+        if (isRoundTrip == false) {
+            try {
+
+
+                boolean savePass = new PassengerDao().createPassenger(id_passenger, firstname, lastname, dateTime, identification, phoneNumber, email, address, gender);
+                System.out.println(savePass);
+
+                boolean saveTicket = new TicketDao().createTicket(id_passenger, departureFlightID, departureSeatType, "Đã bán", 0);
+                System.out.println(saveTicket);
+
+                if (savePass && saveTicket) {
+                    System.out.println("Thành công");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            request.getRequestDispatcher("/checkPayment").forward(request, response);
         }
+        if (isRoundTrip == true) {
+            try {
+                boolean savePass = new PassengerDao().createPassenger(id_passenger, firstname, lastname, dateTime, identification, phoneNumber, email, address, gender);
+                System.out.println(savePass);
 
-        //Create Passenger
+                boolean saveTicket = new TicketDao().createTicket(id_passenger, departureFlightID, departureSeatType, "Đã bán", 1);
+                System.out.println(saveTicket);
+                boolean save1Ticket = new TicketDao().createTicket(id_passenger, returnFlightID, departureSeatType, "Đã bán", 1);
+                System.out.println(saveTicket);
+
+                if (savePass && saveTicket&&save1Ticket) {
+                    System.out.println("Thành công");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            request.getRequestDispatcher("/checkPayment").forward(request, response);
+
+        }
 
 
     }

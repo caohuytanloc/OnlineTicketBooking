@@ -88,7 +88,6 @@
                         <input type="radio" id="one-way" name="gender" value="one-way"
                                onclick="handleFlightTypeChange()">
                         <label for="round-trip">Khứ hồi</label>
-
                         <input class="unit" type="radio" id="round-trip" name="gender" value="round-trip" checked
                                onclick="handleFlightTypeChange()">
                         <select id="passenger-select" name="passenger-select">
@@ -1047,22 +1046,44 @@
 
         var input1Value = document.getElementById("departure").value;
         var input2Value = document.getElementById("destination").value;
-        var label1Value = document.getElementById("datepicker").innerText;
-        var label2Value = document.getElementById("datepicker1").innerText;
+        var label1Value = document.getElementById("datepickerinput").value;
+        var label2Value = document.getElementById("datepickerinput1").value;
+        var div = document.getElementById('return-date');
+        var computedStyle = getComputedStyle(div);
 
-        // Kiểm tra xem một trong hai ô input hoặc label không hợp lệ
-        if (((input1Value === '' || input2Value === '' || label1Value === '' || label2Value === '') && (input2Value.display = 'block')) || ((input1Value === '' || label1Value === '' || label2Value === '') && (input2Value.display = 'none'))) {
-            event.preventDefault(); // Ngăn chặn chuyển đến trang mới
+        console.log(computedStyle.display=='none')
+        if(computedStyle.display === 'block'){
+                if(input1Value == '' || input2Value == '' || label1Value == '' || label2Value == ''){
+                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
 
-            alert("Vui lòng chọn đầy đủ thông tin!");
-            return;
-        }
-        // if ((input1Value === '' || !isValidDate(label1Value) || !isValidDate(label2Value)) && (input2Value.display = 'none')) {
-        //   event.preventDefault(); // Ngăn chặn chuyển đến trang mới
-        //
-        //   alert("Vui lòng chọn đầy đủ thông tin!");
-        //   return;
-        // }
+                    alert("Vui lòng chọn đầy đủ thông tin!");
+                    return;
+                }
+            }
+            else if(computedStyle.display === 'none'){
+                if (input1Value== '' || label1Value == '' || input2Value == ''){
+                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
+
+                    alert("Vui lòng chọn đầy đủ thông tin!");
+                    return;
+                }
+            }  if(computedStyle.display === 'block'){
+                if(input1Value == '' || input2Value == '' || label1Value == '' || label2Value == ''){
+                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
+
+                    alert("Vui lòng chọn đầy đủ thông tin!");
+                    return;
+                }
+            }
+            else if(computedStyle.display === 'none'){
+                if (input1Value== '' || label1Value == '' || input2Value == ''){
+                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
+
+                    alert("Vui lòng chọn đầy đủ thông tin!");
+                    return;
+                }
+            }
+
     }
 
     function isValidDate(dateString) {
