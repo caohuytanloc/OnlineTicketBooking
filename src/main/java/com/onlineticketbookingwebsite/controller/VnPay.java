@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -22,9 +23,14 @@ public class VnPay extends HttpServlet {
         String vnp_Command = "pay";
         //String orderType = req.getParameter("ordertype");
         String orderType = "250007";
-//        long amount = Integer.parseInt(req.getParameter("amount"))*100;
-        long amount = 1908000*100;
-        //String bankCode = req.getParameter("bankCode");
+        HttpSession session = req.getSession();
+
+        String total =  (String)session.getAttribute("total");
+        String result = total.replace("VND", "").trim();
+        result = result.replace(".", "");
+        long amount = (Long.parseLong(result))*100;
+        System.out.println(amount);
+
         String bankCode="VNBANK";
 
         String vnp_TxnRef = Config.getRandomNumber(8);
