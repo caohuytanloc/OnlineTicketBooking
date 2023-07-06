@@ -59,14 +59,14 @@
                             <p>
                                 <span class="fa-solid fa-circle-dot"></span>
                                 <span>Điểm khởi hành </span
-                                ><span class="arrive-city"><%= session.getAttribute("departureCity")%></span>
+                                ><span class="arrive-city">${sessionScope.departureFlight.getDepartureCity()}</span>
                             </p>
                         </div>
                         <div class="ticket__information--arrive">
                             <p>
                                 <span class="fa-solid fa-location-dot icon--active"></span>
                                 <span>Điểm đến </span
-                                ><span class="depart-city"><%= session.getAttribute("destinationCity")%></span>
+                                ><span class="depart-city">${sessionScope.departureFlight.arrivalCity}</span>
                             </p>
                         </div>
                     </div>
@@ -283,8 +283,7 @@
                 <div class="departure--price-info">
                     <div class="departure--price">
                         <div class="container">
-                            <p class="departure depart-city">
-                                ${sessionScope.departure} (SGN)
+                            <p class="departure depart-city">(SGN)
                             </p>
                             <i class="fa-solid fa-plane"></i>
                             <p class="departure arrive-city">${sessionScope.destination} (HAN)</p>
@@ -319,7 +318,7 @@
                         <div class="departure__ticket__container--fee container--info">
                             <div class="">Phí - Thuế</div>
                             <div class="" id="taxgo">
-                                1.850.300 VND
+                               0 VND
                                 <span
                                 ><button
                                         type="button"
@@ -358,7 +357,7 @@
                         <div class="departure__ticket__container--service container--info">
                             <div class="">Dịch vụ</div>
                             <div class="" id="servicego">
-                                1.850.300 VND
+                                0 VND
                                 <span
                                 ><button
                                         type="button"
@@ -404,7 +403,7 @@
                         <div class="return__ticket__container--fee container--info">
                             <div class="">Phí - Thuế</div>
                             <div class="" id="taxreturn">
-                                1.850.300 VND
+                                0 VND
                                 <span
                                 ><button
                                         type="button"

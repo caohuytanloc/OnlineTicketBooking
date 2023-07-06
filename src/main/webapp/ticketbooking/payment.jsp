@@ -26,7 +26,7 @@
 <div class="container-fluid">
     <article>
         <div class="head">
-            <img src="images/sun.jpg" class="head-icon" alt="">
+            <img src="/images/svgs/solid/sun.jpg" class="head-icon" alt="">
             <h3 for="">Xem lại hành trình</h3>
         </div>
         <div class="main-content">
@@ -34,7 +34,7 @@
                 <div class="title">
                     <div class="container">
                         <button type="button" class="collapsible">
-                            <img src="images/airplane-icon.png" class="icon-hehe" alt="">
+                            <img src="${pageContext.request.contextPath}/images/svgs/solid/airplane-icon.png" class="icon-hehe" alt="">
                             <h2 style="float: left;">Chuyến bay</h2>
                         </button>
                     </div>
@@ -174,7 +174,7 @@
                         <th>Thanh toán ngay bằng vnpay</th>
                     </tr>
                     <tr>
-                        <td><a href="" class="box"><img src="images/paynow.jpg" width="20%" alt=""
+                        <td><a href="" class="box"><img src="${pageContext.request.contextPath}/images/svgs/solid/paynow.jpg" width="20%" alt=""
                                                         style="padding: 20px;border:1px solid #ccc;border-radius: 8px;"><input
                                 type="radio"
                                 class="rdoIn"></a></td>
@@ -206,7 +206,7 @@
         <div class="flight-1">
             <div class="container">
                 <div class="head">
-                    <img src="images/airplane-icon.png" class="head-icon" alt="">
+                    <img src="${pageContext.request.contextPath}/images/svgs/solid/airplane-icon.png" class="head-icon" alt="">
                     <h3 for="">Hồ Chí Minh to Đà Nẵng</h3>
                 </div>
             </div>
@@ -246,27 +246,27 @@
                         <table class="col-full">
                             <tr>
                                 <td>Giá vé (Người lớn)</td>
-                                <td style="float: right;">1x 750,000 = 750,000 VND</td>
+<%--                                <td style="float: right;">1x ${sessionScope.} = 750,000 VND</td>--%>
                             </tr>
                             <tr>
                                 <td>Phí an ninh soi chiếu</td>
-                                <td style="float: right;">40,000 VND</td>
+                                <td style="float: right;">0 VND</td>
                             </tr>
                             <tr>
                                 <td>Phí sân bay nội địa</td>
-                                <td style="float: right;">200,000 VND</td>
+                                <td style="float: right;">0 VND</td>
                             </tr>
                             <tr>
                                 <td>Phu thu quản trị hệ thống</td>
-                                <td style="float: right;">834,000 VND</td>
+                                <td style="float: right;">0 VND</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: 700;">TỔNG VAT</td>
-                                <td style="float: right;font-weight: 700;">324,000 VND</td>
+                                <td style="float: right;font-weight: 700;">0 VND</td>
                             </tr>
                             <tr>
                                 <td style="font-weight: 700;">Tổng chi phí chuyến bay</td>
-                                <td style="float: right;font-weight: 700;">1,908,000 VND</td>
+                                <td style="float: right;font-weight: 700;">${sessionScope.total}</td>
                             </tr>
                         </table>
                     </div>
@@ -298,7 +298,7 @@
 
             <div class="row place-content">
                 <div class="col col-full" style="padding: 0;">
-                    <img src="images/danangdepthe.jpg" width="70%" class="place-img">
+                    <img src="${pageContext.request.contextPath}/images/svgs/solid/danangdepthe.jpg" width="70%" class="place-img">
                     <div class="place-body">
                         <h3>Hồ Chí Minh tới Đà Nẵng</h3>
                         <p class="sub-place">Một chiều | 1 người lớn</p>
@@ -310,7 +310,7 @@
                 <table class="col col-full">
                     <tr>
                         <td><h3>Tổng tiền</h3></td>
-                        <td><h3>1,908,000 VNĐ</h3></td>
+                        <td><h3>${sessionScope.total}</h3></td>
                     </tr>
                     <tr>
                         <td colspan="2">Bao gồm thuế,phí và phụ phí</td>
@@ -323,7 +323,7 @@
                     <table class="col col-full" style="background-color: #d9d9d9;">
                         <tr>
                             <td><b>Tóm tắt</b></td>
-                            <td><b>1,908,000 VNĐ</b></td>
+                            <td><b>${sessionScope.total}</b></td>
                         </tr>
                     </table>
                 </button>

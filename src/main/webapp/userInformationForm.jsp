@@ -161,7 +161,7 @@
                 <div class="container">
                   <p>Chuyến đi</p>
                   <div class="price">
-                    ${sessionScope.departure}
+<%--                    ${sessionScope}--%>
                     <span><a href="#" class="fa-solid fa-pen"></a></span>
                   </div>
                 </div>
@@ -304,7 +304,7 @@
         <p class="footer__price price">${sessionScope.total}</p>
       </div>
       <div class="footer__next">
-        <a href="">
+        <a href="/checkPayment">
           <button id="btn-user-information-form-next" class="footer__btn--next" type="button">Đi tiếp</button>
 
         </a>
