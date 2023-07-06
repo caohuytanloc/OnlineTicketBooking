@@ -26,33 +26,35 @@
 
 <body>
 <div class="app">
-  <header class="header">
-    <div class="navbar__container">
-      <div class="navbar__inner">
-        <div class="navbar__logo">
-          <img src="logo-white.svg" alt="logo" srcset="" />
-        </div>
-      </div>
-      <div class="navbar__nav">
-        <div class="nav__top">
-          <div class="user__signin">
-            <a href="">Đăng ký</a>
-          </div>
-          <div>|</div>
-          <div class="user__signup">
-            <a href="">Đăng nhập</a>
-          </div>
-        </div>
-        <div class="nav__bottom">
-          <nav class="nav__bottom--item">Skyjoy</nav>
-          <nav class="nav__bottom--item">Chuyến bay của tôi</nav>
-          <nav class="nav__bottom--item" href="/checkin">Online Check-in</nav>
-          <nav class="nav__bottom--item tab">Dịch vụ chuyến bay</nav>
-          <nav class="nav__bottom--item tab">Dịch vụ khác</nav>
-        </div>
-      </div>
-    </div>
-  </header>
+  <jsp:include page="/header.jsp"/>
+
+<%--  <header class="header">--%>
+<%--    <div class="navbar__container">--%>
+<%--      <div class="navbar__inner">--%>
+<%--        <div class="navbar__logo">--%>
+<%--          <img src="logo-white.svg" alt="logo" srcset="" />--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="navbar__nav">--%>
+<%--        <div class="nav__top">--%>
+<%--          <div class="user__signin">--%>
+<%--            <a href="">Đăng ký</a>--%>
+<%--          </div>--%>
+<%--          <div>|</div>--%>
+<%--          <div class="user__signup">--%>
+<%--            <a href="">Đăng nhập</a>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--        <div class="nav__bottom">--%>
+<%--          <nav class="nav__bottom--item">Skyjoy</nav>--%>
+<%--          <nav class="nav__bottom--item">Chuyến bay của tôi</nav>--%>
+<%--          <nav class="nav__bottom--item" href="/checkin">Online Check-in</nav>--%>
+<%--          <nav class="nav__bottom--item tab">Dịch vụ chuyến bay</nav>--%>
+<%--          <nav class="nav__bottom--item tab">Dịch vụ khác</nav>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </header>--%>
   <div class="ticket__confirm">
     <div class="ticket__confirm--header">
       <div class="header__inner">
@@ -66,14 +68,16 @@
               <p>
                 <span class="fa-solid fa-circle-dot"></span>
                 <span>Điểm khởi hành </span
-                ><span class="arrive-city">Tp. HCM ( SGN )</span>
+                ><span class="arrive-city">                    ${sessionScope.departure}
+              </span>
               </p>
             </div>
             <div class="ticket__information--arrive">
               <p>
                 <span class="fa-solid fa-location-dot icon--active"></span>
                 <span>Điểm đến </span
-                ><span class="depart-city">Hà Nội ( HAN )</span>
+                ><span class="depart-city">                        ${sessionScope.destination}
+              </span>
               </p>
             </div>
           </div>
@@ -109,7 +113,7 @@
                             type="radio"
                             id="male"
                             name="gender"
-                            value="male"
+                            value="Nam"
                     />
                     <label for="male">Nam</label><br />
 
@@ -119,7 +123,7 @@
                             type="radio"
                             id="female"
                             name="gender"
-                            value="female"
+                            value="Nữ"
                     />
                     <label for="female">Nữ</label><br />
                   </div>
@@ -128,7 +132,7 @@
                             type="radio"
                             id="none"
                             name="gender"
-                            value="none"
+                            value="Bi"
                     />
                      <label for="none">Khác</label>
                   </div>
@@ -157,7 +161,7 @@
                 <div class="container">
                   <p>Chuyến đi</p>
                   <div class="price">
-                    1,850,300 VND
+                    ${sessionScope.departure}
                     <span><a href="#" class="fa-solid fa-pen"></a></span>
                   </div>
                 </div>
@@ -240,7 +244,6 @@
                       >
                         <div class="">Giá vé</div>
                         <div class="">${sessionScope.pricereturn}
-                          1,850,300 VND
                           <span
                           ><button
                                   type="button"

@@ -88,7 +88,6 @@
                         <input type="radio" id="one-way" name="gender" value="one-way"
                                onclick="handleFlightTypeChange()">
                         <label for="round-trip">Khứ hồi</label>
-
                         <input class="unit" type="radio" id="round-trip" name="gender" value="round-trip" checked
                                onclick="handleFlightTypeChange()">
                         <select id="passenger-select" name="passenger-select">

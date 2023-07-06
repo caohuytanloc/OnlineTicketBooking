@@ -110,19 +110,19 @@ public class TicketDao {
         Random random = new Random();
         String id = "T" + String.format("%04d", random.nextInt(10000));
         //set current order time
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+//        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 
         try {
-            String query = "INSERT INTO TICKET VALUE ?, ?, ?, ?, ?, ?, ?, ?";
+            String query = "INSERT INTO tickets (id, passenger_id, flight_id, seat_type, ticket_status, order_time, isRound_trip)\n" +
+                    "VALUES (?, ?, ?,  ?, ?, NOW(), ?);";
             PreparedStatement ps = DBConnect.getInstance().get(query);
             ps.setString(1, id);
             ps.setString(2, passengerID);
             ps.setString(3, flightID);
-            ps.setString(4, null);
-            ps.setString(5, seatType);
-            ps.setString(6, ticketStatus);
-            ps.setDate(7, date);
-            ps.setInt(8, isRoundTrip);
+            ps.setString(4, seatType);
+            ps.setString(5, ticketStatus);
+//            ps.setObject(7, date);
+            ps.setInt(6, isRoundTrip);
             int test = ps.executeUpdate();
             if (test == 1)
                 result = true;
@@ -133,6 +133,10 @@ public class TicketDao {
             throw new RuntimeException(e);
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+//        System.out.println(new TicketDao().createTicket("P001","F001","First","Đã bán",0));
     }
 }
 

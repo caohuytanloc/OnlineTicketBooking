@@ -26,7 +26,7 @@ public class OrderServlet extends HttpServlet {
 
         Boolean isRoundTrip = (Boolean) session.getAttribute("isRoundTrip");
         Flight departureFlight = FlightDao.getInstance().getFlightByFlightId(flight_id);
-        System.out.println(departureFlight.toString());
+        session.setAttribute("departureFlight", departureFlight);
 
         if (isRoundTrip==false) {
             // get seat type of departure ticket
@@ -68,6 +68,9 @@ public class OrderServlet extends HttpServlet {
 
             // get departure Flight
             Flight returnFlight = FlightDao.getInstance().getFlightByFlightId(return_flight_ID);
+
+            session.setAttribute("returnFlight", returnFlight);
+
             // get date time
             LocalDateTime returnDepartureTime = returnFlight.getDepartureTime();
 

@@ -8,8 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.sql.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class PassengerDao {
@@ -117,7 +119,14 @@ public class PassengerDao {
 //        LocalTime time = LocalTime.of(15, 30, 0); // Khai báo thời gian: 15:30:00
 //
 //        LocalDateTime dateTime = LocalDateTime.of(date, time);
-        System.out.println(new PassengerDao().createPassenger("P006","Thắm","Huỳnh",LocalDateTime.now(),"12334","03939","h1@gmial.com","diachi","Nữ"));
+//        System.out.println(new PassengerDao().createPassenger("P006","Thắm","Huỳnh",LocalDateTime.now(),"12334","03939","h1@gmial.com","diachi","Nữ"));
+//        String id_passenger = String.valueOf(((Integer.parseInt(new PassengerDao().getId().substring(3)) + 1)));
+     String birth = "2023-07-09";
+        LocalDate date = LocalDate.parse(birth);
+
+        LocalDateTime dateTime = date.atStartOfDay();
+
+        System.out.println("LocalDateTime: " + dateTime);
     }
 
 }
