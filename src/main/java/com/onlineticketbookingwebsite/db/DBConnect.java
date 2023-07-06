@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class DBConnect {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/airticketmanagement";
     private static final String USER = "root";
-    private static final String PASSWORD = "07090710";
+    private static final String PASSWORD = "";
     private static DBConnect dbConnect;
     private static Connection connection;
 
