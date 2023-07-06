@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: howl
@@ -162,16 +165,17 @@
                   <div class="departure--price">
                     <div class="container">
                       <p class="departure depart-city">
-                        Tp. Hồ Chí Minh (SGN)
+                        ${sessionScope.destination}
                       </p>
                       <i class="fa-solid fa-plane"></i>
-                      <p class="departure arrive-city">Hà Nội (HAN)</p>
+                      <p class="departure arrive-city">${sessionScope.departure}
+                      </p>
                       <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
                     </div>
                     <div class="departure__ticket container--info">
                       <div class="departure__ticket--price">Giá vé</div>
                       <div class="">
-                        1,850,300 VND
+                       ${sessionScope.priceticket}
                         <span
                         ><button
                                 type="button"
@@ -224,17 +228,18 @@
                     <div class="return--price">
                       <div class="container">
                         <p class="return depart-city">
-                          Tp. Hồ Chí Minh (SGN)
+                            ${sessionScope.departure}
                         </p>
                         <i class="fa-solid fa-plane"></i>
-                        <p class="return arrive-city">Hà Nội (HAN)</p>
+                        <p class="return arrive-city">${sessionScope.destination}
+                        </p>
                         <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
                       </div>
                       <div
                               class="return__ticket__container--price container--info"
                       >
                         <div class="">Giá vé</div>
-                        <div class="">
+                        <div class="">${sessionScope.pricereturn}
                           1,850,300 VND
                           <span
                           ><button
@@ -278,7 +283,7 @@
               </c:if>
               <div class="total__price">
                 <p>Tổng tiền</p>
-                <h3 class="total__price price">3.625.800 VND</h3>
+                <h3 class="total__price price">${sessionScope.total}</h3>
               </div>
             </div>
           </div>
@@ -293,10 +298,13 @@
       </div>
       <div class="footer__price__total">
         <p>Tổng tiền</p>
-        <p class="footer__price price">3.625.800 VND</p>
+        <p class="footer__price price">${sessionScope.total}</p>
       </div>
       <div class="footer__next">
-        <button id="btn-user-information-form-next" class="footer__btn--next" type="button">Đi tiếp</button>
+        <a href="">
+          <button id="btn-user-information-form-next" class="footer__btn--next" type="button">Đi tiếp</button>
+
+        </a>
       </div>
     </div>
   </footer>

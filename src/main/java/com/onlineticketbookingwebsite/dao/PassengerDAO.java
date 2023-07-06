@@ -60,7 +60,7 @@ public class PassengerDao {
     }
 
     public boolean createPassenger(String id, String firstName, String lastName,
-                                   Date birthday, String identification, String phoneNumber,
+                                   LocalDateTime birthday, String identification, String phoneNumber,
                                    String email, String address, String gender) {
         boolean result = false;
 
@@ -70,7 +70,7 @@ public class PassengerDao {
             ps.setString(1, id);
             ps.setString(2, lastName + "" + firstName);
             ps.setString(3, phoneNumber);
-            ps.setDate(4, birthday);
+            ps.setObject(4, birthday);
             ps.setString(5, gender);
             ps.setString(6,  address);
             ps.setString(7, identification);
@@ -88,5 +88,37 @@ public class PassengerDao {
         }
         return result;
     }
+    public String getId() {
+        String result="";
+
+
+            String query = "SELECT id\n" +
+                    "FROM passengers\n" +
+                    "ORDER BY id DESC\n" +
+                    "LIMIT 1;";
+            try (PreparedStatement ps = DBConnect.getInstance().get(query)) {
+
+                try (ResultSet resultSet = ps.executeQuery()) {
+                    if (resultSet.next()) {
+                        result = resultSet.getString(1);
+
+                    }
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        return result;
+
+    }
+
+    public static void main(String[] args) {
+//        LocalDate date = LocalDate.of(2023, 7, 6); // Khai báo ngày: 2023-07-06
+//        LocalTime time = LocalTime.of(15, 30, 0); // Khai báo thời gian: 15:30:00
+//
+//        LocalDateTime dateTime = LocalDateTime.of(date, time);
+        System.out.println(new PassengerDao().createPassenger("P006","Thắm","Huỳnh",LocalDateTime.now(),"12334","03939","h1@gmial.com","diachi","Nữ"));
+    }
+
 }
 

@@ -687,7 +687,7 @@
         $.ajax({
             url: "/order",
             type: "POST",
-            data: { idReturn:id,returnSeatType:returnSeatType},
+            data: { idReturn:id,returnSeatType:returnSeatType,pricereturn:pricereturnElement.innerText,total:totalElement.innerText},
             success: function(response) {
                 console.log('Các giá trị đã được lưu vào session'+response);
             },

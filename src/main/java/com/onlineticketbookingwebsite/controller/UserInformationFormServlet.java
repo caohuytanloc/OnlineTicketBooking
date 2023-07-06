@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 
@@ -26,6 +28,8 @@ public class UserInformationFormServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        System.out.println("đã vào ");
         HttpSession session = request.getSession();
         String gender = request.getParameter("gender");
         String firstname = request.getParameter("firstname");
@@ -35,23 +39,41 @@ public class UserInformationFormServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
         String returnFlightID = (String) session.getAttribute("idReturn");
         String departureFlightID = (String) session.getAttribute("id");
-//      String returnSeatType = (String) session.getAttribute("")
+        String departureSeatType = (String) session.getAttribute("departureSeatType");
 
-        try {
-            Date birthdayDate = formatter.parse(birthday);
-            Random random = new Random();
-            String passenger_id = "P" + String.format("%04d", random.nextInt(10000));
-            PassengerDao.getInstance().createPassenger(passenger_id, firstname,lastname, (java.sql.Date) birthdayDate,identification, phoneNumber, email, address, gender);
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        System.out.println("gender"+gender+"firstname"+firstname+"lastname"
+                +lastname+"identification"+identification+"phoneNumber"+phoneNumber+"email"+email+"địa chỉ"+address);
+        System.out.println(departureFlightID+"departureSeatType"+departureSeatType);
 
-//            TicketDao.getInstance().createTicket(passenger_id, departureFlightID,)
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
 
-        //Create Passenger
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+        LocalDateTime dateTime = LocalDateTime.parse(birthday, formatter);
+        String idpassenger = (new PassengerDao().getId().substring(3) + 1).toString();
+
+
+        Boolean isRoundTrip = (Boolean) session.getAttribute("isRoundTrip");
+        System.out.println(isRoundTrip);
+
+//        if (isRoundTrip == false) {
+//
+         boolean savePass=  new PassengerDao().createPassenger(idpassenger, firstname, lastname, dateTime, identification, phoneNumber, email, address, gender);
+            System.out.println(savePass);
+
+            boolean saveTicket=  new TicketDao().createTicket(idpassenger, departureFlightID, departureSeatType, "Đã bán", 0);
+            System.out.println(saveTicket);
+
+            if(savePass==true&&saveTicket==true){
+           System.out.println("Thành công");
+       }
+//            request.getRequestDispatcher("/").forward(request,response);
+//        }
+
+
 
 
     }

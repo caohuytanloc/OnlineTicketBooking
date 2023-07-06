@@ -274,12 +274,12 @@
             </div>
             <div class="footer__price__total">
                 <p>Tổng tiền</p>
-                <p class="footer__price price"><%= (int) Integer.parseInt((String) session.getAttribute("departurePrice")) + (int) Integer.parseInt((String) session.getAttribute("returnPrice")) %></p>
+<%--                <p class="footer__price price"><%= (int) Integer.parseInt((String) session.getAttribute("departurePrice")) + (int) Integer.parseInt((String) session.getAttribute("returnPrice")) %></p>--%>
             </div>
             <div class="footer__next">
-<%--                <a href="/userInformationForm">--%>
+                <a href="/userInformationForm">
                     <button id="btn-next__Form" class="footer__btn--next" type="button">Đi tiếp</button>
-<%--                </a>--%>
+                </a>
             </div>
         </div>
     </footer>

@@ -110,7 +110,12 @@ public class OrderServlet extends HttpServlet {
         String returnSeatType = request.getParameter("returnSeatType");
         session.setAttribute("returnSeatType", returnSeatType);
         System.out.println("idReturn:"+returnSeatType);
-
+        String pricereturn = request.getParameter("pricereturn");
+        session.setAttribute("pricereturn", pricereturn);
+        System.out.println("pricereturn:"+pricereturn);
+        String total = request.getParameter("total");
+        session.setAttribute("total", total);
+        System.out.println("total:"+total);
 //
 //        HttpSession session = request.getSession();
 //
