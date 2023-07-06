@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: howl
@@ -23,33 +26,35 @@
 
 <body>
 <div class="app">
-  <header class="header">
-    <div class="navbar__container">
-      <div class="navbar__inner">
-        <div class="navbar__logo">
-          <img src="logo-white.svg" alt="logo" srcset="" />
-        </div>
-      </div>
-      <div class="navbar__nav">
-        <div class="nav__top">
-          <div class="user__signin">
-            <a href="">Đăng ký</a>
-          </div>
-          <div>|</div>
-          <div class="user__signup">
-            <a href="">Đăng nhập</a>
-          </div>
-        </div>
-        <div class="nav__bottom">
-          <nav class="nav__bottom--item">Skyjoy</nav>
-          <nav class="nav__bottom--item">Chuyến bay của tôi</nav>
-          <nav class="nav__bottom--item" href="/checkin">Online Check-in</nav>
-          <nav class="nav__bottom--item tab">Dịch vụ chuyến bay</nav>
-          <nav class="nav__bottom--item tab">Dịch vụ khác</nav>
-        </div>
-      </div>
-    </div>
-  </header>
+  <jsp:include page="/header.jsp"/>
+
+<%--  <header class="header">--%>
+<%--    <div class="navbar__container">--%>
+<%--      <div class="navbar__inner">--%>
+<%--        <div class="navbar__logo">--%>
+<%--          <img src="logo-white.svg" alt="logo" srcset="" />--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--      <div class="navbar__nav">--%>
+<%--        <div class="nav__top">--%>
+<%--          <div class="user__signin">--%>
+<%--            <a href="">Đăng ký</a>--%>
+<%--          </div>--%>
+<%--          <div>|</div>--%>
+<%--          <div class="user__signup">--%>
+<%--            <a href="">Đăng nhập</a>--%>
+<%--          </div>--%>
+<%--        </div>--%>
+<%--        <div class="nav__bottom">--%>
+<%--          <nav class="nav__bottom--item">Skyjoy</nav>--%>
+<%--          <nav class="nav__bottom--item">Chuyến bay của tôi</nav>--%>
+<%--          <nav class="nav__bottom--item" href="/checkin">Online Check-in</nav>--%>
+<%--          <nav class="nav__bottom--item tab">Dịch vụ chuyến bay</nav>--%>
+<%--          <nav class="nav__bottom--item tab">Dịch vụ khác</nav>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </header>--%>
   <div class="ticket__confirm">
     <div class="ticket__confirm--header">
       <div class="header__inner">
@@ -63,14 +68,16 @@
               <p>
                 <span class="fa-solid fa-circle-dot"></span>
                 <span>Điểm khởi hành </span
-                ><span class="arrive-city">Tp. HCM ( SGN )</span>
+                ><span class="arrive-city">                    ${sessionScope.departure}
+              </span>
               </p>
             </div>
             <div class="ticket__information--arrive">
               <p>
                 <span class="fa-solid fa-location-dot icon--active"></span>
                 <span>Điểm đến </span
-                ><span class="depart-city">Hà Nội ( HAN )</span>
+                ><span class="depart-city">                        ${sessionScope.destination}
+              </span>
               </p>
             </div>
           </div>
@@ -106,7 +113,7 @@
                             type="radio"
                             id="male"
                             name="gender"
-                            value="male"
+                            value="Nam"
                     />
                     <label for="male">Nam</label><br />
 
@@ -116,7 +123,7 @@
                             type="radio"
                             id="female"
                             name="gender"
-                            value="female"
+                            value="Nữ"
                     />
                     <label for="female">Nữ</label><br />
                   </div>
@@ -125,7 +132,7 @@
                             type="radio"
                             id="none"
                             name="gender"
-                            value="none"
+                            value="Bi"
                     />
                      <label for="none">Khác</label>
                   </div>
@@ -154,7 +161,7 @@
                 <div class="container">
                   <p>Chuyến đi</p>
                   <div class="price">
-                    1,850,300 VND
+<%--                    ${sessionScope}--%>
                     <span><a href="#" class="fa-solid fa-pen"></a></span>
                   </div>
                 </div>
@@ -162,16 +169,17 @@
                   <div class="departure--price">
                     <div class="container">
                       <p class="departure depart-city">
-                        Tp. Hồ Chí Minh (SGN)
+                        ${sessionScope.destination}
                       </p>
                       <i class="fa-solid fa-plane"></i>
-                      <p class="departure arrive-city">Hà Nội (HAN)</p>
+                      <p class="departure arrive-city">${sessionScope.departure}
+                      </p>
                       <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
                     </div>
                     <div class="departure__ticket container--info">
                       <div class="departure__ticket--price">Giá vé</div>
                       <div class="">
-                        1,850,300 VND
+                       ${sessionScope.priceticket}
                         <span
                         ><button
                                 type="button"
@@ -224,18 +232,18 @@
                     <div class="return--price">
                       <div class="container">
                         <p class="return depart-city">
-                          Tp. Hồ Chí Minh (SGN)
+                            ${sessionScope.departure}
                         </p>
                         <i class="fa-solid fa-plane"></i>
-                        <p class="return arrive-city">Hà Nội (HAN)</p>
+                        <p class="return arrive-city">${sessionScope.destination}
+                        </p>
                         <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
                       </div>
                       <div
                               class="return__ticket__container--price container--info"
                       >
                         <div class="">Giá vé</div>
-                        <div class="">
-                          1,850,300 VND
+                        <div class="">${sessionScope.pricereturn}
                           <span
                           ><button
                                   type="button"
@@ -278,7 +286,7 @@
               </c:if>
               <div class="total__price">
                 <p>Tổng tiền</p>
-                <h3 class="total__price price">3.625.800 VND</h3>
+                <h3 class="total__price price">${sessionScope.total}</h3>
               </div>
             </div>
           </div>
@@ -293,10 +301,13 @@
       </div>
       <div class="footer__price__total">
         <p>Tổng tiền</p>
-        <p class="footer__price price">3.625.800 VND</p>
+        <p class="footer__price price">${sessionScope.total}</p>
       </div>
       <div class="footer__next">
-        <button id="btn-user-information-form-next" class="footer__btn--next" type="button">Đi tiếp</button>
+        <a href="/checkPayment">
+          <button id="btn-user-information-form-next" class="footer__btn--next" type="button">Đi tiếp</button>
+
+        </a>
       </div>
     </div>
   </footer>

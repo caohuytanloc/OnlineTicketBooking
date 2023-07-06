@@ -34,7 +34,6 @@ public class RenderTicket extends HttpServlet {
             String destination = request.getParameter("destination");
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
             LocalDate date = LocalDate.parse(departureTime, formatter);
-            System.out.println(departure);
             int day = date.getDayOfMonth();       // Lấy ngày
             int month = date.getMonthValue();     // Lấy tháng
             int year = date.getYear();            // Lấy năm
@@ -86,6 +85,7 @@ public class RenderTicket extends HttpServlet {
             session.setAttribute("destination", destination);
             session.setAttribute("destinationTime", destinationTime);
             session.setAttribute("listfight", flightList);
+
 
         }
         request.getRequestDispatcher("/ticketbooking/renderTicket.jsp").forward(request, response);

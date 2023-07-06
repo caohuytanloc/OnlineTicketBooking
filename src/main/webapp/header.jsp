@@ -15,7 +15,7 @@
   <div class="navbar__container">
     <div class="navbar__inner">
       <div class="navbar__logo">
-        <img src="/images/logo-white.svg" alt="logo" srcset="" />
+        <img src="/images/logo-white.svg" alt="logo" srcset="" href="/Index"/>
       </div>
     </div>
     <div class="navbar__nav">
