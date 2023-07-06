@@ -106,7 +106,9 @@
 
             </div>
             <div id="form__container">
-              <form action="${pageContext.request.contextPath}/" method="post">
+<%--              <c:forEach var="i" begin="1" end="${sessionScope.numberOfAdults}">--%>
+
+<form action="${pageContext.request.contextPath}/" method="post">
                 <div class="gender__container">
                   <div class="form--gender">
                     <input
@@ -147,6 +149,7 @@
                   <input class="user__information__container--input full-width" type="text" name="user-address" id="user-address" placeholder="Địa chỉ">
                 </div>
               </form>
+<%--              </c:forEach>--%>
             </div>
           </div>
         </div>
