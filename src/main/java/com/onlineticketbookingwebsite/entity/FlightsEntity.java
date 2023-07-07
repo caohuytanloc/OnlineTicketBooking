@@ -1,30 +1,54 @@
 package com.onlineticketbookingwebsite.entity;
 
+import com.onlineticketbookingwebsite.beans.Account;
 import com.onlineticketbookingwebsite.beans.Flight;
 import com.onlineticketbookingwebsite.beans.SeatType;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FlightsEntity {
 
-    public void addFlight(String id, String airplaneName, String departureCity, String arrivalCity, Date departureTime, Date arrivalTime, int availableSeats, int totalSeats){
+    public void addFlight(String airplaneName, String departureCity, String arrivalCity, String departureTime, String arrivalTime, String totalSeats){
+      // System.out.println(setIdUser());
         try {
+            java.util.Date date2 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse(arrivalTime);
+            java.util.Date date1 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse(departureTime);
             PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
                     "insert into flights "+
-                            " values (?,?,?,?,?,?,0,?);");
-            ps.setString(1,id);
+                            " values (?,?,?,?,?,?,?,?);");
+            ps.setString(1,setIdUser()+"");
             ps.setString(2,airplaneName);
-            ps.setString(3,arrivalCity);
-            ps.setString(4,departureCity);
-            ps.setDate(5, arrivalTime);
-            ps.setDate(6, departureTime);
-            ps.setInt(7, totalSeats);
+            ps.setString(3,departureCity);
+            ps.setString(4,arrivalCity);
+            ps.setTimestamp(5, new Timestamp(date1.getTime()));
+            ps.setTimestamp(6, new Timestamp(date2.getTime()));
+            ps.setInt(7, 0);
+            ps.setInt(8, Integer.parseInt(totalSeats.trim()) );
             ps.executeUpdate();
+            System.out.println("true");
+        } catch (Exception e) {
+            System.out.println("false");
+        }
+    }
+
+    public  boolean checkLightID(String id){
+        try {
+            PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
+                    "select * from flights\n"+
+                            " where flight_id=?;\n");
+            ps.setString(1,id);
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+                return true;
+            }
         } catch (Exception e) {
         }
+        return false;
     }
     public List<Flight> getLights() {
         List<Flight> result = new ArrayList<Flight>();
@@ -74,4 +98,24 @@ public class FlightsEntity {
         return id+1;
     }
 
+//    public static void main(String[] args) {
+//        try {
+//            java.util.Date date2 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse("2023/07/12 09:20");
+//            java.util.Date date1 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse("2023/07/12 11:10");
+//            PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
+//                    "insert into flights "+
+//                            " values (?,?,?,?,?,?,?,?);");
+//            ps.setString(1,"1122");
+//            ps.setString(2,"VietJet");
+//            ps.setString(3,"Cần Thơ");
+//            ps.setString(4,"Hà Nội");
+//            ps.setTimestamp(5, new Timestamp(date1.getTime()));
+//            ps.setTimestamp(6, new Timestamp(date2.getTime()));
+//            ps.setInt(7, 0);
+//            ps.setInt(8, 60);
+//            ps.executeUpdate();
+//            System.out.println("true");
+//        } catch (Exception e) {
+//        }
+//    }
 }

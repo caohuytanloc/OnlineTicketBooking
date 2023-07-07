@@ -27,7 +27,7 @@ public class DBConnect {
     public Statement connectStament() throws SQLException, ClassNotFoundException {
         if (connection==null||connection.isClosed()) {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/AirTicketManagement?useUnicode=true&characterEncoding=utf-8", "root", "123456");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/AirTicketManagement?autoReconnect=true&useSSL=false", "root", "123456");
             return connection.createStatement();
         } else {
             return connection.createStatement();

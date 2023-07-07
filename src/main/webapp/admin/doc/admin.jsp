@@ -97,7 +97,7 @@
 <%--                <a class="btn btn-add btn-sm" type="button" title="Thêm vé" id="show-emd" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-plus"> Thêm chuyến bay</i>--%>
 <%--                </a>--%>
 
-                <a class="btn btn-add btn-sm" href="#"  id="show-emd" data-toggle="modal" data-target="#ModalUP" title="Thêm chuyến bay"><i class="fas fa-plus"></i>
+                <a class="btn btn-add btn-sm" href="/admin/doc/addFlight.jsp"  title="Thêm chuyến bay"><i class="fas fa-plus"></i>
                   Thêm chuyến bay</a>
               </div>
               <div class="col-sm-2">
@@ -172,7 +172,7 @@
   <!--
   MODAL
 -->
-  <div action="ticketManagement" method="get" class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
+  <div action="addFlight" method="get" class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
     data-keyboard="false">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -188,7 +188,8 @@
           <div class="row">
             <div class="form-group col-md-6">
               <label class="control-label">ID vé</label>
-              <input id= "idFlight" name="idFlight" class="form-control" type="text" required value="" disabled>
+              <input id= "idFlight" name="idFlight" class="form-control" type="text" required value="">
+                <%=request.getAttribute("errMess")!=null?request.getAttribute("errMess"):"" %>
             </div>
             <div class="form-group  col-md-6">
               <label class="control-label">Hãng bay</label>
@@ -204,30 +205,29 @@
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Ngày đi</label>
-              <input id="departure_date" name="arrival_city"  class="form-control" type="date" required value="15/03/2000">
+              <input id="departure_date" name="departure_date"  class="form-control" type="date" required value="15/03/2000">
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Ngày đến</label>
-              <input id="arrival_date" name="arrival_city"  class="form-control" type="date" required value="15/03/2000">
+              <input id="arrival_date" name="arrival_date"  class="form-control" type="date" required value="">
             </div>
             <div class="form-group  col-md-6">
               <label class="control-label">Giờ đi</label>
-              <input id="departure_time" name="arrival_city"  class="form-control" type="text" required value="">
+              <input id="departure_time" name="departure_time"  class="form-control" type="text" required value="">
               <p>Hãy nhập theo định dạng "hh:mm"</p>
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Giờ đến</label>
-              <input id="arrival_time" name="arrival_city"  class="form-control" type="text" required value="">
+              <input id="arrival_time" name="arrival_time"  class="form-control" type="text" required value="">
               <p>Hãy nhập theo định dạng "hh:mm"</p>
             </div>
             <div class="form-group col-md-6">
               <label class="control-label">Số lượng vé</label>
-              <input id="quantity" name="arrival_city"  class="form-control" type="text" required value="">
+              <input id="quantity" name="quantity"  class="form-control" type="text" required value="">
             </div>
           </div>
-         
           <BR>
-          <button class="btn btn-save" type="button">Thêm chuyến bay</button>
+         <a href="/addFlight"><button class="btn btn-save" type="button">Thêm chuyến bay</button></a>
           <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
           <BR>
         </div>
