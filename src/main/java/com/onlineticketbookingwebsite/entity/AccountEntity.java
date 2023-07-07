@@ -40,11 +40,11 @@ public class AccountEntity {
             PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
                     "insert into accounts "+
                             " values (?,?,?,?,?,0,0);");
-            ps.setString(1,id);
-            ps.setString(2,user);
-            ps.setString(3,mail);
-            ps.setString(4,phone);
-            ps.setString(5,pass);
+            ps.setString(1,user);
+            ps.setString(2,pass);
+            ps.setString(3,id);
+            ps.setString(4,mail);
+            ps.setString(5,phone);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -54,7 +54,7 @@ public class AccountEntity {
         Statement s = null;
         try {
             s = DBConnect.getInstance().connectStament();
-            ResultSet rs = s.executeQuery("select * from accounts");
+            ResultSet rs = s.executeQuery("select id from accounts");
             rs.last();
             id=Integer.parseInt(rs.getString(1));
         } catch (ClassNotFoundException | SQLException e) {
@@ -66,7 +66,7 @@ public class AccountEntity {
         try {
             PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
                     "select * from accounts\n"+
-                            " where name=?;\n");
+                            " where user_id=?;\n");
             ps.setString(1,user);
             ResultSet rs=ps.executeQuery();
             while (rs.next()){

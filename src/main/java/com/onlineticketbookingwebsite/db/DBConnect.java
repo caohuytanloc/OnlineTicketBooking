@@ -3,7 +3,7 @@ package com.onlineticketbookingwebsite.db;
 import java.sql.*;
 
 public class DBConnect {
-    private static final String DB_URL = "jdbc:mysql://localhost:3307/AirTicketManagement?";
+    private static final String DB_URL = "jdbc:mysql://localhost:3307/AirTicketManagement?autoReconnect=true&useSSL=false";
     private static final String USER = "root";
     private static final String PASSWORD = "123456";
     private static DBConnect dbConnect;

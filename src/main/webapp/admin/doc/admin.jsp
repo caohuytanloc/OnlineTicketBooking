@@ -192,7 +192,7 @@
                 <%=request.getAttribute("errMess")!=null?request.getAttribute("errMess"):"" %>
             </div>
             <div class="form-group  col-md-6">
-              <label class="control-label">Hãng bay</label>
+              <label class="control-label">Tên chuyến bay</label>
               <input id= "nameFlight" name="nameFlight"  class="form-control" type="text" required value="">
             </div>
             <div class="form-group  col-md-6">

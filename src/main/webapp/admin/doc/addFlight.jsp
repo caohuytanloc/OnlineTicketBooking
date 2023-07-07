@@ -191,7 +191,7 @@
           <div class="tile-body">
             <form action="addFlight" method="get" class="row">
               <div class="form-group  col-md-6">
-                <label class="control-label">Hãng bay</label>
+                <label class="control-label">Tên chuyến bay</label>
                 <input id= "nameFlight" name="nameFlight"  class="form-control" type="text">
               </div>
               <div class="form-group  col-md-6">
@@ -223,6 +223,22 @@
               <div class="form-group col-md-6">
                 <label class="control-label">Số lượng vé</label>
                 <input id="quantity" name="quantity"  class="form-control" type="text">
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label"> Giá vé First</label>
+                <input id="first" name="first"  class="form-control" type="text">
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label">Giá vé Business</label>
+                <input id="business" name="business"  class="form-control" type="text">
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label">Giá vé Premium</label>
+                <input id="premium" name="premium"  class="form-control" type="text">
+              </div>
+              <div class="form-group col-md-6">
+                <label class="control-label">Giá vé Eco</label>
+                <input id="eco" name="eco"  class="form-control" type="text">
               </div>
               <BR>
               <div class="input-group form-group">

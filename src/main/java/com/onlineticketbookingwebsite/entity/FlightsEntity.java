@@ -12,21 +12,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FlightsEntity {
-
-    public void addFlight(String airplaneName, String departureCity, String arrivalCity, String departureTime, String arrivalTime, String totalSeats){
-      // System.out.println(setIdUser());
+    public void addfLightSeatsInformations(String id, String seatType, int amount, float price){
         try {
-            java.util.Date date2 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse(arrivalTime);
-            java.util.Date date1 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse(departureTime);
-            PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
+         PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
+                    "insert into flightseatsinformations values (?, ?, ?, ?);");
+            ps.setString(1,id);
+            ps.setString(2,seatType);
+            ps.setInt(3, amount);
+            ps.setFloat(4, price);
+            ps.executeUpdate();
+            System.out.println("true");
+        } catch (Exception e) {
+            System.out.println("false");
+        }
+    }
+
+    public void addFlight(String id, String airplaneName, String departureCity, String arrivalCity, LocalDateTime departureTime, LocalDateTime arrivalTime, String totalSeats){
+        try {
+           PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
                     "insert into flights "+
                             " values (?,?,?,?,?,?,?,?);");
-            ps.setString(1,setIdUser()+"");
+            ps.setString(1,id);
             ps.setString(2,airplaneName);
             ps.setString(3,departureCity);
             ps.setString(4,arrivalCity);
-            ps.setTimestamp(5, new Timestamp(date1.getTime()));
-            ps.setTimestamp(6, new Timestamp(date2.getTime()));
+            ps.setObject(5, departureTime);
+            ps.setObject(6, arrivalTime);
             ps.setInt(7, 0);
             ps.setInt(8, Integer.parseInt(totalSeats.trim()) );
             ps.executeUpdate();
@@ -68,7 +79,7 @@ public class FlightsEntity {
                         rs.getString("arrival_city"),
                         rs.getTimestamp("departure_time").toLocalDateTime(),
                         rs.getTimestamp("arrival_time").toLocalDateTime(),
-                        rs.getInt("avaiable_seats"),
+                        rs.getInt("available_seats"),
                         rs.getInt("total_seats"));
                // System.out.println(flight.toString());
                 result.add(flight);
@@ -91,31 +102,15 @@ public class FlightsEntity {
             s = DBConnect.getInstance().connectStament();
             ResultSet rs = s.executeQuery("select * from flights");
             rs.last();
-            id=Integer.parseInt(rs.getString(1));
+            id=Integer.parseInt(rs.getString(1).substring(1));
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
         return id+1;
     }
 
-//    public static void main(String[] args) {
-//        try {
-//            java.util.Date date2 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse("2023/07/12 09:20");
-//            java.util.Date date1 = new SimpleDateFormat("yyyy/MM/dd hh:mm").parse("2023/07/12 11:10");
-//            PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
-//                    "insert into flights "+
-//                            " values (?,?,?,?,?,?,?,?);");
-//            ps.setString(1,"1122");
-//            ps.setString(2,"VietJet");
-//            ps.setString(3,"Cần Thơ");
-//            ps.setString(4,"Hà Nội");
-//            ps.setTimestamp(5, new Timestamp(date1.getTime()));
-//            ps.setTimestamp(6, new Timestamp(date2.getTime()));
-//            ps.setInt(7, 0);
-//            ps.setInt(8, 60);
-//            ps.executeUpdate();
-//            System.out.println("true");
-//        } catch (Exception e) {
-//        }
-//    }
+    public static void main(String[] args) {
+        FlightsEntity flights= new FlightsEntity();
+        flights.addfLightSeatsInformations("F002","First",10,155666);
+      }
 }

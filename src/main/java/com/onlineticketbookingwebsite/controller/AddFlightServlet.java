@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @WebServlet("/admin/doc/addFlight")
 public class AddFlightServlet extends HttpServlet {
@@ -22,11 +23,10 @@ public class AddFlightServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       // String id=request.getParameter("idflight");
+
         String name= request.getParameter("nameFlight").trim();
         String departure_city=request.getParameter("departure_city").trim();
 
- //      response.sendRedirect("/admin/doc/addFlight.jsp");
         String arrival_city=request.getParameter("arrival_city").trim();
         String departure_date=(String) request.getParameter("departure_date").trim();
         String arrival_date=(String) request.getParameter("arrival_date").trim();
@@ -34,12 +34,27 @@ public class AddFlightServlet extends HttpServlet {
         String departure_time=request.getParameter("departure_time").trim();
         String totalSeat= request.getParameter("quantity").trim();
 
+        float first= Float.parseFloat(request.getParameter("first").trim());
+        float business= Float.parseFloat(request.getParameter("business").trim());
+        float premium= Float.parseFloat(request.getParameter("premium").trim());
+        float eco= Float.parseFloat(request.getParameter("eco").trim());
+
+        //System.out.println(first);
         FlightsEntity flights = new FlightsEntity();
-        System.out.println(name+" "+departure_date+" "+departure_time+" "+ totalSeat);
-        System.out.println();
 
+        String dateTime_departure=departure_date+" "+departure_time;
+        String dateTime_arrival=arrival_date+" "+arrival_time;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dateTime1 = LocalDateTime.parse(dateTime_departure, formatter);
+        LocalDateTime dateTime2 = LocalDateTime.parse(dateTime_arrival, formatter);
+        String id = "F0"+flights.setIdUser()+"";
+        flights.addFlight(id,name, departure_city,arrival_city, dateTime1,dateTime2 ,totalSeat);
+        flights.addfLightSeatsInformations(id,"First", 10, first);
+        flights.addfLightSeatsInformations(id,"Business", 20, business);
+        flights.addfLightSeatsInformations(id,"Premium", 30, premium);
+        flights.addfLightSeatsInformations(id,"Eco", 40, eco);
 
-        flights.addFlight(name, departure_city,arrival_city, (departure_date+" "+departure_time),(arrival_date+" "+arrival_time),totalSeat);
+        response.sendRedirect("/admin/doc/admin.jsp");
 
     }
 

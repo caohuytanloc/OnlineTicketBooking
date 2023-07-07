@@ -25,7 +25,7 @@ public class AdminServlet extends HttpServlet {
         List<Flight> listAdmin = new ArrayList<Flight>();
         FlightsEntity flights = new FlightsEntity();
         listAdmin = flights.getLights();
-        System.out.println(listAdmin.toString());
+       // System.out.println(listAdmin.toString());
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
         session.setAttribute("listAdmin", listAdmin);
