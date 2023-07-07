@@ -1,12 +1,14 @@
 package com.onlineticketbookingwebsite.dao;
 
+import com.onlineticketbookingwebsite.beans.Passenger;
 import com.onlineticketbookingwebsite.beans.Ticket;
 import com.onlineticketbookingwebsite.db.DBConnect;
 
 import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class TicketDao {
     private static TicketDao instance;
@@ -69,6 +71,7 @@ public class TicketDao {
             // Chuẩn bị câu truy vấn SQL
             String query = "SELECT * FROM tickets WHERE id = ?";
 
+
             PreparedStatement ps = DBConnect.getInstance().get(query);
             ps.setString(1, ticketId);
 
@@ -99,5 +102,58 @@ public class TicketDao {
         }
         return ticket;
     }
+
+    public String createTicket(String passengerID,
+                                String flightID,
+                                String seatType, String ticketStatus, int isRoundTrip) {
+        boolean result = false;
+        Random random = new Random();
+        String id = "T" + String.format("%04d", random.nextInt(10000));
+        //set current order time
+//        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+
+        try {
+            String query = "INSERT INTO tickets (id, passenger_id, flight_id, seat_type, ticket_status, order_time, isRound_trip)\n" +
+                    "VALUES (?, ?, ?,  ?, ?, NOW(), ?);";
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, id);
+            ps.setString(2, passengerID);
+            ps.setString(3, flightID);
+            ps.setString(4, seatType);
+            ps.setString(5, ticketStatus);
+//            ps.setObject(7, date);
+            ps.setInt(6, isRoundTrip);
+            int test = ps.executeUpdate();
+            if (test == 1)
+                result = true;
+            else result = false;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+
+    public void updateTicketPaymentId(String ticketId, String paymentId) {
+        try {
+            String query = "UPDATE tickets SET payment_id = ? WHERE id = ?";
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, paymentId);
+            ps.setString(2, ticketId);
+
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated == 1) {
+                System.out.println("Successfully updated paymentId for ticket: " + ticketId);
+            } else {
+                System.out.println("Failed to update paymentId for ticket: " + ticketId);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
 

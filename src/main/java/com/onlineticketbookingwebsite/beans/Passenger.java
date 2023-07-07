@@ -1,6 +1,7 @@
 package com.onlineticketbookingwebsite.beans;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Passenger {
@@ -54,6 +55,30 @@ public class Passenger {
 
     public String getEmail() {
         return email;
+    }
+
+    public static ArrayList<Integer> getQuantity(String inputQuantity) {
+        ArrayList<Integer> res = new ArrayList<Integer>();
+        String[] parts = inputQuantity.split(", ");
+        int numberOfAdults = 0;
+        int numberOfChildren = 0;
+        int numberOfBabies = 0;
+        for (String part : parts) {
+            if (part.contains("người lớn")) {
+                String[] adultParts = part.split(" ");
+                numberOfAdults = Integer.parseInt(adultParts[0]);
+            } else if (part.contains("trẻ em")) {
+                String[] childParts = part.split(" ");
+                numberOfChildren = Integer.parseInt(childParts[0]);
+            } else if (part.contains("em bé")) {
+                String[] babyParts = part.split(" ");
+                numberOfBabies = Integer.parseInt(babyParts[0]);
+            }
+        }
+        res.add(numberOfAdults);
+        res.add(numberOfChildren);
+        res.add(numberOfBabies);
+        return res;
     }
 }
 

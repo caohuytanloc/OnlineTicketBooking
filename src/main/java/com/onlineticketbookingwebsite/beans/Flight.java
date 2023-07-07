@@ -13,7 +13,7 @@ public class Flight {
     private LocalDateTime arrivalTime;
     private int availableSeats;
     private int totalSeats;
-   List<SeatType>list;
+    List<SeatType>list;
     public Flight(String id, String airplaneName, String departureCity, String arrivalCity, LocalDateTime departureTime,LocalDateTime arrivalTime, int availableSeats, int totalSeats) {
         this.id = id;
         this.airplaneName = airplaneName;
@@ -36,7 +36,7 @@ public class Flight {
         list=new ArrayList<>();
     }
     public double getPriceSeatFirst(){
-double res=0;
+        double res=0;
         for (int i=0;i<list.size();i++) {
             if(list.get(i).seattype.trim().equalsIgnoreCase("First")){
                 res=list.get(i).price;
@@ -106,13 +106,13 @@ double res=0;
     public LocalDateTime getArrivalTime() {
         return arrivalTime;
     }
-public String gethourArrial(){
-    String formattedMinute = String.format("%02d", arrivalTime.getMinute()); // Định dạng phút thành chuỗi với định dạng "00"
+    public String gethourArrial(){
+        String formattedMinute = String.format("%02d", arrivalTime.getMinute()); // Định dạng phút thành chuỗi với định dạng "00"
 
 
-    return   arrivalTime.getHour() + ":" +formattedMinute;
+        return   arrivalTime.getHour() + ":" +formattedMinute;
 
-}
+    }
     public String gethourdeparture(){
         String formattedMinute = String.format("%02d", departureTime.getMinute()); // Định dạng phút thành chuỗi với định dạng "00"
 
@@ -145,4 +145,3 @@ public String gethourArrial(){
     public static void main(String[] args) {
     }
 }
-

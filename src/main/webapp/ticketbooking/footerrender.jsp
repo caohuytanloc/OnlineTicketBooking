@@ -95,7 +95,7 @@
                     <c:url var="order" value="/order"></c:url>
 
                     <div class="col-sm-1">
-                        <a href="${order}?action=view">
+                        <a href="${order}">
                             <button class="footer-button">Tiếp theo</button>
                         </a>
 
