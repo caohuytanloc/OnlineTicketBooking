@@ -177,7 +177,7 @@
                       <i class="fa-solid fa-plane"></i>
                       <p class="departure arrive-city">${sessionScope.departure}
                       </p>
-                      <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+<%--                      <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>--%>
                     </div>
                     <div class="departure__ticket container--info">
                       <div class="departure__ticket--price">Giá vé</div>
@@ -196,7 +196,7 @@
                     >
                       <div class="">Phí - Thuế</div>
                       <div class="">
-                        1,850,300 VND
+                      0 VND
                         <span
                         ><button
                                 type="button"
@@ -210,7 +210,7 @@
                     >
                       <div class="">Dịch vụ</div>
                       <div class="">
-                        1,850,300 VND
+                       0 VND
                         <span
                         ><button
                                 type="button"
@@ -240,7 +240,7 @@
                         <i class="fa-solid fa-plane"></i>
                         <p class="return arrive-city">${sessionScope.destination}
                         </p>
-                        <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+<%--                        <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>--%>
                       </div>
                       <div
                               class="return__ticket__container--price container--info"

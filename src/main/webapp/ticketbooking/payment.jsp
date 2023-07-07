@@ -264,7 +264,7 @@
             <div class="text-divider">Tổng ${sessionScope.total}</div>
             <div class="container" style="text-align: center;">
                 <ul>
-                    <li>Tôi đã đọc và chấp nhận tất cả các điều khoản sử dụng cũng như các cam kết bảo mật của Bamboo
+                    <li>Tôi đã đọc và chấp nhận tất cả các điều khoản sử dụng cũng như các cam kết bảo mật của VietJet
                         Airways
                     </li>
                 </ul>

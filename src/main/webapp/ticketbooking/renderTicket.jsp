@@ -483,10 +483,10 @@
                                         <div class="departure--price">
                                             <div class="container">
                                                 <p class="departure depart-city">
-                                                        ${sessionScope.departure} (SGN)
+                                                        ${sessionScope.departure}
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
-                                                <p class="departure arrive-city">${sessionScope.destination} (HAN)</p>
+                                                <p class="departure arrive-city">${sessionScope.destination} </p>
                                                 <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
                                             </div>
                                             <div class="departure__ticket container--info">
@@ -662,10 +662,10 @@
                                         <div class="departure--price">
                                             <div class="container">
                                                 <p class="departure depart-city">
-                                                        ${sessionScope.departure} (SGN)
+                                                        ${sessionScope.departure}
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
-                                                <p class="departure arrive-city">${sessionScope.destination} (HAN)</p>
+                                                <p class="departure arrive-city">${sessionScope.destination} </p>
                                                 <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
                                             </div>
                                             <div class="departure__ticket container--info">
