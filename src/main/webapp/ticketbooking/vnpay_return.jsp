@@ -29,7 +29,7 @@
         <!-- Bootstrap core CSS -->
         <link href="/css/bootstrap.min.css" rel="stylesheet"/>
         <!-- Custom styles for this template -->
-<%--        <link href="/css/jumbotron-narrow.css" rel="stylesheet">--%>
+        <link href="/css/jumbotron-narrow.css" rel="stylesheet">
         <script src="/js/jquery-1.11.3.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/stylepayment.css">
@@ -46,6 +46,15 @@
                 border: none;
                 cursor: pointer;
             }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-group label {
+                font-weight: bold;
+            }
+
         </style>
 
     </head>
@@ -136,15 +145,33 @@
                         <%
                             if (signValue.equals(vnp_SecureHash)) {
                                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                                    out.print("Success");
+                                    String transactionNo = request.getParameter("vnp_TransactionNo");
+                        %>
+                        <script>
+                            // Create a new XMLHttpRequest
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', '/SavePayment', true);
+                            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    console.log('Payment saved successfully');
+                                    // Perform any additional actions if needed
+                                } else {
+                                    console.error('Failed to save payment');
+                                }
+                            };
+                            xhr.send('transactionNo=<%= transactionNo %>');
+                        </script>
+                        <%
+                                    out.println("Success");
                                 } else {
                                     out.print("Failed");
                                 }
-
                             } else {
-                                out.print("invalid signature");
+                                out.print("Invalid signature");
                             }
-                        %></label>
+                        %>
+                    </label>
                 </div> 
             </div>
             <p>&nbsp;

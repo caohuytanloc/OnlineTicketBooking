@@ -251,7 +251,7 @@ h5 {
 
 .container__right {
   margin-top: 53px;
-  display: flex;
+  /*display: block !important;*/
   width: 30%;
   margin-left: 20px;
 }

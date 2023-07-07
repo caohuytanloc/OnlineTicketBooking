@@ -104,20 +104,21 @@ public class OrderServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = request.getSession();
-        System.out.println("wwweeee");
 
         String return_flight_ID = request.getParameter("idReturn");
-        System.out.println("idReturn:"+return_flight_ID);
         session.setAttribute("idReturn", return_flight_ID);
 
         String returnSeatType = request.getParameter("returnSeatType");
         session.setAttribute("returnSeatType", returnSeatType);
-        System.out.println("idReturn:"+returnSeatType);
+
         String pricereturn = request.getParameter("pricereturn");
         session.setAttribute("pricereturn", pricereturn);
+
         System.out.println("pricereturn:"+pricereturn);
+
         String total = request.getParameter("total");
         session.setAttribute("total", total);
+        
         System.out.println("total:"+total);
 
 
