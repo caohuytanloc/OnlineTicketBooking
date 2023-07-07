@@ -10,9 +10,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/stylepayment.css">
-<%--    <link href="/css/bootstrap.min.css" rel="stylesheet"/>--%>
+    <%--    <link href="/css/bootstrap.min.css" rel="stylesheet"/>--%>
     <!-- Custom styles for this template -->
-<%--    <link href="/css/jumbotron-narrow.css" rel="stylesheet">--%>
+    <%--    <link href="/css/jumbotron-narrow.css" rel="stylesheet">--%>
     <script src="/js/jquery-1.11.3.min.js"></script>
     <style>
         .row {
@@ -22,11 +22,12 @@
 </head>
 
 <body>
+
 <jsp:include page="/header.jsp"/>
 <div class="container-fluid">
     <article>
         <div class="head">
-            <img src="/images/svgs/solid/sun.jpg" class="head-icon" alt="">
+            <img src="/images/sun.jpg" class="head-icon" alt="">
             <h3 for="">Xem lại hành trình</h3>
         </div>
         <div class="main-content">
@@ -34,7 +35,7 @@
                 <div class="title">
                     <div class="container">
                         <button type="button" class="collapsible">
-                            <img src="${pageContext.request.contextPath}/images/svgs/solid/airplane-icon.png" class="icon-hehe" alt="">
+                            <img src="/images/airplane-icon.png" class="icon-hehe" alt="">
                             <h2 style="float: left;">Chuyến bay</h2>
                         </button>
                     </div>
@@ -43,18 +44,18 @@
                     <div class="container">
                         <div class="row" style="margin: 20px 0;">
                             <div class="col col-half">
-                                <h3 for="" style="color: #92c6eb;">Ngày khởi hành Thứ 2, 20 tháng 3</h3>
+                                <h3 for="" style="color: #92c6eb;">Ngày khởi hành <%= session.getAttribute("departureTime") %></h3>
                                 <div class="row">
                                     <div class="col col-half">
                                         <ul>
-                                            <li><b>05:35</b></li>
-                                            <li><b>05:35</b></li>
+                                            <li><b>${sessionScope.departureFlight.departureTime}</b></li>
+                                            <li><b>${sessionScope.departureFlight.arrivalTime}</b></li>
                                         </ul>
                                     </div>
                                     <div class="col col-half">
                                         <ul>
-                                            <li style="opacity: .8;">Hồ Chí Minh</li>
-                                            <li style="opacity: .8;">Đà Nẵng</li>
+                                            <li style="opacity: .8;">${sessionScope.departureFlight.getDepartureCity()}</li>
+                                            <li style="opacity: .8;">${sessionScope.departureFlight.arrivalCity}</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -62,7 +63,7 @@
                         </div>
                         <div class="row" style="padding: 20px 0;">
                             <div class="col col-half">
-                                <h4>Bamboo Airway QH 150</h4>
+                                <h4>VietJet Airway ${sessionScope.departureFlight.airplaneName}</h4>
                             </div>
                             <div class="col col-half">
                                 <h4>Thời Gian Bay 01h30m</h4>
@@ -73,7 +74,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-full">
-                                <h4>Hàng vé đã chọn Economy Smart</h4>
+                                <h4>Hàng vé đã chọn ${sessionScope.departureSeatType}</h4>
                             </div>
                         </div>
                     </div>
@@ -92,7 +93,7 @@
                         <div class="container">
                             <div class="row" style="padding: 20px 0;">
                                 <div class="col col-half">
-                                    <h4>1.Nga Anh Nguyen Thi</h4>
+                                    <h4>1.${sessionScope.fullname}</h4>
                                 </div>
                                 <div class="col col-half">
                                     <p>Người lớn</p>
@@ -126,7 +127,7 @@
                                         </div>
                                         <div class="row" style="padding: 20px;">
                                             <div class="col col-half">
-                                                <h4>Nga Anh Nguyen Thi</h4>
+                                                <h4>${sessionScope.fullname}</h4>
                                             </div>
                                             <div class="col col-half">
                                                 <h4>20kg</h4>
@@ -137,15 +138,15 @@
                                 <div class="col col-half ">
                                     <div class="title-care" style="padding: 15px;">
                                         <i class="fa fa-suitcase" aria-hidden="true"></i>
-                                        <h4 style="display: inline;">BamBooCARE</h4>
+                                        <h4 style="display: inline;">VietJetCARE</h4>
                                     </div>
                                     <div class="col col-full" style="background-color:#dad9d8;height: 15vh;">
                                         <div class="row" style="padding: 20px; ">
                                             <div class="col col-half">
-                                                <h4>Nga Anh Nguyen Thi</h4>
+                                                <h4>${sessionScope.fullname}</h4>
                                             </div>
                                             <div class="col col-half">
-                                                <h4>BamBooCARE</h4>
+                                                <h4>VietJetCARE</h4>
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +175,7 @@
                         <th>Thanh toán ngay bằng vnpay</th>
                     </tr>
                     <tr>
-                        <td><a href="" class="box"><img src="${pageContext.request.contextPath}/images/svgs/solid/paynow.jpg" width="20%" alt=""
+                        <td><a href="" class="box"><img src="/images/paynow.jpg" width="20%" alt=""
                                                         style="padding: 20px;border:1px solid #ccc;border-radius: 8px;"><input
                                 type="radio"
                                 class="rdoIn"></a></td>
@@ -183,46 +184,28 @@
             </div>
         </div>
 
-<%--        <!-- Frame 3 -->--%>
-<%--        <div class="title">--%>
-<%--            <div class="container">--%>
-<%--                <h2 for="">Hóa đơn(Tùy chọn)</h2>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-    <%--        <div class="bill-content">--%>
-    <%--            <div class="container">--%>
-
-    <%--                <label class="checkbox-container">Sử dụng ví điện tử cho việc lập hóa đơn--%>
-    <%--                    <input type="checkbox">--%>
-    <%--                    <span class="checkmark"></span>--%>
-    <%--                </label>--%>
-
-    <%--            </div>--%>
-    <%--        </div>--%>
-
 
         <!-- Frame4 -->
         <div class="flight-1">
             <div class="container">
                 <div class="head">
-                    <img src="${pageContext.request.contextPath}/images/svgs/solid/airplane-icon.png" class="head-icon" alt="">
-                    <h3 for="">Hồ Chí Minh to Đà Nẵng</h3>
+                    <img src="/images/airplane-icon.png" class="head-icon" alt="">
+                    <h3 for="">${sessionScope.departureFlight.getDepartureCity()} tới ${sessionScope.departureFlight.arrivalCity}</h3>
                 </div>
             </div>
             <div class="flinfo-content">
                 <div class="sub-1">
                     <div class="title">
                         <div class="container">
-                            <h2 for="">Thứ 2, 20 tháng ba 2023</h2>
+                            <h2 for="">${sessionScope.departureFlight.departureTime}</h2>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row" style="margin: 30px 0;">
                             <div class="col col-half text-center">
                                 <div class="col col-third">
-                                    <h3>05:35</h3>
-                                    <h3 style="color: #92c6eb;">SGN</h3>
+                                    <h3>${sessionScope.departureFlight.departureTime}</h3>
+                                    <h3 style="color: #92c6eb;">${sessionScope.departureFlight.getDepartureCity()} </h3>
                                 </div>
                                 <div class="col col-third">
                                     <div class="text-center"
@@ -230,13 +213,13 @@
                                     </div>
                                 </div>
                                 <div class="col col-third">
-                                    <h3>05:35</h3>
-                                    <h3 style="color: #92c6eb;">SGN</h3>
+                                    <h3>${sessionScope.departureFlight.arrivalTime}</h3>
+                                    <h3 style="color: #92c6eb;">${sessionScope.departureFlight.arrivalCity}</h3>
                                 </div>
                             </div>
                             <div class="col col-half text-center">
-                                <h3>QH 150</h3>
-                                <h3>Bamboo Airways</h3>
+                                <h3>${sessionScope.departureFlight.airplaneName}</h3>
+                                <h3>VietJet Airways</h3>
                             </div>
                         </div>
 
@@ -246,7 +229,7 @@
                         <table class="col-full">
                             <tr>
                                 <td>Giá vé (Người lớn)</td>
-<%--                                <td style="float: right;">1x ${sessionScope.} = 750,000 VND</td>--%>
+                                <td style="float: right;">${sessionScope.total}</td>
                             </tr>
                             <tr>
                                 <td>Phí an ninh soi chiếu</td>
@@ -278,7 +261,7 @@
 
         <!-- Frame 6 -->
         <div class="accept">
-            <div class="text-divider">Tổng 1,908,000 VND</div>
+            <div class="text-divider">Tổng ${sessionScope.total}</div>
             <div class="container" style="text-align: center;">
                 <ul>
                     <li>Tôi đã đọc và chấp nhận tất cả các điều khoản sử dụng cũng như các cam kết bảo mật của Bamboo
@@ -298,9 +281,9 @@
 
             <div class="row place-content">
                 <div class="col col-full" style="padding: 0;">
-                    <img src="${pageContext.request.contextPath}/images/svgs/solid/danangdepthe.jpg" width="70%" class="place-img">
+                    <img src="${pageContext.request.contextPath}/images/danangdepthe.jpg" width="70%" class="place-img">
                     <div class="place-body">
-                        <h3>Hồ Chí Minh tới Đà Nẵng</h3>
+                        <h3>${sessionScope.departureFlight.getDepartureCity()} tới ${sessionScope.departureFlight.arrivalCity}</h3>
                         <p class="sub-place">Một chiều | 1 người lớn</p>
                     </div>
                 </div>

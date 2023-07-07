@@ -227,7 +227,7 @@
                   <div class="container">
                     <p>Chuyến về</p>
                     <div class="price">
-                      1,850,300 VND
+                     0 VND
                       <span><a href="#" class="fa-solid fa-pen"></a></span>
                     </div>
                   </div>
@@ -260,7 +260,7 @@
                       >
                         <div class="">Phí - Thuế</div>
                         <div class="">
-                          1,850,300 VND
+                         0 VND
                           <span
                           ><button
                                   type="button"
@@ -274,7 +274,7 @@
                       >
                         <div class="">Dịch vụ</div>
                         <div class="">
-                          1,850,300 VND
+                         0 VND
                           <span
                           ><button
                                   type="button"

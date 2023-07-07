@@ -487,7 +487,7 @@
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
                                                 <p class="departure arrive-city">${sessionScope.destination} (HAN)</p>
-                                                <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                                <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
                                             </div>
                                             <div class="departure__ticket container--info">
                                                 <div class="departure__ticket--price">Giá vé</div>
@@ -586,7 +586,7 @@
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
                                                 <p class="return arrive-city">${sessionScope.departure} (HAN)</p>
-                                                <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                                <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
                                             </div>
                                             <div class="return__ticket__container--price container--info">
                                                 <div class="">Giá vé</div>
@@ -662,11 +662,11 @@
                                         <div class="departure--price">
                                             <div class="container">
                                                 <p class="departure depart-city">
-                                                    Tp. Hồ Chí Minh (SGN)
+                                                        ${sessionScope.departure} (SGN)
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
-                                                <p class="departure arrive-city">Hà Nội (HAN)</p>
-                                                <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                                <p class="departure arrive-city">${sessionScope.destination} (HAN)</p>
+                                                <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
                                             </div>
                                             <div class="departure__ticket container--info">
                                                 <div class="departure__ticket--price">Giá vé</div>

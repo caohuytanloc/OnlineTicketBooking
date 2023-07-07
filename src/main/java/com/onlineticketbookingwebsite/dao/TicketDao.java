@@ -103,7 +103,7 @@ public class TicketDao {
         return ticket;
     }
 
-    public boolean createTicket(String passengerID,
+    public String createTicket(String passengerID,
                                 String flightID,
                                 String seatType, String ticketStatus, int isRoundTrip) {
         boolean result = false;
@@ -132,11 +132,28 @@ public class TicketDao {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return result;
+        return id;
     }
 
-    public static void main(String[] args) {
-//        System.out.println(new TicketDao().createTicket("P001","F001","First","Đã bán",0));
+    public void updateTicketPaymentId(String ticketId, String paymentId) {
+        try {
+            String query = "UPDATE tickets SET payment_id = ? WHERE id = ?";
+            PreparedStatement ps = DBConnect.getInstance().get(query);
+            ps.setString(1, paymentId);
+            ps.setString(2, ticketId);
+
+            int rowsUpdated = ps.executeUpdate();
+            if (rowsUpdated == 1) {
+                System.out.println("Successfully updated paymentId for ticket: " + ticketId);
+            } else {
+                System.out.println("Failed to update paymentId for ticket: " + ticketId);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
+
 }
 
