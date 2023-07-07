@@ -119,14 +119,14 @@ public class PassengerDao {
 //        LocalTime time = LocalTime.of(15, 30, 0); // Khai báo thời gian: 15:30:00
 //
 //        LocalDateTime dateTime = LocalDateTime.of(date, time);
-//        System.out.println(new PassengerDao().createPassenger("P006","Thắm","Huỳnh",LocalDateTime.now(),"12334","03939","h1@gmial.com","diachi","Nữ"));
+        System.out.println(new PassengerDao().createPassenger("P0011","Thắm","Huỳnh",LocalDateTime.now(),"12334","03939","h1@gmial.com","diachi","Nữ"));
 //        String id_passenger = String.valueOf(((Integer.parseInt(new PassengerDao().getId().substring(3)) + 1)));
-     String birth = "2023-07-09";
-        LocalDate date = LocalDate.parse(birth);
-
-        LocalDateTime dateTime = date.atStartOfDay();
-
-        System.out.println("LocalDateTime: " + dateTime);
+//     String birth = "2023-07-09";
+//        LocalDate date = LocalDate.parse(birth);
+//
+//        LocalDateTime dateTime = date.atStartOfDay();
+//
+//        System.out.println("LocalDateTime: " + dateTime);
     }
 
 }

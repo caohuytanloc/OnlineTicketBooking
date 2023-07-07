@@ -106,7 +106,9 @@
 
             </div>
             <div id="form__container">
-              <form action="${pageContext.request.contextPath}/" method="post">
+<%--              <c:forEach var="i" begin="1" end="${sessionScope.numberOfAdults}">--%>
+
+<form action="${pageContext.request.contextPath}/" method="post">
                 <div class="gender__container">
                   <div class="form--gender">
                     <input
@@ -147,6 +149,7 @@
                   <input class="user__information__container--input full-width" type="text" name="user-address" id="user-address" placeholder="Địa chỉ">
                 </div>
               </form>
+<%--              </c:forEach>--%>
             </div>
           </div>
         </div>
@@ -161,7 +164,7 @@
                 <div class="container">
                   <p>Chuyến đi</p>
                   <div class="price">
-                    ${sessionScope.departure}
+<%--                    ${sessionScope}--%>
                     <span><a href="#" class="fa-solid fa-pen"></a></span>
                   </div>
                 </div>
@@ -304,7 +307,7 @@
         <p class="footer__price price">${sessionScope.total}</p>
       </div>
       <div class="footer__next">
-        <a href="">
+        <a href="/checkPayment">
           <button id="btn-user-information-form-next" class="footer__btn--next" type="button">Đi tiếp</button>
 
         </a>
