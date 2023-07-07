@@ -330,9 +330,9 @@
 
                 <div class="tablisttotal">
                     <div class="tablist">
-                        <label style="font-weight: bold;font-size: 24px;">SGN</label>
+                        <label style="font-weight: bold;font-size: 24px;">${sessionScope.departure}</label>
 
-                        <label>${sessionScope.departure}</label>
+                        <label></label>
 
                     </div>
 
@@ -357,9 +357,9 @@
                         </c:if>
                     </div>
                     <div class="tablist">
-                        <label style="font-weight: bold;font-size: 24px;">HAN</label>
+                        <label style="font-weight: bold;font-size: 24px;">${sessionScope.destination}</label>
 
-                        <label>${sessionScope.destination}</label>
+                        <label></label>
 
                     </div>
                 </div>
@@ -487,7 +487,7 @@
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
                                                 <p class="departure arrive-city">${sessionScope.destination} </p>
-                                                <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                                <h5>${sessionScope.departureTime} </h5>
                                             </div>
                                             <div class="departure__ticket container--info">
                                                 <div class="departure__ticket--price">Giá vé</div>
@@ -582,11 +582,11 @@
                                         <div class="return--price">
                                             <div class="container">
                                                 <p class="return depart-city">
-                                                        ${sessionScope.destination} (SGN)
+                                                        ${sessionScope.destination}
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
-                                                <p class="return arrive-city">${sessionScope.departure} (HAN)</p>
-                                                <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                                <p class="return arrive-city">${sessionScope.departure} </p>
+                                                <h5>${sessionScope.departureTime} </h5>
                                             </div>
                                             <div class="return__ticket__container--price container--info">
                                                 <div class="">Giá vé</div>
@@ -666,7 +666,7 @@
                                                 </p>
                                                 <i class="fa-solid fa-plane"></i>
                                                 <p class="departure arrive-city">${sessionScope.destination} </p>
-                                                <h5>${sessionScope.departureTime} | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                                <h5>${sessionScope.departureTime} </h5>
                                             </div>
                                             <div class="departure__ticket container--info">
                                                 <div class="departure__ticket--price">Giá vé</div>

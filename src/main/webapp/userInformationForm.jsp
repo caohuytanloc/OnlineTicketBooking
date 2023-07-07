@@ -164,18 +164,18 @@
                 <div class="container">
                   <p>Chuyến đi</p>
                   <div class="price">
-<%--                    ${sessionScope}--%>
-                    <span><a href="#" class="fa-solid fa-pen"></a></span>
+                      ${sessionScope.priceticket}
+                          <span><a href="#" class="fa-solid fa-pen"></a></span>
                   </div>
                 </div>
                 <div class="departure--price-info">
                   <div class="departure--price">
                     <div class="container">
                       <p class="departure depart-city">
-                        ${sessionScope.destination}
-                      </p>
+                          ${sessionScope.departure}                       </p>
                       <i class="fa-solid fa-plane"></i>
-                      <p class="departure arrive-city">${sessionScope.departure}
+                      <p class="departure arrive-city">
+                          ${sessionScope.destination}
                       </p>
 <%--                      <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>--%>
                     </div>
@@ -227,20 +227,20 @@
                   <div class="container">
                     <p>Chuyến về</p>
                     <div class="price">
-                     0 VND
-                      <span><a href="#" class="fa-solid fa-pen"></a></span>
+                        <%=session.getAttribute("pricereturn") %>
+                        <span><a href="#" class="fa-solid fa-pen"></a></span>
                     </div>
                   </div>
                   <div class="return--price-info">
                     <div class="return--price">
                       <div class="container">
                         <p class="return depart-city">
-                            ${sessionScope.departure}
+                            ${sessionScope.destination}
                         </p>
                         <i class="fa-solid fa-plane"></i>
-                        <p class="return arrive-city">${sessionScope.destination}
+                        <p class="return arrive-city">${sessionScope.departure}
                         </p>
-<%--                        <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>--%>
+                          <h5>${sessionScope.destinationTime} </h5>
                       </div>
                       <div
                               class="return__ticket__container--price container--info"
