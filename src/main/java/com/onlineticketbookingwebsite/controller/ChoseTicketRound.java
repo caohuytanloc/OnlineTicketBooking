@@ -25,10 +25,10 @@ public class ChoseTicketRound extends HttpServlet {
 
         if (action.equalsIgnoreCase("view")) {
             boolean trip = (Boolean) session.getAttribute("isRoundTrip");
-            if (trip==true) {
+            if (trip == true) {
                 String destination = (String) session.getAttribute("destination");
                 String departure = (String) session.getAttribute("departure");
-                String destinationTime= (String) session.getAttribute("destinationTime");
+                String destinationTime = (String) session.getAttribute("destinationTime");
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
                 LocalDate date = LocalDate.parse(destinationTime, formatter);
@@ -39,14 +39,18 @@ public class ChoseTicketRound extends HttpServlet {
                 List<Flight> flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
                 )), destination, departure);
                 if (flightList == null) {
-                    request.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
+                    request.setAttribute("NA", "Không tìm thấy chuyến bay phù hợp");
                 }
                 session.setAttribute("listfightreturn", flightList);
                 request.getRequestDispatcher("/ticketbooking/choseticketround.jsp").forward(request, response);
 
             }
+        }
+        else if (action.equalsIgnoreCase("back")) {
 
+        boolean trip = (Boolean) session.getAttribute("isRoundTrip");
 
+        request.getRequestDispatcher("/ticketbooking/renderTicket.jsp").forward(request, response);
         }
     }
 

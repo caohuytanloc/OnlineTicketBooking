@@ -76,7 +76,7 @@
             <div class="col-sm-6"></div>
             <div class="col-sm-2">
                 <div class="footer-label">Tổng tiền:</div>
-                <div class="footer-value">0 VND</div>
+                <div class="footer-value" id="footer-value"></div>
 
 
             </div>
@@ -86,7 +86,7 @@
 
                     <div class="col-sm-1">
                         <a href="${ChoseTicketGo}?action=view">
-                            <button class="footer-button">Tiếp theo</button>
+                            <button class="footer-button" onclick="check(event)">Tiếp theo</button>
                         </a>
 
                     </div>
@@ -96,7 +96,7 @@
 
                     <div class="col-sm-1">
                         <a href="${order}">
-                            <button class="footer-button">Tiếp theo</button>
+                            <button class="footer-button" onclick="check(event)"> Tiếp theo</button>
                         </a>
 
                     </div>
@@ -110,5 +110,16 @@
 </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.min.js"></script>
+<script>
+    function  check(event){
+        var element = document.getElementById("footer-value"); // Thay "yourElementId" bằng id của thẻ bạn muốn kiểm tra
+        if (!element.innerHTML) {
+            event.preventDefault(); // Ngăn chặn chuyển đến trang mới
 
+            alert("Vui lòng chọn vé");
+            return;
+        }
+    }
+
+</script>
 </html>

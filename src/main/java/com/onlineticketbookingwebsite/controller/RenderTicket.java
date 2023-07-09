@@ -29,82 +29,87 @@ public class RenderTicket extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("UTF-8");
-//        response.setCharacterEncoding("UTF-8");
-        String trip = request.getParameter("gender");
-        String quantity=request.getParameter("sum_quantity");
-        System.out.println(quantity);
-        ArrayList<Integer>listQuantity=getQuantity(quantity);
-        int numberOfBabies=listQuantity.get(0);
-        int numberOfChildren=listQuantity.get(1);
-        int numberOfAdults=listQuantity.get(2);
-        session.setAttribute("numberOfBabies", numberOfBabies);
-        session.setAttribute("numberOfChildren", numberOfChildren);
-        session.setAttribute("numberOfAdults", numberOfAdults);
-        System.out.println(numberOfAdults);
+        String  back = null; // Initialize with an empty string
+        back = request.getParameter("action");
+
+        if (back != null&& back.equalsIgnoreCase("back")) {
+            request.getRequestDispatcher("/ticketbooking/renderTicket.jsp").forward(request, response);
+        }else if (back==null) {
+            String trip = request.getParameter("gender");
+            String quantity = request.getParameter("sum_quantity");
+            System.out.println(quantity);
+            ArrayList<Integer> listQuantity = getQuantity(quantity);
+            int numberOfBabies = listQuantity.get(0);
+            int numberOfChildren = listQuantity.get(1);
+            int numberOfAdults = listQuantity.get(2);
+            session.setAttribute("numberOfBabies", numberOfBabies);
+            session.setAttribute("numberOfChildren", numberOfChildren);
+            session.setAttribute("numberOfAdults", numberOfAdults);
+
+            if (trip.equalsIgnoreCase("one-way")) {
+
+                String departure = request.getParameter("departure");
+                String departureTime = request.getParameter("datepickerinput");
+                String destination = request.getParameter("destination");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+                LocalDate date = LocalDate.parse(departureTime, formatter);
+                int day = date.getDayOfMonth();       // Lấy ngày
+                int month = date.getMonthValue();     // Lấy tháng
+                int year = date.getYear();            // Lấy năm
 
 
-        if (trip.equalsIgnoreCase("one-way")) {
+                List<Flight> flightList = null;
+                flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
+                )), destination, departure);
 
-            String departure = request.getParameter("departure");
-            String departureTime = request.getParameter("datepickerinput");
-            String destination = request.getParameter("destination");
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-            LocalDate date = LocalDate.parse(departureTime, formatter);
-            int day = date.getDayOfMonth();       // Lấy ngày
-            int month = date.getMonthValue();     // Lấy tháng
-            int year = date.getYear();            // Lấy năm
+                if (flightList == null) {
+                    session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
+
+                }
+                session.setAttribute("isRoundTrip", false);
+
+                session.setAttribute("departure", departure);
+                session.setAttribute("departureTime", departureTime);
+                session.setAttribute("destination", destination);
+                session.setAttribute("listfight", flightList);
+
+            } else if (trip.equalsIgnoreCase("round-trip")) {
+
+                String departure = request.getParameter("departure");
+                String departureTime = request.getParameter("datepickerinput");
+                String destination = request.getParameter("destination");
 
 
-            List<Flight> flightList = null;
-            flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
-            )), destination, departure);
+                String destinationTime = request.getParameter("datepickerinput1");
 
-            if (flightList == null) {
-                session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+                LocalDate date = LocalDate.parse(departureTime, formatter);
+
+                int day = date.getDayOfMonth();
+                int month = date.getMonthValue();
+                int year = date.getYear();
+
+
+                List<Flight> flightList = null;
+                flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
+                )), destination, departure);
+                if (flightList == null) {
+                    session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
+
+                }
+
+                session.setAttribute("isRoundTrip", true);
+                session.setAttribute("departure", departure);
+                session.setAttribute("departureTime", departureTime);
+                session.setAttribute("destination", destination);
+                session.setAttribute("destinationTime", destinationTime);
+                session.setAttribute("listfight", flightList);
+
 
             }
-            session.setAttribute("isRoundTrip", false);
-
-            session.setAttribute("departure", departure);
-            session.setAttribute("departureTime", departureTime);
-            session.setAttribute("destination", destination);
-            session.setAttribute("listfight", flightList);
-
-        } else if (trip.equalsIgnoreCase("round-trip")) {
-
-            String departure = request.getParameter("departure");
-            String departureTime = request.getParameter("datepickerinput");
-            String destination = request.getParameter("destination");
-
-
-            String destinationTime = request.getParameter("datepickerinput1");
-
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
-            LocalDate date = LocalDate.parse(departureTime, formatter);
-
-            int day = date.getDayOfMonth();
-            int month = date.getMonthValue();
-            int year = date.getYear();
-
-
-            List<Flight> flightList = null;
-            flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
-            )), destination, departure);
-            if (flightList == null) {
-                session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
-
-            }
-
-            session.setAttribute("isRoundTrip", true);
-            session.setAttribute("departure", departure);
-            session.setAttribute("departureTime", departureTime);
-            session.setAttribute("destination", destination);
-            session.setAttribute("destinationTime", destinationTime);
-            session.setAttribute("listfight", flightList);
-
+            request.getRequestDispatcher("/ticketbooking/renderTicket.jsp").forward(request, response);
 
         }
-        request.getRequestDispatcher("/ticketbooking/renderTicket.jsp").forward(request, response);
 
     }
 

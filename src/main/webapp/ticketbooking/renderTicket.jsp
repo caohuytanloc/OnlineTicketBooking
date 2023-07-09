@@ -21,264 +21,8 @@
     <link rel="stylesheet" href="./css/ticket-order.css"/>
     <link rel="stylesheet" href="./css/all.css"/>
     <link rel="stylesheet" href="./css/footer-ticket.css">
-    <style>
+    <link rel="stylesheet" href="./css/renderticket.css">
 
-        body {
-            background: url(/images/cloud-bg-3.c59c5fb1.png);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-color: rgb(179, 208, 240);
-            font-family: 'KoHo', 'sans-serif' !important;
-        }
-
-        main {
-            padding-bottom: 80px;
-        }
-
-        .container-right {
-            margin-left: 10%;
-            width: 376px;
-            height: auto;
-            background: white;
-            padding-left: 0%;
-            padding-right: 0%;
-        }
-
-        .left-container {
-            width: 790px;
-        }
-
-        .left-container img {
-            width: 580px;
-            height: 100px;
-        }
-
-        .infor {
-            background: linear-gradient(359.2deg, #D91A21 53.08%, #6F0000 206.46%);
-            text-transform: uppercase;
-            color: white;
-            height: 60px;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: 20px;
-        }
-
-
-        .labelinfor {
-            text-align: left;
-            float: left;
-            margin-top: 4%;
-            margin-left: 3%;
-
-        }
-
-        .buttondetail {
-            margin-top: 3%;
-            margin-left: 15%;
-            background: linear-gradient(31.2deg, #F9A51A -4.93%, #FBB612 18.27%, #FFDD00 71.59%);
-            height: 25px;
-            width: 80px;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-        }
-
-
-        .infor .lablesum {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-            margin-left: 10px;
-        }
-
-        .columnlable {
-            height: 50px;
-            background: rgb(232, 227, 227);
-            border-radius: 5px;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 5px;
-        }
-
-        .columnlable .text {
-            width: 100%;
-            padding-left: 10px;
-        }
-
-        .trip {
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 500;
-            line-height: 18px;
-            background-color: rgb(178, 221, 241);
-            height: 30px;
-
-        }
-
-        .trip label {
-            /* justify-content: center;
-
-            align-items: center; */
-            margin-top: 5px;
-            margin-bottom: 5px
-        }
-
-        .trip-class {
-            margin-top: 10px;
-            /* padding-left: 10px; */
-        }
-
-
-        .tablisttotal {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .tablist {
-            width: 50%;
-            display: grid;
-            justify-content: center;
-            background: white;
-
-        }
-
-
-        .carouselControls {
-            background: none !important;
-        }
-
-        .row img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .row .hinh1 {
-            background: rgb(213, 175, 103);
-        }
-
-        .row .hinh2 {
-            background: rgb(189, 26, 26);
-        }
-
-        .row .hinh3 {
-            background: rgb(221, 102, 17);
-        }
-
-        .row .hinh4 {
-            background: rgb(72, 216, 11);
-        }
-
-        .timerow {
-            background: linear-gradient(26.73deg, #F9A51A 13.7%, #FBB612 29.8%, #FFDD00 66.81%);
-            margin-top: 5px;
-            width: 27% !important;
-
-
-        }
-
-
-        .columnlable-new {
-            padding: 10px;
-
-        }
-
-        .columnlable-new1 div {
-            margin-top: 10px;
-
-        }
-
-        .date-flight {
-            height: 90px;
-            display: flex;
-        }
-
-        .cloud div {
-            width: 160px;
-        }
-
-        .cloud label {
-            margin-left: 15%;
-            font-family: 'KoHo', 'sans-serif';
-        }
-
-        .date-flight i {
-            background: white;
-            border-radius: 50%;
-            width: 25px;
-            height: 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 100%;
-        }
-
-        .clound-lable1 {
-            margin-left: 30% !important;
-            margin-top: 5%
-        }
-
-        .clound-lable2 {
-            margin-left: 10%;
-        }
-
-        .date-flight {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* .cloud {
-    background-color: linear-gradient(28.91deg, #F9A51A 2.24%, #FBB612 31.03%, #FBF300 97.21%);
-    background-image: url(cloud.png);
-} */
-
-        .cloud.hidden {
-            display: none;
-        }
-
-        #type1,
-        #type2,
-        #type3,
-        #type4 {
-            width: 24%;
-            cursor: pointer;
-            display: flex;
-            padding: 3px;
-            background: #e9ecef;
-            position: relative;
-            align-items: center;
-            margin-left: 2px;
-            flex-direction: column;
-            justify-content: center;
-            margin-bottom: 3px;
-        }
-
-        #type1 p,
-        #type2 P,
-        #type3 P,
-        #type4 p {
-            font-size: 24px;
-            line-height: 28px;
-            font-family: 'JambonoMedium';
-        }
-
-        .timefly {
-            font-size: 23px;
-            font-weight: bold;
-        }
-
-        .codefly {
-            font-size: 12px;
-            line-height: 14px;
-            color: #3C3C3C;
-        }
-    </style>
 </head>
 
 <body>
@@ -367,7 +111,7 @@
 
                 <div class="date-flight">
                     <div>
-                        <a onclick="updateDay()"><i class="fa-solid fa-caret-up fa-rotate-270" id="toggle-button"></i></a>
+                        <a><i class="fa-solid fa-caret-up fa-rotate-270" id="toggle-button"></i></a>
                     </div>
                     <div class="cloud" id="date-cloud-1">
                         <div>
@@ -406,7 +150,7 @@
                         </div>
                     </div>
                     <div>
-                        <a  onclick="updateDate()"><i class="fa-solid fa-caret-up fa-rotate-90" id="toggle-button"></i></a>
+                        <a  ><i class="fa-solid fa-caret-up fa-rotate-90" id="toggle-button"></i></a>
                     </div>
                 </div>
 
@@ -772,6 +516,18 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.min.js"></script>
 <script>
+    function  check(event){
+    var element = document.getElementById("footer-value"); // Thay "yourElementId" bằng id của thẻ bạn muốn kiểm tra
+    if (!element.innerHTML) {
+        event.preventDefault(); // Ngăn chặn chuyển đến trang mới
+
+        alert("Vui lòng chọn vé");
+        return;
+    }
+    }
+
+</script>
+<script>
 
     function changeValue(clicked, id, type) {
 
@@ -781,6 +537,7 @@
         var servicesElement = document.getElementById("servicego");
         var pricegoElement = document.getElementById("pricego");
         var totalElement = document.getElementById("total_price");
+        var total_footer = document.getElementById("footer-value");
 
         var tax = taxElement.innerText.trim();
         var services = servicesElement.innerText.trim();
@@ -802,7 +559,7 @@
         priceticketElement.innerText = priceticketValue.toLocaleString("vi-VN") + " VND";
         pricegoElement.innerText = pricegoValue.toLocaleString("vi-VN") + " VND";
         totalElement.innerText = pricegoElement.innerText;
-
+        total_footer.innerText=pricegoElement.innerText;
         $.ajax({
             url: "/ChoseTicketGo",
             type: "POST",
@@ -926,61 +683,11 @@
 
 
     });
+
+
+
 </script>
-<%--<script>--%>
-<%--    // Lấy các phần tử cần thiết--%>
-<%--    const toggleButtonUp = document.getElementById('toggle-button-up');--%>
-<%--    const toggleButtonDown = document.getElementById('toggle-button-down');--%>
-<%--    const dateClouds = document.querySelectorAll('.cloud');--%>
 
-<%--    // Lấy các ngày hiện tại--%>
-<%--    const dates = Array.from(dateClouds).map((cloud) => {--%>
-<%--        const dateText = cloud.querySelector('.clound-lable2').textContent;--%>
-<%--        return moment(dateText, 'Ngày D Tháng M');--%>
-<%--    });--%>
-
-<%--    // Xử lý sự kiện khi nhấn mũi tên lên--%>
-<%--    function updateDate(){--%>
-<%--        // Tìm ngày lớn nhất--%>
-<%--        const maxDate = moment.max(dates);--%>
-
-<%--        // Lặp qua các ngày và xử lý--%>
-<%--        dates.forEach((date, index) => {--%>
-<%--            // Nếu ngày là ngày lớn nhất, ẩn đi và xóa background image--%>
-<%--            if (date.isSame(maxDate)) {--%>
-<%--                dateClouds[index].style.display = 'none';--%>
-<%--                dateClouds[index].style.backgroundImage = 'none';--%>
-<%--            }--%>
-<%--            // Ngược lại, tăng ngày lên 1 và cập nhật các thông tin--%>
-<%--            else {--%>
-<%--                date.add(1, 'day');--%>
-<%--                dateClouds[index].querySelector('.clound-lable2').textContent = date.format('Ngày D Tháng M');--%>
-<%--                dateClouds[index].style.backgroundImage = 'url(/images/cloud.png)';--%>
-<%--            }--%>
-<%--        });--%>
-<%--    }--%>
-
-<%--    // Xử lý sự kiện khi nhấn mũi tên xuống--%>
-<%--   function  updatedate(){--%>
-<%--        // Tìm ngày nhỏ nhất--%>
-<%--        const minDate = moment.min(dates);--%>
-
-<%--        // Lặp qua các ngày và xử lý--%>
-<%--        dates.forEach((date, index) => {--%>
-<%--            // Nếu ngày là ngày nhỏ nhất, hiển thị và set background image mới--%>
-<%--            if (date.isSame(minDate)) {--%>
-<%--                dateClouds[index].style.display = 'block';--%>
-<%--                dateClouds[index].style.backgroundImage = 'url(/images/new-cloud.png)';--%>
-<%--            }--%>
-<%--            // Ngược lại, giảm ngày xuống 1 và cập nhật các thông tin--%>
-<%--            else {--%>
-<%--                date.subtract(1, 'day');--%>
-<%--                dateClouds[index].querySelector('.clound-lable2').textContent = date.format('Ngày D Tháng M');--%>
-<%--            }--%>
-<%--        });--%>
-<%--    }--%>
-
-<%--</script>--%>
 </body>
 
 </html>
