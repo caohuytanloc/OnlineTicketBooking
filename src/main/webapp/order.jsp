@@ -386,11 +386,13 @@
     <footer class="footer">
         <div class="footer__container">
             <div class="footer__back">
-                <button type="button" class="footer__btn--return">Quay lại</button>
+                <a href="/RenderTicket?action=back">
+
+                    <button type="button" class="footer__btn--return">Quay lại</button></a>
             </div>
             <div class="footer__price__total">
                 <p>Tổng tiền</p>
-                <%--                <p class="footer__price price"><%= (int) Integer.parseInt((String) session.getAttribute("departurePrice")) + (int) Integer.parseInt((String) session.getAttribute("returnPrice")) %></p>--%>
+                                <p class="footer__price price">${sessionScope.total}</p>
             </div>
             <div class="footer__next">
                 <a href="/userInformationForm">
@@ -399,8 +401,10 @@
             </div>
         </div>
     </footer>
+
 </div>
 </body>
+
 
 <script>
 

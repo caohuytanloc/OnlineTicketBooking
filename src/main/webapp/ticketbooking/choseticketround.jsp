@@ -18,8 +18,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css"
           integrity="...insert integrity hash here..." crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/ticket-order.css" />
-    <link rel="stylesheet" href="./css/all.css" />
+    <link rel="stylesheet" href="./css/ticket-order.css"/>
+    <link rel="stylesheet" href="./css/all.css"/>
     <link rel="stylesheet" href="./css/footer-ticket.css">
     <style>
 
@@ -389,7 +389,7 @@
                          style="background-image: url(/images/cloud.png); background-size: 100%;">
                         <div>
                             <label class="clound-lable1">Chủ nhật</label>
-                            <label class="clound-lable2">14 tháng 5</label>
+                            <label class="clound-lable2">${sessionScope.destinationTime}</label>
                             <label class="clound-lable">Từ 199.000 VND</label>
                         </div>
                     </div>
@@ -422,10 +422,10 @@
                         <img class="col hinh4" src="/images/hinh4.svg">
 
                     </div>
-                    <c:if test="${listfight==null}">
+                    <c:if test="${sessionScope.listfightreturn==null}">
                         <label style=" margin-top: 5%;
-    padding-left: 50%;
-    color: red;">${sessionScope.eror}</label>
+                          padding-left: 50%;
+                                 color: red;">${requestScope.NA}</label>
                     </c:if>
                     <c:forEach var="flight" items="${sessionScope.listfightreturn}">
 
@@ -466,178 +466,179 @@
             </div>
             <div class="container_right col-md-4">
 
-    <div class="container_right">
-        <div class="reservation__information">
-            <div class="reservation__information--header">
-                <h3>Thông tin đặt chỗ</h3>
-                <button type="button">Chi tiết</button>
-            </div>
-            <div class="reservation__information--detail">
-                <div class="departure--detail detail">
-                    <div class="container">
-                        <p>Chuyến đi</p>
-                        <div class="pricego"id="pricego">
-                            ${sessionScope.price}
-                            <span><a href="#" class="fa-solid fa-pen"></a></span>
+                <div class="container_right">
+                    <div class="reservation__information">
+                        <div class="reservation__information--header">
+                            <h3>Thông tin đặt chỗ</h3>
+                            <button type="button">Chi tiết</button>
                         </div>
-                    </div>
-                    <div class="departure--price-info">
-                        <div class="departure--price">
-                            <div class="container">
-                                <p class="departure depart-city">
-                                    Tp. Hồ Chí Minh (SGN)
-                                </p>
-                                <i class="fa-solid fa-plane"></i>
-                                <p class="departure arrive-city">Hà Nội (HAN)</p>
-                                <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
-                            </div>
-                            <div class="departure__ticket container--info">
-                                <div class="departure__ticket--price">Giá vé</div>
-                                <div class="" id="priceticketgo">
-
-                                    ${sessionScope.priceticket}
-                                    <span
-                                    ><button
-                                            type="button"
-                                            class="fa-solid fa-caret-down price--info"
-                                    ></button
-
-                                    ></span>
-
+                        <div class="reservation__information--detail">
+                            <div class="departure--detail detail">
+                                <div class="container">
+                                    <p>Chuyến đi</p>
+                                    <div class="pricego" id="pricego">
+                                        ${sessionScope.price}
+                                        <span><a href="#" class="fa-solid fa-pen"></a></span>
+                                    </div>
                                 </div>
-                                <%--              <div style="display: block;">--%>
-                                <%--                <div>--%>
-                                <%--                  <label >Skyboss</label>--%>
-                                <%--                  <label >3.690.000</label>--%>
+                                <div class="departure--price-info">
+                                    <div class="departure--price">
+                                        <div class="container">
+                                            <p class="departure depart-city">
+                                                Tp. Hồ Chí Minh (SGN)
+                                            </p>
+                                            <i class="fa-solid fa-plane"></i>
+                                            <p class="departure arrive-city">Hà Nội (HAN)</p>
+                                            <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                        </div>
+                                        <div class="departure__ticket container--info">
+                                            <div class="departure__ticket--price">Giá vé</div>
+                                            <div class="" id="priceticketgo">
 
-                                <%--                </div>--%>
-                                <%--                <div>--%>
-                                <%--                  <label >Thế VAT</label>--%>
-                                <%--                  <label >369.000</label>--%>
+                                                ${sessionScope.priceticket}
+                                                <span
+                                                ><button
+                                                        type="button"
+                                                        class="fa-solid fa-caret-down price--info"
+                                                ></button
 
-                                <%--                </div>--%>
-                                <%--              </div>--%>
-                            </div>
-                            <div class="departure__ticket__container--fee container--info">
-                                <div class="">Phí - Thuế</div>
-                                <div class="" id="taxgo">
-                                    0 VND
-                                    <span
-                                    ><button
-                                            type="button"
-                                            class="fa-solid fa-caret-down fee--info"
-                                    ></button
-                                    ></span>
-                                    <%--                <div style="display: block;">--%>
-                                    <%--                                                      <div>--%>
-                                    <%--                                                          <label >Phụ thu dịch vụ hệ thống (Quốc nội)</label>--%>
-                                    <%--                                                          <label >3.690.000</label>--%>
+                                                ></span>
 
-                                    <%--                                                      </div>--%>
-                                    <%--                                                      <div>--%>
-                                    <%--                                                          <label >Phụ thu quản trị hệ thống</label>--%>
-                                    <%--                                                          <label >369.000</label>--%>
+                                            </div>
+                                            <%--              <div style="display: block;">--%>
+                                            <%--                <div>--%>
+                                            <%--                  <label >Skyboss</label>--%>
+                                            <%--                  <label >3.690.000</label>--%>
 
-                                    <%--                                                      </div>--%>
-                                    <%--                                                      <div>--%>
-                                    <%--                                                          <label >Phí an ninh soi chiếu</label>--%>
-                                    <%--                                                          <label >369.000</label>--%>
+                                            <%--                </div>--%>
+                                            <%--                <div>--%>
+                                            <%--                  <label >Thế VAT</label>--%>
+                                            <%--                  <label >369.000</label>--%>
 
-                                    <%--                                                      </div>--%>
-                                    <%--                                                      <div>--%>
-                                    <%--                                                          <label >Phí sân bay quốc nội</label>--%>
-                                    <%--                                                          <label >369.000</label>--%>
+                                            <%--                </div>--%>
+                                            <%--              </div>--%>
+                                        </div>
+                                        <div class="departure__ticket__container--fee container--info">
+                                            <div class="">Phí - Thuế</div>
+                                            <div class="" id="taxgo">
+                                                0 VND
+                                                <span
+                                                ><button
+                                                        type="button"
+                                                        class="fa-solid fa-caret-down fee--info"
+                                                ></button
+                                                ></span>
+                                                <%--                <div style="display: block;">--%>
+                                                <%--                                                      <div>--%>
+                                                <%--                                                          <label >Phụ thu dịch vụ hệ thống (Quốc nội)</label>--%>
+                                                <%--                                                          <label >3.690.000</label>--%>
 
-                                    <%--                                                      </div>--%>
-                                    <%--                                                      <div>--%>
-                                    <%--                                                          <label >Thuế VAT</label>--%>
-                                    <%--                                                          <label >369.000</label>--%>
+                                                <%--                                                      </div>--%>
+                                                <%--                                                      <div>--%>
+                                                <%--                                                          <label >Phụ thu quản trị hệ thống</label>--%>
+                                                <%--                                                          <label >369.000</label>--%>
 
-                                    <%--                                                      </div>--%>
-                                    <%--                </div>--%>
-                                </div>
-                            </div>
-                            <div class="departure__ticket__container--service container--info">
-                                <div class="">Dịch vụ</div>
-                                <div class="" id="servicego">
-                                    0 VND
-                                    <span
-                                    ><button
-                                            type="button"
-                                            class="fa-solid fa-caret-down service--info"
-                                    ></button
-                                    ></span>
+                                                <%--                                                      </div>--%>
+                                                <%--                                                      <div>--%>
+                                                <%--                                                          <label >Phí an ninh soi chiếu</label>--%>
+                                                <%--                                                          <label >369.000</label>--%>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="return--detail detail">
-                    <div class="container">
-                        <p>Chuyến về</p>
-                        <div id="pricereturn">
-                            0 VND
-                            <span><a href="#" class="fa-solid fa-pen"></a></span>
-                        </div>
-                    </div>
-                    <div class="return--price-info">
-                        <div class="return--price">
-                            <div class="container">
-                                <p class="return depart-city">
-                                    Tp. Hồ Chí Minh (SGN)
-                                </p>
-                                <i class="fa-solid fa-plane"></i>
-                                <p class="return arrive-city">Hà Nội (HAN)</p>
-                                <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
-                            </div>
-                            <div class="return__ticket__container--price container--info">
-                                <div class="">Giá vé</div>
-                                <div class=""id="priceticketreturn">
-                                    0 VND
-                                    <span
-                                    ><button
-                                            type="button"
-                                            class="fa-solid fa-caret-down price--info"
-                                    ></button
-                                    ></span>
+                                                <%--                                                      </div>--%>
+                                                <%--                                                      <div>--%>
+                                                <%--                                                          <label >Phí sân bay quốc nội</label>--%>
+                                                <%--                                                          <label >369.000</label>--%>
+
+                                                <%--                                                      </div>--%>
+                                                <%--                                                      <div>--%>
+                                                <%--                                                          <label >Thuế VAT</label>--%>
+                                                <%--                                                          <label >369.000</label>--%>
+
+                                                <%--                                                      </div>--%>
+                                                <%--                </div>--%>
+                                            </div>
+                                        </div>
+                                        <div class="departure__ticket__container--service container--info">
+                                            <div class="">Dịch vụ</div>
+                                            <div class="" id="servicego">
+                                                0 VND
+                                                <span
+                                                ><button
+                                                        type="button"
+                                                        class="fa-solid fa-caret-down service--info"
+                                                ></button
+                                                ></span>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="return__ticket__container--fee container--info">
-                                <div class="" >Phí - Thuế</div>
-                                <div class="" id="taxreturn">
-                                   0 VND
-                                    <span
-                                    ><button
-                                            type="button"
-                                            class="fa-solid fa-caret-down fee--info"
-                                    ></button
-                                    ></span>
+                            <div class="return--detail detail">
+                                <div class="container">
+                                    <p>Chuyến về</p>
+                                    <div id="pricereturn">
+                                        0 VND
+                                        <span><a href="#" class="fa-solid fa-pen"></a></span>
+                                    </div>
+                                </div>
+                                <div class="return--price-info">
+                                    <div class="return--price">
+                                        <div class="container">
+                                            <p class="return depart-city">
+                                                Tp. Hồ Chí Minh (SGN)
+                                            </p>
+                                            <i class="fa-solid fa-plane"></i>
+                                            <p class="return arrive-city">Hà Nội (HAN)</p>
+                                            <h5>Tue, 04/07/2023 | 05:25 - 07:35 | VJ198 | Eco</h5>
+                                        </div>
+                                        <div class="return__ticket__container--price container--info">
+                                            <div class="">Giá vé</div>
+                                            <div class="" id="priceticketreturn">
+                                                0 VND
+                                                <span
+                                                ><button
+                                                        type="button"
+                                                        class="fa-solid fa-caret-down price--info"
+                                                ></button
+                                                ></span>
+                                            </div>
+                                        </div>
+                                        <div class="return__ticket__container--fee container--info">
+                                            <div class="">Phí - Thuế</div>
+                                            <div class="" id="taxreturn">
+                                                0 VND
+                                                <span
+                                                ><button
+                                                        type="button"
+                                                        class="fa-solid fa-caret-down fee--info"
+                                                ></button
+                                                ></span>
+                                            </div>
+                                        </div>
+                                        <div class="return__ticket__container--service container--info">
+                                            <div class="">Dịch vụ</div>
+                                            <div class="" id="servicereturn">
+                                                0 VND
+                                                <span
+                                                ><button
+                                                        type="button"
+                                                        class="fa-solid fa-caret-down service--info"
+                                                ></button
+                                                ></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="return__ticket__container--service container--info">
-                                <div class="">Dịch vụ</div>
-                                <div class="" id="servicereturn">
-                                    0 VND
-                                    <span
-                                    ><button
-                                            type="button"
-                                            class="fa-solid fa-caret-down service--info"
-                                    ></button
-                                    ></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="total__price" style="background: linear-gradient(359.2deg, #d91a21 53.08%, #6f0000 206.46%);border-bottom-right-radius: 10px;
+                            <div class="total__price" style="background: linear-gradient(359.2deg, #d91a21 53.08%, #6f0000 206.46%);border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;padding: 10px;">
-                    <p style="color: white">Tổng tiền</p>
-                    <h3 class="total__price price" id="total_price" style="color: white!important;">  ${sessionScope.total}</h3>
+                                <p style="color: white">Tổng tiền</p>
+                                <h3 class="total__price price" id="total_price"
+                                    style="color: white!important;"> ${sessionScope.total}</h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
             </div>
 
 
@@ -652,12 +653,13 @@
 <script>
 
 
-    function change(clicked,id,returnSeatType) {
+    function change(clicked, id, returnSeatType) {
         var priceticketElement = document.getElementById("priceticketreturn");
         var taxElement = document.getElementById("taxreturn");
         var servicesElement = document.getElementById("servicereturn");
         var pricegoElement = document.getElementById("pricereturn");
         var pricereturnElement = document.getElementById("pricego");
+        var total_footer = document.getElementById("footer-value");
 
         var totalElement = document.getElementById("total_price");
 
@@ -684,18 +686,130 @@
         priceticketElement.innerText = priceticketValue.toLocaleString("vi-VN") + " VND";
         pricegoElement.innerText = pricegoValue.toLocaleString("vi-VN") + " VND";
         totalElement.innerText = (pricegoValue + pricreutrnnew).toLocaleString("vi-VN") + " VND";
+        total_footer.innerText=totalElement.innerText;
+
         $.ajax({
             url: "/order",
             type: "POST",
-            data: { idReturn:id,returnSeatType:returnSeatType,pricereturn:pricegoElement.innerText,total:totalElement.innerText},
-            success: function(response) {
-                console.log('Các giá trị đã được lưu vào session'+response);
+            data: {
+                idReturn: id,
+                returnSeatType: returnSeatType,
+                pricereturn: pricegoElement.innerText,
+                total: totalElement.innerText
             },
-            error: function(xhr, status, error) {
+            success: function (response) {
+                console.log('Các giá trị đã được lưu vào session' + response);
+            },
+            error: function (xhr, status, error) {
                 console.log('Đã xảy ra lỗi: ' + error);
             }
         });
     }
+
+</script>
+<script src="/webjars/moment/2.29.1/moment.js"></script>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Cấu hình Moment.js Locales cho vùng miền mong muốn
+        moment.locale('vi', {
+            weekdays: [
+                'Chủ nhật',
+                'Thứ hai',
+                'Thứ ba',
+                'Thứ tư',
+                'Thứ năm',
+                'Thứ sáu',
+                'Thứ bảy'
+            ],
+            months: [
+                'Tháng 1',
+                'Tháng 2',
+                'Tháng 3',
+                'Tháng 4',
+                'Tháng 5',
+                'Tháng 6',
+                'Tháng 7',
+                'Tháng 8',
+                'Tháng 9',
+                'Tháng 10',
+                'Tháng 11',
+                'Tháng 12'
+            ]
+        });
+
+        // Lặp qua từng thẻ div và tính toán ngày cho các thẻ trước và sau "date-cloud-3"
+        const dateCloud3 = document.getElementById('date-cloud-3');
+        const label1 = dateCloud3.querySelector('#date-cloud-3 .clound-lable1');
+        const label2 = dateCloud3.querySelector('#date-cloud-3 .clound-lable2');
+
+
+// Lấy ngày tháng năm từ label2 của clound-date-3
+        const dateText = label2.textContent;
+        // console.log(dateText);
+
+        const [dayOfMonth, month, year] = dateText.split('/');
+        const paddedDayOfMonth = dayOfMonth.padStart(2, '0');
+        const paddedMonth = month.padStart(2, '0');
+// Tạo đối tượng Moment từ ngày tháng năm của clound-date-3
+        const date = paddedDayOfMonth + '/' + paddedMonth + '/' + year;
+
+        const currentDate = moment(date, 'DD/MM/YYYY');
+        label2.textContent = 'Ngày ' + paddedDayOfMonth + ' Tháng ' + paddedMonth;
+        const dayof = currentDate.format('dddd');
+
+        label1.textContent = dayof;
+
+// Tìm giá trị của clound-date-2 (ngày trước clound-date-3)
+        const prevDate = currentDate.clone().subtract(1, 'days');
+        const prevDayOfWeek = prevDate.format('dddd');
+        const prevDayOfMonth = prevDate.format('D');
+        const prevMonth = prevDate.format('MMMM');
+
+        const prevDateCloud = document.getElementById('date-cloud-2');
+        const prevLabel1 = prevDateCloud.querySelector('.clound-lable1');
+        const prevLabel2 = prevDateCloud.querySelector('.clound-lable2');
+        prevLabel1.textContent = prevDayOfWeek;
+        prevLabel2.textContent = 'Ngày ' + prevDayOfMonth + ' ' + prevMonth;
+
+// Tìm giá trị của clound-date-4 (ngày sau clound-date-3)
+        const nextDate = currentDate.clone().add(1, 'days');
+        const nextDayOfWeek = nextDate.format('dddd');
+        const nextDayOfMonth = nextDate.format('D');
+        const nextMonth = nextDate.format('MMMM');
+        const nextDateCloud = document.getElementById('date-cloud-4');
+        const nextLabel1 = nextDateCloud.querySelector('.clound-lable1');
+        const nextLabel2 = nextDateCloud.querySelector('.clound-lable2');
+        nextLabel1.textContent = nextDayOfWeek;
+        nextLabel2.textContent = 'Ngày ' + nextDayOfMonth + ' ' + nextMonth;
+
+// Tìm giá trị của clound-date-1 (ngày trước clound-date-3)
+        const prevPrevDate = currentDate.clone().subtract(2, 'days');
+        const prevPrevDayOfWeek = prevPrevDate.format('dddd');
+        const prevPrevDayOfMonth = prevPrevDate.format('D');
+        const prevPrevMonth = prevPrevDate.format('MMMM');
+
+        const prevPrevDateCloud = document.getElementById('date-cloud-1');
+        const prevPrevLabel1 = prevPrevDateCloud.querySelector('.clound-lable1');
+        const prevPrevLabel2 = prevPrevDateCloud.querySelector('.clound-lable2');
+        prevPrevLabel1.textContent = prevPrevDayOfWeek;
+        prevPrevLabel2.textContent = 'Ngày ' + prevPrevDayOfMonth + ' ' + prevPrevMonth;
+// Tìm giá trị của clound-date-5 (ngày sau clound-date-3)
+        const nextNextDate = currentDate.clone().add(2, 'days');
+        const nextNextDayOfWeek = nextNextDate.format('dddd');
+        const nextNextDayOfMonth = nextNextDate.format('D');
+        const nextNextMonth = nextNextDate.format('MMMM');
+
+        const nextNextDateCloud = document.getElementById('date-cloud-5');
+        const nextNextLabel1 = nextNextDateCloud.querySelector('.clound-lable1');
+        const nextNextLabel2 = nextNextDateCloud.querySelector('.clound-lable2');
+        nextNextLabel1.textContent = nextNextDayOfWeek;
+        nextNextLabel2.textContent = 'Ngày ' + nextNextDayOfMonth + ' ' + nextNextMonth;
+
+
+    });
+
 
 </script>
 

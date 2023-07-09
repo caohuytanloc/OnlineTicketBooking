@@ -35,27 +35,21 @@ public class UserInformationFormServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phoneNumber");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-//        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
         String returnFlightID = (String) session.getAttribute("idReturn");
         String departureFlightID = (String) session.getAttribute("id");
         String departureSeatType = (String) session.getAttribute("departureSeatType");
-        System.out.println(departureFlightID + "birthday" + birthday);
         session.setAttribute("fullname", firstname+" "+lastname);
         session.setAttribute("email", email);
         session.setAttribute("address",address);
         LocalDate date = LocalDate.parse(birthday);
         LocalDateTime dateTime = date.atStartOfDay();
         String id_passenger = "P00" + String.valueOf(((Integer.parseInt(new PassengerDao().getId().substring(3)) + 1)));
-        System.out.println(id_passenger);
         Boolean isRoundTrip = (Boolean) session.getAttribute("isRoundTrip");
-        System.out.println(isRoundTrip);
 
         if (isRoundTrip == false) {
             try {
                 boolean savePass = new PassengerDao().createPassenger(id_passenger, firstname, lastname, dateTime, identification, phoneNumber, email, address, gender);
-                System.out.println(savePass);
                 String saveTicket = new TicketDao().createTicket(id_passenger, departureFlightID, departureSeatType, "Đã bán", 0);
-                System.out.println(saveTicket);
                 session.setAttribute("saveTicket",saveTicket);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -64,13 +58,9 @@ public class UserInformationFormServlet extends HttpServlet {
         }
         if (isRoundTrip == true) {
             try {
-                boolean savePass = new PassengerDao().createPassenger(id_passenger, firstname, lastname, dateTime, identification, phoneNumber, email, address, gender);
-                System.out.println(savePass);
-
+                boolean savePass = new PassengerDao().createPassenger(id_passenger, firstname+" ", lastname, dateTime, identification, phoneNumber, email, address, gender);
                 String saveTicket = new TicketDao().createTicket(id_passenger, departureFlightID, departureSeatType, "Đã bán", 1);
-                System.out.println(saveTicket);
                 String save1Ticket = new TicketDao().createTicket(id_passenger, returnFlightID, departureSeatType, "Đã bán", 1);
-                System.out.println(saveTicket);
 
                 session.setAttribute("saveTicket",saveTicket);
                 session.setAttribute("save1Ticket",save1Ticket);
