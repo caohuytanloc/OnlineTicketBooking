@@ -70,7 +70,7 @@ public class PassengerDao {
             String query = "INSERT INTO PASSENGERS VALUE (?, ? ,? ,? ,? ,? ,? ,?)";
             PreparedStatement ps = DBConnect.getInstance().get(query);
             ps.setString(1, id);
-            ps.setString(2, lastName + "" + firstName);
+            ps.setString(2, lastName + " " + firstName);
             ps.setString(3, phoneNumber);
             ps.setObject(4, birthday);
             ps.setString(5, gender);

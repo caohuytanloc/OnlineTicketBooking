@@ -144,7 +144,7 @@
                   <input class="user__information__container--input" type="text" name="user-firstname" id="user-firstname" placeholder="Tên đệm & tên">
                   <input class="user__information__container--input" type="date" name="user-birthday" id="user-birthday" onfocus="(this.type='date')" placeholder="Ngày sinh DD/MM/YYYY">
                   <input class="user__information__container--input" type="text" name="user-identification" id="user-identification"  placeholder="Căn cước / CMND">
-                  <input class="user__information__container--input" type="number" name="user-phoneNumber" id="user-phonenumber" placeholder="Số điện thoại">
+                  <input class="user__information__container--input" type="tel" name="user-phoneNumber" id="user-phonenumber" placeholder="Số điện thoại">
                   <input class="user__information__container--input" type="email" name="user-email" id="user-email" placeholder="Email">
                   <input class="user__information__container--input full-width" type="text" name="user-address" id="user-address" placeholder="Địa chỉ">
                 </div>
@@ -308,7 +308,7 @@
       </div>
       <div class="footer__next">
         <a href="/checkPayment">
-          <button id="btn-user-information-form-next" class="footer__btn--next" type="button">Đi tiếp</button>
+          <button id="btn-user-information-form-next" class="footer__btn--next" type="button" onclick="validateForm(event)">Đi tiếp</button>
 
         </a>
       </div>
@@ -316,6 +316,71 @@
   </footer>
 </div>
 </body>
+<script>
+    function validateForm(event) {
+        var inputs = document.querySelectorAll('.user__information__container--input');
+        var selectedGender = document.querySelector('input[name="gender"]:checked');
+        var birthdayInput = document.getElementById('user-birthday');
+        var birthdayValue = birthdayInput.value.trim();
+
+        // Kiểm tra xem tất cả các input đã được nhập vào và đúng định dạng
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            var value = input.value.trim();
+
+            if (value === '') {
+                event.preventDefault();
+                alert('Vui lòng nhập đầy đủ thông tin!');
+                return false; // Form không hợp lệ, dừng việc submit
+            }
+
+            // Kiểm tra định dạng email
+            if (input.type === 'email') {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    event.preventDefault();
+                    alert('Vui lòng nhập đúng định dạng email!');
+                    return false; // Form không hợp lệ, dừng việc submit
+                }
+            }
+
+            // Kiểm tra định dạng số điện thoại
+            if (input.type === 'tel') {
+                var phoneNumberRegex = /^0\d{9}$/; // Số điện thoại bắt đầu bằng số 0
+                if (!phoneNumberRegex.test(value)) {
+                    event.preventDefault();
+                    alert('Vui lòng nhập đúng định dạng số điện thoại (10 chữ số, bắt đầu bằng số 0)!');
+                    return false; // Form không hợp lệ, dừng việc submit
+                }
+            }
+        }
+
+        // Kiểm tra xem giới tính đã được chọn
+        if (!selectedGender) {
+            event.preventDefault();
+            alert('Vui lòng chọn giới tính!');
+            return false; // Form không hợp lệ, dừng việc submit
+        }
+
+        // Kiểm tra tuổi
+        var birthdayDate = new Date(birthdayValue);
+        var currentDate = new Date();
+        var age = currentDate.getFullYear() - birthdayDate.getFullYear();
+        var isOver12YearsOld = age >= 12;
+
+        if (!isOver12YearsOld) {
+            event.preventDefault();
+            alert('Bạn phải có ít nhất 12 tuổi để đăng ký!');
+            return false; // Form không hợp lệ, dừng việc submit
+        }
+
+        // Form hợp lệ, cho phép submit
+        return true;
+    }
+
+
+</script>
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="${pageContext.request.contextPath}/js/userForm.js"></script>
+
