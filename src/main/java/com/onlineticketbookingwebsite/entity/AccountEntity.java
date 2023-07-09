@@ -27,24 +27,21 @@ public class AccountEntity {
               return new Account(rs.getString(1),rs.getString(2),
                       rs.getString(3),
                       rs.getString(4),
-                      rs.getString(5),
-                      rs.getString(6),
-                      rs.getString(7));
+                      rs.getInt(5));
             }
         } catch (Exception e) {
         }
         return null;
     }
-    public void signup(String id,String user, String mail, String phone, String pass){
+    public void signup(String user, String mail, String phone, String pass){
         try {
             PreparedStatement ps = DBConnect.getInstance().connectStament().getConnection().prepareStatement(
                     "insert into accounts "+
-                            " values (?,?,?,?,?,0,0);");
+                            " values (?,?,?,?,0);");
             ps.setString(1,user);
             ps.setString(2,pass);
-            ps.setString(3,id);
-            ps.setString(4,mail);
-            ps.setString(5,phone);
+            ps.setString(3,mail);
+            ps.setString(4,phone);
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -74,9 +71,7 @@ public class AccountEntity {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7));
+                        rs.getInt(5));
             }
         } catch (Exception e) {
         }

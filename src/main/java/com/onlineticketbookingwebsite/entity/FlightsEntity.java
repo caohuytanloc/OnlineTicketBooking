@@ -89,7 +89,11 @@ public class FlightsEntity {
         }
 
         if (result.size()>0) {
-            return result;
+            List<Flight> list = new ArrayList<Flight>();
+            for (int i=result.size()-1; i>=0; i--){
+                list.add(result.get(i));
+            }
+            return list;
         }  else{
             return null;
         }
@@ -103,6 +107,7 @@ public class FlightsEntity {
             ResultSet rs = s.executeQuery("select * from flights");
             rs.last();
             id=Integer.parseInt(rs.getString(1).substring(1));
+            System.out.println(rs.getString(1).substring(1));
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

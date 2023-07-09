@@ -30,7 +30,7 @@ public class DoLogin extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }else {
           //  System.out.println(account.toString());
-            if (account.getInAdmin().equals("1")) {
+            if (account.getInAdmin()==1) {
                 response.sendRedirect("/ticketManagement");
                 HttpSession session=request.getSession();
                 session.setAttribute("acc",account);
@@ -38,6 +38,7 @@ public class DoLogin extends HttpServlet {
                 response.sendRedirect("ticketbooking/Home.jsp");
                 HttpSession session=request.getSession();
                 session.setAttribute("acc",account);
+
             }
 //            System.out.println(account.toString());
 //            response.sendRedirect("index.jsp");

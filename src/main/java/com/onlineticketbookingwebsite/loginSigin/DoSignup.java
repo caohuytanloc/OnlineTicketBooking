@@ -36,8 +36,8 @@ public class DoSignup extends HttpServlet {
                request.setAttribute("errMess","Username đã tồn tại!");
                request.getRequestDispatcher("signup.jsp").forward(request,response);
            }else {
-               int id=accountEntity.setIdUser();
-               accountEntity.signup(id+"",username,mail,phone,pass);
+              // int id=accountEntity.setIdUser();
+               accountEntity.signup(username,mail,phone,pass);
                HttpSession session=request.getSession();
                session.setAttribute("acc",account);
               // System.out.println(account.toString());

@@ -47,7 +47,7 @@ public class AddFlightServlet extends HttpServlet {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime1 = LocalDateTime.parse(dateTime_departure, formatter);
         LocalDateTime dateTime2 = LocalDateTime.parse(dateTime_arrival, formatter);
-        String id = "F0"+flights.setIdUser()+"";
+        String id = "F"+flights.setIdUser()+"";
         flights.addFlight(id,name, departure_city,arrival_city, dateTime1,dateTime2 ,totalSeat);
         flights.addfLightSeatsInformations(id,"First", 10, first);
         flights.addfLightSeatsInformations(id,"Business", 20, business);
