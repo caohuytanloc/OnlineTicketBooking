@@ -57,8 +57,8 @@ public class RenderTicket extends HttpServlet {
 
                 List<Flight> flightList = null;
                 flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
-                )), destination, departure);
-
+                )), destination.trim(), departure.trim());
+              //  System.out.println(flightList.toString());
                 if (flightList == null) {
                     session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
 
@@ -85,11 +85,11 @@ public class RenderTicket extends HttpServlet {
                 int day = date.getDayOfMonth();
                 int month = date.getMonthValue();
                 int year = date.getYear();
-
+               //System.out.println();Fb5a6716f7 Fb5a6716f7
 
                 List<Flight> flightList = null;
                 flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
-                )), destination, departure);
+                )), destination.trim(), departure.trim());
                 if (flightList == null) {
                     session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
 

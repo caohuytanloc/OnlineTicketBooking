@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +19,7 @@
           <img src="/images/logo-white.svg" alt="logo" />
         </a>      </div>
     </div>
+
     <div class="navbar__nav">
       <div class="nav__top">
         <div class="user__signin">

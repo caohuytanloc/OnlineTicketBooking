@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 @WebServlet("/admin/doc/addFlight")
 public class AddFlightServlet extends HttpServlet {
@@ -41,13 +42,15 @@ public class AddFlightServlet extends HttpServlet {
 
         //System.out.println(first);
         FlightsEntity flights = new FlightsEntity();
-
+        String id = UUID.randomUUID().toString().replace("-", "");
+        id = "F" + id.substring(1, Math.min(10, id.length()));
         String dateTime_departure=departure_date+" "+departure_time;
         String dateTime_arrival=arrival_date+" "+arrival_time;
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime1 = LocalDateTime.parse(dateTime_departure, formatter);
         LocalDateTime dateTime2 = LocalDateTime.parse(dateTime_arrival, formatter);
-        String id = "F"+flights.setIdUser()+"";
+       // String id = "A"+flights.setIdUser()+"";
+     //   System.out.println(departure_city+"    "+arrival_city+"    "+dateTime1+"    "+dateTime2);
         flights.addFlight(id,name, departure_city,arrival_city, dateTime1,dateTime2 ,totalSeat);
         flights.addfLightSeatsInformations(id,"First", 10, first);
         flights.addfLightSeatsInformations(id,"Business", 20, business);

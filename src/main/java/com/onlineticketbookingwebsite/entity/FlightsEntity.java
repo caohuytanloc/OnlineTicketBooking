@@ -38,7 +38,7 @@ public class FlightsEntity {
             ps.setString(4,arrivalCity);
             ps.setObject(5, departureTime);
             ps.setObject(6, arrivalTime);
-            ps.setInt(7, 0);
+            ps.setInt(7, 30);
             ps.setInt(8, Integer.parseInt(totalSeats.trim()) );
             ps.executeUpdate();
             System.out.println("true");
@@ -106,8 +106,8 @@ public class FlightsEntity {
             s = DBConnect.getInstance().connectStament();
             ResultSet rs = s.executeQuery("select * from flights");
             rs.last();
-            id=Integer.parseInt(rs.getString(1).substring(1));
-            System.out.println(rs.getString(1).substring(1));
+            id=Integer.parseInt(rs.getString(1).substring(2));
+            System.out.println(rs.getString(1));
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -116,6 +116,8 @@ public class FlightsEntity {
 
     public static void main(String[] args) {
         FlightsEntity flights= new FlightsEntity();
+        System.out.println(flights.setIdUser());
+
         flights.addfLightSeatsInformations("F002","First",10,155666);
       }
 }
