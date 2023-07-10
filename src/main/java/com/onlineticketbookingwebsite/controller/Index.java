@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-   response.sendRedirect("/ticketbooking/Home.jsp");
+   response.sendRedirect("/login.jsp");
     }
 
     @Override

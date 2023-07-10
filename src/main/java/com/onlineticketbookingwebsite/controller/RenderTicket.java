@@ -1,6 +1,5 @@
 package com.onlineticketbookingwebsite.controller;
 
-import com.mysql.cj.Session;
 import com.onlineticketbookingwebsite.beans.Flight;
 import com.onlineticketbookingwebsite.beans.Passenger;
 import com.onlineticketbookingwebsite.dao.FlightDao;
@@ -13,8 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -60,8 +57,8 @@ public class RenderTicket extends HttpServlet {
 
                 List<Flight> flightList = null;
                 flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
-                )), destination, departure);
-
+                )), destination.trim(), departure.trim());
+              //  System.out.println(flightList.toString());
                 if (flightList == null) {
                     session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
 
@@ -88,11 +85,11 @@ public class RenderTicket extends HttpServlet {
                 int day = date.getDayOfMonth();
                 int month = date.getMonthValue();
                 int year = date.getYear();
-
+               //System.out.println();Fb5a6716f7 Fb5a6716f7
 
                 List<Flight> flightList = null;
                 flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
-                )), destination, departure);
+                )), destination.trim(), departure.trim());
                 if (flightList == null) {
                     session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
 
