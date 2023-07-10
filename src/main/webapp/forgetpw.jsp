@@ -106,7 +106,7 @@
                 <i class="fa fa-lock" style="font-size: 80px;margin-bottom: 20px;"></i><br/>
                 <h1>Quên mật khẩu?</h1>
             </div>
-            <form action="sendMail" method="get" class="card-body">
+            <form action="/sendMails" method="get" class="card-body">
                 <div class="input-group form-group" style="margin: auto;font-size: 16px;color: white;">
                     <span style="text-align: center;margin: auto;margin-bottom: 10px;">Đi đến email để lấy lại mật khẩu mới!</span>
                 </div>

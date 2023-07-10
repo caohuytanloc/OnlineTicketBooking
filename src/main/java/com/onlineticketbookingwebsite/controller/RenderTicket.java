@@ -33,15 +33,7 @@ public class RenderTicket extends HttpServlet {
             request.getRequestDispatcher("/ticketbooking/renderTicket.jsp").forward(request, response);
         }else if (back==null) {
             String trip = request.getParameter("gender");
-            String quantity = request.getParameter("sum_quantity");
-            System.out.println(quantity);
-            ArrayList<Integer> listQuantity = getQuantity(quantity);
-            int numberOfBabies = listQuantity.get(0);
-            int numberOfChildren = listQuantity.get(1);
-            int numberOfAdults = listQuantity.get(2);
-            session.setAttribute("numberOfBabies", numberOfBabies);
-            session.setAttribute("numberOfChildren", numberOfChildren);
-            session.setAttribute("numberOfAdults", numberOfAdults);
+
 
             if (trip.equalsIgnoreCase("one-way")) {
 
@@ -85,7 +77,6 @@ public class RenderTicket extends HttpServlet {
                 int day = date.getDayOfMonth();
                 int month = date.getMonthValue();
                 int year = date.getYear();
-               //System.out.println();Fb5a6716f7 Fb5a6716f7
 
                 List<Flight> flightList = null;
                 flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
@@ -94,6 +85,9 @@ public class RenderTicket extends HttpServlet {
                     session.setAttribute("eror", "Không tìm thấy chuyến bay phù hợp");
 
                 }
+                System.out.println(destination+"vnnnnn");
+                System.out.println(departure+"nnn");
+
 
                 session.setAttribute("isRoundTrip", true);
                 session.setAttribute("departure", departure);

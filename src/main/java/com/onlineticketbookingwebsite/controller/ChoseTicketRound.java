@@ -27,7 +27,10 @@ public class ChoseTicketRound extends HttpServlet {
             boolean trip = (Boolean) session.getAttribute("isRoundTrip");
             if (trip == true) {
                 String destination = (String) session.getAttribute("destination");
+                System.out.println(destination+"departurekhứ hồi");
                 String departure = (String) session.getAttribute("departure");
+                System.out.println(departure+"departurekhứ hồi");
+
                 String destinationTime = (String) session.getAttribute("destinationTime");
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
@@ -37,7 +40,7 @@ public class ChoseTicketRound extends HttpServlet {
                 int month = date.getMonthValue();
                 int year = date.getYear();
                 List<Flight> flightList = new FlightDao().findFlights(Date.valueOf(LocalDate.of(year, month, day
-                )), destination, departure);
+                )),departure.trim() ,destination.trim() );
                 if (flightList == null) {
                     request.setAttribute("NA", "Không tìm thấy chuyến bay phù hợp");
                 }

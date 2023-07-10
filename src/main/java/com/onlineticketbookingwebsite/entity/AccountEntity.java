@@ -106,7 +106,6 @@ public class AccountEntity {
     }
     public static void main(String[] args) {
         AccountEntity ac=new AccountEntity();
-     //  ac.signup(ac.setIdUser(),"anhkimanh","a@gmail.com","0843643251","1256");
-      // System.out.println(ac.md5("e10adc3949ba59abbe56e057f20f883e"));
+       System.out.println(ac.login("admin","111"));
     }
 }

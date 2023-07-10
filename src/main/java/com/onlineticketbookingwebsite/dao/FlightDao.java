@@ -168,7 +168,10 @@ public class FlightDao {
         return result;
     }
     public static void main(String[] args) {
-        System.out.println(new FlightDao().getFlightByFlightId("F001"));
+        System.out.println(new FlightDao().findFlights(Date.valueOf(LocalDate.of(2023, 7, 22
+        )),"Hà Nội", "Đà Nẵng"));
+
+        System.out.println(Date.valueOf(LocalDate.of(2023, 7, 22)));
     }
 }
 

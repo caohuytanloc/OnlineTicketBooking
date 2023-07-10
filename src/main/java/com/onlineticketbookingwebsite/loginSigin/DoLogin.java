@@ -20,12 +20,16 @@ public class DoLogin extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username=request.getParameter("username").trim();
-        String pass=request.getParameter("pass").trim();
-        AccountEntity accountEntity=new AccountEntity();
-        Account account=accountEntity.login(username,pass);
+
+        String action =request.getParameter("action");
+        if(action!=null&&action.equalsIgnoreCase("login")){
+            response.sendRedirect("login.jsp");
+        }else if(action==null){
+            String username=request.getParameter("username").trim();
+            String pass=request.getParameter("pass").trim();
+            AccountEntity accountEntity=new AccountEntity();
+            Account account=accountEntity.login(username,pass);
         if(account==null){
-            System.out.println("account.toString()");
             request.setAttribute("errMess","Bạn đã nhập sai Username hoặc PassWord");
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }else {
@@ -40,32 +44,10 @@ public class DoLogin extends HttpServlet {
                 session.setAttribute("acc",account);
 
             }
-//            System.out.println(account.toString());
-//            response.sendRedirect("index.jsp");
-//            HttpSession session=request.getSession();
-//            session.setAttribute("acc",account);
+
         }
-//        HttpSession session=request.getSession();
-//        if (data.containsKey(username)&&data.get(username).equals(pass)) {
-//            User u=new User();
-//            u.setUsername(username);
-//            u.setAva("");
-//            List<String> list=new LinkedList<>();
-//            list.add("admin.index");
-//            Role role =new Role(list);
-//            u.setRole(role);
-//            session.setAttribute("auth",u);
-//        }else {
-//            if (data.containsKey(username)&&data.get(username).equals(pass)){
-//                User u=new User();
-//                u.setUsername(username);
-//                u.setAva("");
-//                Role role =new Role(null);
-//                u.setRole(role);
-//                session.setAttribute("auth",u);
-//            }
-//        }
-//        response.sendRedirect("/login");
+        }
+
     }
 
 

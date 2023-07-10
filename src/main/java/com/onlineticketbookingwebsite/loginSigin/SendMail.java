@@ -32,7 +32,7 @@ public class SendMail implements Serializable {
         });
         Message message= new MimeMessage(session);
         try {
-            message.setFrom(new InternetAddress("xinh521999@gmail.com","Trương Văn Xinh"));
+            message.setFrom(new InternetAddress("xinh521999@gmail.com","Vietject Air"));
             message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(mail));
             message.setSubject("Forget Password");
             message.setText("VietJet xin chào!\n\n" +

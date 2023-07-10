@@ -41,7 +41,7 @@ public class DoSignup extends HttpServlet {
                HttpSession session=request.getSession();
                session.setAttribute("acc",account);
               // System.out.println(account.toString());
-               request.getRequestDispatcher("index.jsp").forward(request,response);
+               request.getRequestDispatcher("/Index").forward(request,response);
            }
         }
     }

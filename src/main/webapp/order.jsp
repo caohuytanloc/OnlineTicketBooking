@@ -86,8 +86,8 @@
                                         <div class="departure--information ">
                                             <%--                                            <p class="departure--city city"><%= session.getAttribute("departureCity")%></p>--%>
                                             <%--                                            <p class="departure--time time"><%= session.getAttribute("departureTime")%></p>--%>
-                                            <p class="departure--city city">${sessionScope.departureFlight.getDepartureCity()}</p>
-                                            <p class="departure--time time">${sessionScope.departureFlight.departureTime}</p>
+                                            <p class="departure--city city">${sessionScope.departureFlight.arrivalCity}</p>
+                                            <p class="departure--time time">${sessionScope.departureFlight.arrivalTime}</p>
                                         </div>
                                         <div class="departure__information--">
                                             <p class="departure--airplane-code">
@@ -96,10 +96,8 @@
                                             </p>
                                         </div>
                                         <div class="departure__information--">
-                                            <%--                                            <p class="arrive--city city"><%= session.getAttribute("destinationCity")%></p>--%>
-                                            <%--                                            <p class="arrrive--time time"><%= session.getAttribute("destinationTime")%></p>--%>
-                                            <p class="arrive--city city">${sessionScope.departureFlight.arrivalCity}</p>
-                                            <p class="arrrive--time time">${sessionScope.departureFlight.arrivalTime}</p>
+                                            <p class="arrive--city city">${sessionScope.departureFlight.getDepartureCity()}</p>
+                                            <p class="arrrive--time time">${sessionScope.departureFlight.departureTime}</p>
                                         </div>
                                         <div class="airplane--info">
                                             <p class="airplane-type">

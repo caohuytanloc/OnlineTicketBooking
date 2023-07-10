@@ -18,6 +18,6 @@ public class Logout extends HttpServlet {
         HttpSession session=request.getSession();
       //  session.removeAttribute("acc");
         session.invalidate();
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("/ticketbooking/Home.jsp");
     }
 }

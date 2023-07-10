@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,11 +23,34 @@
     </div>
 
     <div class="navbar__nav">
+
+      <c:if test="${sessionScope.acc !=null}">
       <div class="nav__top">
+        <div class="user__signup">
+          <a >Chào mừng ${sessionScope.acc.user} đến với VietJet Air </a>
+        </div>
+        <div>|</div>
+
         <div class="user__signin">
           <a href="/logout">Đăng xuất</a>
         </div>
+
       </div>
+      </c:if>
+      <c:if test="${sessionScope.acc ==null}">
+
+        <div class="nav__top">
+          <div class="user__signin">
+            <a href="/signup">Đăng ký</a>
+          </div>
+          <div>|</div>
+          <div class="user__signup">
+            <a href="/login?action=login">Đăng nhập </a>
+          </div>
+        </div>
+      </c:if>
+
+
       <div class="nav__bottom">
         <nav class="nav__bottom--item">Skyjoy</nav>
         <nav class="nav__bottom--item">Chuyến bay của tôi</nav>
