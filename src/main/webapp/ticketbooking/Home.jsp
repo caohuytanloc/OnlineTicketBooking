@@ -1057,10 +1057,15 @@
                 return;
             }
 
-            var departureDate = new Date(label1Value);
-            var returnDate = new Date(label2Value);
+            var departureDate = moment(label1Value, 'DD/MM/YYYY').toDate();
+            var returnDate = moment(label2Value, 'DD/MM/YYYY').toDate();
 
-            if (departureDate < new Date()) {
+            var currentDate = new Date();
+            currentDate.setHours(0, 0, 0, 0); // Đặt giờ, phút, giây và mili-giây của ngày hiện tại thành 0 để chỉ so sánh ngày, tháng và năm.
+
+            if (departureDate.getFullYear() < currentDate.getFullYear() ||
+                (departureDate.getFullYear() === currentDate.getFullYear() && (departureDate.getMonth() + 1) < (currentDate.getMonth() + 1)) ||
+                (departureDate.getFullYear() === currentDate.getFullYear() && (departureDate.getMonth() + 1) === (currentDate.getMonth() + 1) && departureDate.getDate() < currentDate.getDate())) {
                 event.preventDefault();
                 alert("Ngày đi phải lớn hơn hoặc bằng ngày hiện tại!");
                 return;
@@ -1072,15 +1077,21 @@
                 return;
             }
         } else if (computedStyle.display === 'none') {
+
             if (input1Value === '' || label1Value === '' || input2Value === '') {
                 event.preventDefault();
                 alert("Vui lòng chọn đầy đủ thông tin!");
                 return;
             }
 
-            var departureDate = new Date(label1Value);
+            var departureDate = moment(label1Value, 'DD/MM/YYYY').toDate();
+            var currentDate = new Date();
 
-            if (departureDate < new Date()) {
+            currentDate.setHours(0, 0, 0, 0); // Đặt giờ, phút, giây và mili-giây của ngày hiện tại thành 0 để chỉ so sánh ngày, tháng và năm.
+
+            if (departureDate.getFullYear() < currentDate.getFullYear() ||
+                (departureDate.getFullYear() === currentDate.getFullYear() && (departureDate.getMonth() + 1) < (currentDate.getMonth() + 1)) ||
+                (departureDate.getFullYear() === currentDate.getFullYear() && (departureDate.getMonth() + 1) === (currentDate.getMonth() + 1) && (departureDate.getDate() )< currentDate.getDate())) {
                 event.preventDefault();
                 alert("Ngày đi phải lớn hơn hoặc bằng ngày hiện tại!");
                 return;
@@ -1088,49 +1099,6 @@
         }
     }
 
-    function checkData(event) {
-
-        var input1Value = document.getElementById("departure").value;
-        var input2Value = document.getElementById("destination").value;
-        var label1Value = document.getElementById("datepickerinput").value;
-        var label2Value = document.getElementById("datepickerinput1").value;
-        var div = document.getElementById('return-date');
-        var computedStyle = getComputedStyle(div);
-
-        console.log(computedStyle.display=='none')
-        if(computedStyle.display === 'block'){
-                if(input1Value == '' || input2Value == '' || label1Value == '' || label2Value == ''){
-                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
-
-                    alert("Vui lòng chọn đầy đủ thông tin!");
-                    return;
-                }
-            }
-            else if(computedStyle.display === 'none'){
-                if (input1Value== '' || label1Value == '' || input2Value == ''){
-                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
-
-                    alert("Vui lòng chọn đầy đủ thông tin!");
-                    return;
-                }
-            }  if(computedStyle.display === 'block'){
-                if(input1Value == '' || input2Value == '' || label1Value == '' || label2Value == ''){
-                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
-
-                    alert("Vui lòng chọn đầy đủ thông tin!");
-                    return;
-                }
-            }
-            else if(computedStyle.display === 'none'){
-                if (input1Value== '' || label1Value == '' || input2Value == ''){
-                    event.preventDefault(); // Ngăn chặn chuyển đến trang mới
-
-                    alert("Vui lòng chọn đầy đủ thông tin!");
-                    return;
-                }
-            }
-
-    }
 
     function isValidDate(dateString) {
         var pattern = /^\d{1,2}\/\d{1,2}\/\d{4}$/;

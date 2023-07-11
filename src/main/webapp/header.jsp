@@ -41,7 +41,7 @@
 
         <div class="nav__top">
           <div class="user__signin">
-            <a href="/signup">Đăng ký</a>
+            <a href="/signup?action=signup">Đăng ký</a>
           </div>
           <div>|</div>
           <div class="user__signup">

@@ -45,7 +45,7 @@ public class UserInformationFormServlet extends HttpServlet {
         LocalDateTime dateTime = date.atStartOfDay();
         String id_passenger = "P00" + String.valueOf(((Integer.parseInt(new PassengerDao().getId().substring(3)) + 1)));
         Boolean isRoundTrip = (Boolean) session.getAttribute("isRoundTrip");
-
+System.out.println(isRoundTrip);
         if (isRoundTrip == false) {
             try {
                 boolean savePass = new PassengerDao().createPassenger(id_passenger, firstname, lastname, dateTime, identification, phoneNumber, email, address, gender);

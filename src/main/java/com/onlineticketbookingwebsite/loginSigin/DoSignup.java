@@ -20,29 +20,36 @@ public class DoSignup extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username=request.getParameter("username").trim();
-        String mail=request.getParameter("mail").trim();
-        String phone=request.getParameter("phone").trim();
-        String pass=request.getParameter("pass").trim();
-        String repass=request.getParameter("repass");
 
-       if (!pass.equals(repass)){
-            request.setAttribute("errMess","Hãy nhập lại mật khẩu");
-            request.getRequestDispatcher("signup.jsp").forward(request,response);
-        }else {
-           AccountEntity accountEntity=new AccountEntity();
-           Account account=accountEntity.checkSignup(username);
-           if(account!=null){
-               request.setAttribute("errMess","Username đã tồn tại!");
-               request.getRequestDispatcher("signup.jsp").forward(request,response);
-           }else {
-              // int id=accountEntity.setIdUser();
-               accountEntity.signup(username,mail,phone,pass);
-               HttpSession session=request.getSession();
-               session.setAttribute("acc",account);
-              // System.out.println(account.toString());
-               request.getRequestDispatcher("/Index").forward(request,response);
-           }
+
+        String action =request.getParameter("action");
+        if(action!=null&&action.equalsIgnoreCase("signup")){
+            response.sendRedirect("signup.jsp");
+        }else if(action==null) {
+            String username = request.getParameter("username").trim();
+            String mail = request.getParameter("mail").trim();
+            String phone = request.getParameter("phone").trim();
+            String pass = request.getParameter("pass").trim();
+            String repass = request.getParameter("repass");
+
+            if (!pass.equals(repass)) {
+                request.setAttribute("errMess", "Hãy nhập lại mật khẩu");
+                request.getRequestDispatcher("signup.jsp").forward(request, response);
+            } else {
+                AccountEntity accountEntity = new AccountEntity();
+                Account account = accountEntity.checkSignup(username);
+                if (account != null) {
+                    request.setAttribute("errMess", "Username đã tồn tại!");
+                    request.getRequestDispatcher("signup.jsp").forward(request, response);
+                } else {
+                    // int id=accountEntity.setIdUser();
+                    accountEntity.signup(username, mail, phone, pass);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("acc", account);
+                    // System.out.println(account.toString());
+                    request.getRequestDispatcher("/Index").forward(request, response);
+                }
+            }
         }
     }
 
