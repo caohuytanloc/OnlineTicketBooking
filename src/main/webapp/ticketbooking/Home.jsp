@@ -145,7 +145,7 @@
                                         <div id="item3" onclick="updateInput('item3')">
                                             <div style="display: flex; align-items: center;">
                                                 <div style="margin-right: 10px;">
-                                                    <div class="namecity">TP.HCM</div>
+                                                    <div class="namecity">Hồ Chí Minh</div>
                                                     <div style="font-size: 13px; line-height: 17px;">Sân bay Tân Sơn
                                                         Nhất
                                                     </div>
@@ -447,7 +447,7 @@
                                         <div id="item3" onclick="update('item3')">
                                             <div style="display: flex; align-items: center;">
                                                 <div style="margin-right: 10px;">
-                                                    <div class="namecity">TP.HCM</div>
+                                                    <div class="namecity">Hồ Chí Minh</div>
                                                     <div style="font-size: 13px; line-height: 17px;">Sân bay Tân Sơn
                                                         Nhất
                                                     </div>

@@ -34,9 +34,9 @@ public class CheckInforServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String ticketId = request.getParameter("ticketId");
-        String fullname = request.getParameter("fullname");
-        String departureCity = request.getParameter("departure_city");
+        String ticketId = request.getParameter("ticketId").trim();
+        String fullname = request.getParameter("fullname").trim();
+        String departureCity = request.getParameter("departure_city").trim();
 
 
         // Gọi phương thức để kiểm tra và lấy vé dựa trên ticketId, fullname và departureCity

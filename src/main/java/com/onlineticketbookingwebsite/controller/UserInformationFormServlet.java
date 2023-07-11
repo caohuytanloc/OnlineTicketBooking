@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 import com.onlineticketbookingwebsite.dao.PassengerDao;
@@ -43,7 +44,9 @@ public class UserInformationFormServlet extends HttpServlet {
         session.setAttribute("address",address);
         LocalDate date = LocalDate.parse(birthday);
         LocalDateTime dateTime = date.atStartOfDay();
-        String id_passenger = "P00" + String.valueOf(((Integer.parseInt(new PassengerDao().getId().substring(3)) + 1)));
+        String id_passenger = UUID.randomUUID().toString().replace("-", "");
+        id_passenger = "P00" + id_passenger.substring(1, Math.min(8, id_passenger.length()));
+//        String id_passenger = "P00" + String.valueOf(((Integer.parseInt(new PassengerDao().getId().substring(3)) + 1)));
         Boolean isRoundTrip = (Boolean) session.getAttribute("isRoundTrip");
 System.out.println(isRoundTrip);
         if (isRoundTrip == false) {

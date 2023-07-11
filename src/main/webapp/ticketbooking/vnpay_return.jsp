@@ -176,7 +176,7 @@
             </div>
             <p>&nbsp;
             </p>
-            <button onclick="window.location.href='/Index'" class="home-button">Trở về trang chủ</button>
+            <button onclick="window.location.href='/logout'" class="home-button">Trở về trang chủ</button>
 
 
             <footer  class="text-center">

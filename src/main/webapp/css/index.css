@@ -307,3 +307,40 @@ select {
 input#datepickerinput, input#datepickerinput1 {
     width: 100%;
 }
+#items_vietnam_list1,#items_vietnam_list {
+    height: 100px; /* Chiều cao cố định cho phần tử div */
+    overflow: auto; /* Hiển thị thanh cuộn khi nội dung vượt quá kích thước */
+}
+#items_international_list,#items_international_list1 {
+    height: 100px; /* Chiều cao cố định cho phần tử div */
+    overflow: auto; /* Hiển thị thanh cuộn khi nội dung vượt quá kích thước */
+}
+#items_international_list::-webkit-scrollbar {
+    width: 8px;
+}/* Chiều rộng của thanh cuộn */
+#items_international_list1::-webkit-scrollbar {
+    width: 8px;
+}
+/* Tùy chỉnh kiểu dáng và màu sắc của thanh cuộn (tuỳ chọn) */
+/*#items_vietnam_list1,::-webkit-scrollbar {*/
+/*    width: 8px; !* Chiều rộng của thanh cuộn *!*/
+/*}*/
+#items_vietnam_list1::-webkit-scrollbar {
+    width: 8px;
+}/* Chiều rộng của thanh cuộn */
+#items_vietnam_list::-webkit-scrollbar {
+    width: 8px;
+}/* Chiều rộng của thanh cuộn */
+
+/*#items_vietnam::-webkit-scrollbar-track {*/
+/*    background-color: #f1f1f1; !* Màu nền của thanh cuộn *!*/
+/*}*/
+/*#items_vietnam_list1::-webkit-scrollbar-track {*/
+/*    background-color: #f1f1f1; !* Màu nền của thanh cuộn *!*/
+/*}*/
+/*#items_vietnam_list1::-webkit-scrollbar-thumb {*/
+/*    background-color: #888; !* Màu sắc của thanh cuộn *!*/
+/*}*/
+/*#items_vietnam::-webkit-scrollbar-thumb {*/
+/*    background-color: #888; !* Màu sắc của thanh cuộn *!*/
+/*}*/
